@@ -3,171 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Update Fuel Prices</title>
+<title>Guernsey Fuel Prices — Admin</title>
 <style>
-  #lock-screen {
-    position: fixed; inset: 0; background: #1a3a2a;
-    display: flex; align-items: center; justify-content: center; z-index: 9999;
-  }
-  #lock-screen.hidden { display: none; }
-  .lock-box {
-    background: #fff; border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 360px;
-    text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  }
-  .lock-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; color: #1a3a2a; }
-  .lock-box p { font-size: 0.85rem; color: #5d6b64; margin-bottom: 20px; }
-  .lock-box input {
-    width: 100%; border: 1px solid #d8ded9; border-radius: 10px;
-    padding: 11px 14px; font-size: 1rem; margin-bottom: 12px; outline: none;
-  }
-  .lock-box input:focus { border-color: #1a7a48; }
-  .lock-box button {
-    width: 100%; background: #1a7a48; color: #fff; border: none;
-    border-radius: 10px; padding: 12px; font-size: 1rem; font-weight: 700; cursor: pointer;
-  }
-  .lock-box button:hover { background: #155e38; }
-  .lock-error { color: #c0392b; font-size: 0.82rem; margin-top: 8px; min-height: 18px; }
-</style>
-<style>
-  :root {
-    --bg: #f0f2f0;
-    --card: #ffffff;
-    --ink: #16201c;
-    --muted: #5d6b64;
-    --line: #d8ded9;
-    --green: #1a7a48;
-    --green-bg: #d6f0e2;
-    --header-bg: #1a3a2a;
-    --red: #c0392b;
-    --red-bg: #fdecea;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    font-size: 14px;
-    padding: 16px 12px 80px;
-  }
-  .wrap { max-width: 1000px; margin: 0 auto; }
+/* ── Lock screen ─────────────────────────────────────────── */
+#lock-screen {
+  position: fixed; inset: 0; background: #1a3a2a;
+  display: flex; align-items: center; justify-content: center; z-index: 9999;
+}
+#lock-screen.hidden { display: none; }
+.lock-box {
+  background: #fff; border-radius: 20px; padding: 44px 40px;
+  width: 100%; max-width: 380px; text-align: center;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+}
+.lock-box .lock-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.lock-box h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; color: #1a3a2a; }
+.lock-box p { font-size: 1rem; color: #5d6b64; margin-bottom: 24px; }
+.lock-box input {
+  width: 100%; border: 2px solid #d8ded9; border-radius: 12px;
+  padding: 14px 16px; font-size: 1.1rem; margin-bottom: 14px;
+  outline: none; font-family: inherit;
+}
+.lock-box input:focus { border-color: #1a7a48; }
+.lock-box button {
+  width: 100%; background: #1a7a48; color: #fff; border: none;
+  border-radius: 12px; padding: 14px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+}
+.lock-box button:hover { background: #155e38; }
+.lock-error { color: #c0392b; font-size: 0.9rem; margin-top: 10px; min-height: 20px; font-weight: 600; }
 
-  .page-header {
-    background: var(--header-bg);
-    color: #fff;
-    border-radius: 14px;
-    padding: 18px 22px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .page-header h1 { font-size: 1.5rem; font-weight: 800; }
-  .page-header .sub { opacity: 0.7; font-size: 0.83rem; margin-top: 2px; }
-  .back-link { color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 6px 12px; }
-  .back-link:hover { background: rgba(255,255,255,0.25); }
+/* ── Base ────────────────────────────────────────────────── */
+:root {
+  --bg: #eef0ee;
+  --card: #ffffff;
+  --ink: #16201c;
+  --muted: #5d6b64;
+  --line: #d4dbd5;
+  --green: #1a7a48;
+  --green-bg: #d6f0e2;
+  --green-light: #f0faf5;
+  --header-bg: #1a3a2a;
+  --red: #c0392b;
+  --red-bg: #fdecea;
+  --yellow: #f39c12;
+  --yellow-bg: #fef9ec;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 20px 16px 120px;
+}
+.wrap { max-width: 860px; margin: 0 auto; }
 
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; }
-  .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--header-bg); border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+/* ── Header ─────────────────────────────────────────────── */
+.page-header {
+  background: var(--header-bg);
+  color: #fff;
+  border-radius: 16px;
+  padding: 22px 28px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.page-header h1 { font-size: 1.6rem; font-weight: 800; }
+.page-header .sub { opacity: 0.7; font-size: 0.9rem; margin-top: 2px; }
+.back-link {
+  color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 10px; padding: 9px 16px; white-space: nowrap;
+}
+.back-link:hover { background: rgba(255,255,255,0.25); }
 
-  /* Updated date */
-  .meta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  .meta-row label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
-  .meta-row input[type=text] { border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; font-size: 0.95rem; width: 180px; }
+/* ── Step cards ─────────────────────────────────────────── */
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.step-head {
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  background: #fafbfa;
+}
+.step-num {
+  background: var(--header-bg);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: 50%;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.step-head h2 { font-size: 1.1rem; font-weight: 700; color: var(--header-bg); }
+.step-head p { font-size: 0.85rem; color: var(--muted); margin-top: 1px; }
+.step-body { padding: 24px; }
 
-  /* Station table */
-  .station-table { width: 100%; border-collapse: collapse; }
-  .station-table th {
-    background: #f5f7f5;
-    border: 1px solid var(--line);
-    padding: 7px 8px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    text-align: center;
-    white-space: nowrap;
-  }
-  .station-table th:first-child { text-align: left; }
-  .station-table td { border: 1px solid var(--line); padding: 4px 5px; vertical-align: middle; }
-  .station-table tr:hover td { background: #f9fbf9; }
-  .station-table td.name-cell { min-width: 180px; }
-  .station-table input[type=text],
-  .station-table input[type=number] {
-    width: 100%;
-    border: none;
-    background: transparent;
-    font-size: 0.92rem;
-    padding: 4px 4px;
-    outline: none;
-    font-family: inherit;
-  }
-  .station-table input[type=number] { text-align: right; width: 72px; }
-  .station-table input:focus { background: #eef8f3; border-radius: 4px; }
-  .station-table .notes-input { min-width: 200px; }
-  .del-btn { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
-  .del-btn:hover { color: var(--red); background: var(--red-bg); }
+/* ── Date row ───────────────────────────────────────────── */
+.date-row { display: flex; gap: 14px; align-items: flex-end; flex-wrap: wrap; }
+.date-row .field { display: flex; flex-direction: column; gap: 6px; }
+.date-row label { font-size: 0.85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.date-row input {
+  border: 2px solid var(--line); border-radius: 10px;
+  padding: 12px 16px; font-size: 1.1rem; font-family: inherit;
+  width: 220px; outline: none;
+}
+.date-row input:focus { border-color: var(--green); }
+.today-btn {
+  background: var(--green-bg); color: var(--green); border: 1px solid #a8d8be;
+  border-radius: 10px; padding: 12px 18px; font-size: 0.9rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+}
+.today-btn:hover { background: #c2ebd5; }
 
-  /* Add station */
-  .add-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: #f0f7f3; border: 1px dashed var(--green); color: var(--green);
-    border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600;
-    cursor: pointer; margin-top: 10px;
-  }
-  .add-btn:hover { background: var(--green-bg); }
+/* ── Station list ───────────────────────────────────────── */
+.station-list { display: flex; flex-direction: column; gap: 10px; }
 
-  /* Average / brent / heating rows */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .field-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
-  .field-row label { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
-  .field-row input { border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: 0.95rem; font-family: inherit; }
-  .field-row input:focus { outline: 2px solid var(--green); outline-offset: -1px; }
+.station-row {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.station-row:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
 
-  .heat-table { width: 100%; border-collapse: collapse; }
-  .heat-table th { background: #f5f7f5; border: 1px solid var(--line); padding: 7px 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: center; }
-  .heat-table th:first-child { text-align: left; }
-  .heat-table td { border: 1px solid var(--line); padding: 4px 5px; }
-  .heat-table input[type=text], .heat-table input[type=number] { width: 100%; border: none; background: transparent; font-size: 0.92rem; padding: 4px; outline: none; font-family: inherit; }
-  .heat-table input[type=number] { text-align: right; }
-  .heat-table input:focus { background: #eef8f3; border-radius: 4px; }
+.station-main {
+  display: grid;
+  grid-template-columns: 1fr 110px 110px 110px;
+  gap: 0;
+  align-items: stretch;
+}
+.station-name-cell {
+  padding: 14px 16px;
+  background: #f8faf8;
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+}
+.station-name-cell input {
+  font-size: 1rem; font-weight: 600; color: var(--ink);
+  border: none; background: transparent; outline: none;
+  font-family: inherit; width: 100%;
+}
+.station-name-cell input:focus { color: var(--green); }
 
-  /* Save bar */
-  .save-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--header-bg);
-    padding: 14px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-    flex-wrap: wrap;
-    z-index: 100;
-  }
-  .save-bar .hint { color: rgba(255,255,255,0.65); font-size: 0.82rem; }
-  .save-bar .hint strong { color: #fff; }
-  .save-btn {
-    background: #2ecc71; color: #fff; border: none; border-radius: 10px;
-    padding: 12px 28px; font-size: 1rem; font-weight: 700; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .save-btn:hover { background: #27ae60; }
+.price-cell {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+}
+.price-cell:last-of-type { border-right: none; }
+.price-label {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted);
+  padding: 6px 10px 2px; background: #f8faf8;
+  border-bottom: 1px solid var(--line);
+}
+.price-label.ul { color: #1a5c38; background: #edf9f3; }
+.price-label.ds { color: #1a3a6e; background: #eef1fa; }
+.price-cell input {
+  border: none; outline: none; font-family: inherit;
+  font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums;
+  padding: 10px 10px; text-align: center; background: transparent;
+  width: 100%;
+}
+.price-cell input:focus { background: var(--green-light); }
+.price-cell input.has-value { color: var(--ink); }
+.price-cell input:placeholder-shown { color: #bbb; }
 
-  .toast {
-    position: fixed; top: 20px; right: 20px;
-    background: var(--green); color: #fff; border-radius: 10px;
-    padding: 12px 20px; font-weight: 600; font-size: 0.9rem;
-    opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 200;
-  }
-  .toast.show { opacity: 1; }
+.station-actions {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  border-left: 1px solid var(--line);
+  background: #fafafa;
+  gap: 4px;
+}
 
-  @media (max-width: 700px) {
-    .two-col { grid-template-columns: 1fr; }
-    .station-table .notes-input { min-width: 120px; }
-  }
+/* Extra fields (notes, super, bio etc.) */
+.station-extra {
+  border-top: 1px solid var(--line);
+  padding: 12px 16px;
+  display: none;
+  background: #fcfcfc;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.station-extra.open { display: flex; }
+.extra-field { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 130px; }
+.extra-field label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.extra-field input {
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 8px 10px; font-size: 0.95rem; font-family: inherit; outline: none;
+}
+.extra-field input:focus { border-color: var(--green); }
+.extra-field.wide { flex: 3; min-width: 200px; }
+
+/* Advanced (lat/lng) */
+.station-advanced {
+  border-top: 1px solid #f0ece6;
+  padding: 10px 16px;
+  display: none;
+  background: #fffdf8;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.station-advanced.open { display: flex; }
+.adv-label { font-size: 0.72rem; color: var(--muted); font-style: italic; align-self: center; flex: 1; }
+
+/* Buttons */
+.icon-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 6px 8px; border-radius: 8px; font-size: 1rem; line-height: 1;
+  color: var(--muted);
+}
+.icon-btn:hover { background: #f0f0f0; color: var(--ink); }
+.icon-btn.danger:hover { background: var(--red-bg); color: var(--red); }
+.icon-btn.active { color: var(--green); }
+
+.add-station-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px;
+  background: var(--green-light); border: 2px dashed #a8d8be; border-radius: 12px;
+  color: var(--green); font-size: 1rem; font-weight: 700; cursor: pointer;
+  margin-top: 10px;
+}
+.add-station-btn:hover { background: var(--green-bg); }
+
+/* ── Two-col grid ───────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-group label {
+  font-size: 0.82rem; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.field-group input {
+  border: 2px solid var(--line); border-radius: 10px;
+  padding: 12px 14px; font-size: 1.05rem; font-family: inherit; outline: none;
+}
+.field-group input:focus { border-color: var(--green); }
+
+/* ── Heating oil cards ──────────────────────────────────── */
+.heat-list { display: flex; flex-direction: column; gap: 10px; }
+.heat-row {
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+}
+.heat-main {
+  display: grid;
+  grid-template-columns: 1.5fr 100px 100px 100px 120px;
+  align-items: stretch;
+}
+.heat-name-cell {
+  padding: 12px 16px; background: #f8faf8;
+  border-right: 1px solid var(--line);
+  display: flex; align-items: center;
+}
+.heat-name-cell input {
+  font-size: 1rem; font-weight: 600; border: none;
+  background: transparent; outline: none; font-family: inherit; width: 100%;
+}
+.heat-price-cell {
+  display: flex; flex-direction: column; border-right: 1px solid var(--line);
+}
+.heat-price-cell .price-label { font-size: 0.62rem; }
+.heat-price-cell input {
+  border: none; outline: none; font-family: inherit;
+  font-size: 1.05rem; font-weight: 700; padding: 8px 8px;
+  text-align: center; background: transparent; width: 100%;
+}
+.heat-price-cell input:focus { background: var(--green-light); }
+.heat-notes-cell {
+  padding: 8px 10px; display: flex; align-items: center;
+  border-right: 1px solid var(--line);
+}
+.heat-notes-cell input {
+  border: none; outline: none; font-family: inherit;
+  font-size: 0.88rem; color: var(--muted); background: transparent; width: 100%;
+}
+.heat-actions { display: flex; align-items: center; padding: 0 6px; background: #fafafa; }
+
+/* ── Save bar ───────────────────────────────────────────── */
+.save-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: var(--header-bg);
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; z-index: 100; flex-wrap: wrap;
+}
+.save-hint { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.4; }
+.save-hint strong { color: #fff; font-size: 1rem; }
+.save-btn {
+  background: #27ae60; color: #fff; border: none; border-radius: 12px;
+  padding: 14px 32px; font-size: 1.1rem; font-weight: 800; cursor: pointer;
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(39,174,96,0.4);
+}
+.save-btn:hover { background: #219a52; transform: translateY(-1px); }
+.save-btn:active { transform: none; }
+
+/* ── Toast ──────────────────────────────────────────────── */
+.toast {
+  position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-80px);
+  background: var(--green); color: #fff; border-radius: 12px;
+  padding: 14px 28px; font-weight: 700; font-size: 1rem;
+  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+  pointer-events: none; z-index: 300; white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── Collapsible advanced section ───────────────────────── */
+.adv-toggle {
+  font-size: 0.78rem; color: var(--muted); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; user-select: none;
+  padding: 0 16px 10px; display: block; background: #fcfcfc;
+}
+
+@media (max-width: 640px) {
+  .station-main { grid-template-columns: 1fr 90px 90px; }
+  .grid-2, .grid-4 { grid-template-columns: 1fr 1fr; }
+  .heat-main { grid-template-columns: 1fr 80px 80px; }
+  .heat-notes-cell { display: none; }
+}
 </style>
 </head>
 <body>
@@ -175,10 +346,11 @@
 <!-- Lock screen -->
 <div id="lock-screen">
   <div class="lock-box">
-    <h2>🔒 Admin Access</h2>
-    <p>Guernsey Fuel Prices — update tool</p>
-    <input type="password" id="lock-input" placeholder="Enter password" autocomplete="current-password">
-    <button onclick="checkPassword()">Unlock</button>
+    <div class="lock-icon">⛽</div>
+    <h2>Admin Login</h2>
+    <p>Guernsey Fuel Prices update tool</p>
+    <input type="password" id="lock-input" placeholder="Password" autocomplete="current-password">
+    <button onclick="checkPassword()">Sign In</button>
     <div class="lock-error" id="lock-error"></div>
   </div>
 </div>
@@ -187,157 +359,187 @@
 
   <div class="page-header">
     <div>
-      <h1>Update Fuel Prices</h1>
-      <div class="sub">Edit the values below, then click Save &amp; Download</div>
+      <h1>⛽ Update Fuel Prices</h1>
+      <div class="sub">Work through each step, then hit the green Save button at the bottom</div>
     </div>
-    <a class="back-link" href="index.html">← View Prices</a>
+    <a class="back-link" href="index.html">← View Live Site</a>
   </div>
 
-  <!-- Meta -->
-  <div class="card">
-    <h2>Date Updated</h2>
-    <div class="meta-row">
-      <label for="updated">Updated label</label>
-      <input type="text" id="updated" placeholder="e.g. 02/Jun/2026">
-    </div>
-  </div>
-
-  <!-- Forecourt prices -->
-  <div class="card">
-    <h2>Forecourt Prices</h2>
-    <div style="overflow-x:auto">
-      <table class="station-table" id="station-table">
-        <thead>
-          <tr>
-            <th>Forecourt Name</th>
-            <th>Unleaded<br>95 Ron</th>
-            <th>Diesel</th>
-            <th>Super<br>97/99</th>
-            <th>Bio/HVO<br>Diesel</th>
-            <th>DF<br>Diesel</th>
-            <th>Notes / Offers</th>
-            <th>Date</th>
-            <th>Lat</th>
-            <th>Lng</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="station-body"></tbody>
-      </table>
-    </div>
-    <button class="add-btn" onclick="addStation()">+ Add Forecourt</button>
-  </div>
-
-  <!-- Average -->
-  <div class="card">
-    <h2>Average GSY Price</h2>
-    <div class="two-col">
-      <div class="field-row">
-        <label>Average Unleaded (ppl)</label>
-        <input type="number" step="0.1" id="avg-unleaded" placeholder="e.g. 171.1">
+  <!-- STEP 1: Date -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">1</div>
+      <div>
+        <h2>Set the Update Date</h2>
+        <p>This appears on the public site as "last updated"</p>
       </div>
-      <div class="field-row">
-        <label>Average Diesel (ppl)</label>
-        <input type="number" step="0.1" id="avg-diesel" placeholder="e.g. 182.1">
+    </div>
+    <div class="step-body">
+      <div class="date-row">
+        <div class="field">
+          <label for="updated">Date label</label>
+          <input type="text" id="updated" placeholder="e.g. 02/Jun/2026" style="font-size:1.15rem">
+        </div>
+        <button class="today-btn" onclick="setToday()">Use Today's Date</button>
       </div>
     </div>
   </div>
 
-  <!-- Brent crude -->
-  <div class="card">
-    <h2>Brent Crude Oil ($ per barrel)</h2>
-    <div class="two-col">
-      <div class="field-row">
-        <label>Today's Price ($)</label>
-        <input type="number" step="0.01" id="bc-today" placeholder="e.g. 93.82">
+  <!-- STEP 2: Forecourt prices -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">2</div>
+      <div>
+        <h2>Forecourt Prices</h2>
+        <p>Update Unleaded and Diesel for each station — tap a row to expand notes and other fuel types</p>
       </div>
-      <div class="field-row">
-        <label>Last Week ($)</label>
-        <input type="number" step="0.01" id="bc-lastweek" placeholder="e.g. 100.73">
+    </div>
+    <div class="step-body">
+      <div class="station-list" id="station-list"></div>
+      <button class="add-station-btn" onclick="addStation()">+ Add New Forecourt</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Averages -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">3</div>
+      <div>
+        <h2>Average GSY Price</h2>
+        <p>The island-wide average shown at the bottom of the price table</p>
       </div>
-      <div class="field-row">
-        <label>All-time High ($)</label>
-        <input type="number" step="0.01" id="bc-high" placeholder="e.g. 130.59">
-      </div>
-      <div class="field-row">
-        <label>All-time High Date</label>
-        <input type="text" id="bc-high-date" placeholder="e.g. Mar '22">
-      </div>
-      <div class="field-row">
-        <label>All-time Low ($)</label>
-        <input type="number" step="0.01" id="bc-low" placeholder="e.g. 55.81">
-      </div>
-      <div class="field-row">
-        <label>All-time Low Date</label>
-        <input type="text" id="bc-low-date" placeholder="e.g. Jan '21">
+    </div>
+    <div class="step-body">
+      <div class="grid-2">
+        <div class="field-group">
+          <label>Average Unleaded (ppl)</label>
+          <input type="number" step="0.1" id="avg-unleaded" placeholder="e.g. 171.1">
+        </div>
+        <div class="field-group">
+          <label>Average Diesel (ppl)</label>
+          <input type="number" step="0.1" id="avg-diesel" placeholder="e.g. 182.1">
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Heating oil -->
-  <div class="card">
-    <h2>Heating Oil Prices</h2>
-    <div style="overflow-x:auto">
-      <table class="heat-table" id="heat-table">
-        <thead>
-          <tr>
-            <th>Supplier</th>
-            <th>500L (ppl)</th>
-            <th>700L (ppl)</th>
-            <th>900L (ppl)</th>
-            <th>Tel</th>
-            <th>Notes / Offers</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="heat-body"></tbody>
-      </table>
+  <!-- STEP 4: Brent crude -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <div>
+        <h2>Brent Crude Oil</h2>
+        <p>$ per barrel — update Today and Last Week each time</p>
+      </div>
     </div>
-    <button class="add-btn" onclick="addHeatRow()">+ Add Supplier</button>
+    <div class="step-body">
+      <div class="grid-2" style="margin-bottom:16px">
+        <div class="field-group">
+          <label>Today's Price ($)</label>
+          <input type="number" step="0.01" id="bc-today" placeholder="e.g. 93.82" style="font-size:1.2rem;font-weight:700">
+        </div>
+        <div class="field-group">
+          <label>Last Week ($)</label>
+          <input type="number" step="0.01" id="bc-lastweek" placeholder="e.g. 100.73" style="font-size:1.2rem;font-weight:700">
+        </div>
+      </div>
+      <details>
+        <summary style="cursor:pointer;font-size:0.85rem;color:var(--muted);margin-bottom:12px;user-select:none">
+          ▸ All-time high / low (rarely changes)
+        </summary>
+        <div class="grid-4" style="margin-top:12px">
+          <div class="field-group">
+            <label>All-time High ($)</label>
+            <input type="number" step="0.01" id="bc-high">
+          </div>
+          <div class="field-group">
+            <label>High Date</label>
+            <input type="text" id="bc-high-date" placeholder="Mar '22">
+          </div>
+          <div class="field-group">
+            <label>All-time Low ($)</label>
+            <input type="number" step="0.01" id="bc-low">
+          </div>
+          <div class="field-group">
+            <label>Low Date</label>
+            <input type="text" id="bc-low-date" placeholder="Jan '21">
+          </div>
+        </div>
+      </details>
+    </div>
   </div>
 
-  <!-- Duty -->
-  <div class="card">
-    <h2>Duty Rates (pence per litre)</h2>
-    <div class="two-col">
-      <div class="field-row">
-        <label>Gsy Duty (ppl)</label>
-        <input type="number" step="0.1" id="duty-gsy-ppl">
+  <!-- STEP 5: Heating oil -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <div>
+        <h2>Heating Oil Prices</h2>
+        <p>Updated every Tuesday — prices in pence per litre</p>
       </div>
-      <div class="field-row">
-        <label>Gsy RD100 (p)</label>
-        <input type="number" step="0.1" id="duty-gsy-rd100">
+    </div>
+    <div class="step-body">
+      <div class="heat-list" id="heat-list"></div>
+      <button class="add-station-btn" onclick="addHeatRow()" style="margin-top:10px">+ Add Supplier</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: Duty rates -->
+  <div class="step-card">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <div>
+        <h2>Duty Rates</h2>
+        <p>Pence per litre — only change if the duty rate has changed</p>
       </div>
-      <div class="field-row">
-        <label>Jsy Duty (ppl)</label>
-        <input type="number" step="0.01" id="duty-jsy">
-      </div>
-      <div class="field-row">
-        <label>UK Duty (ppl)</label>
-        <input type="number" step="0.01" id="duty-uk">
+    </div>
+    <div class="step-body">
+      <div class="grid-4">
+        <div class="field-group">
+          <label>Gsy Duty (ppl)</label>
+          <input type="number" step="0.1" id="duty-gsy-ppl">
+        </div>
+        <div class="field-group">
+          <label>Gsy RD100 (p)</label>
+          <input type="number" step="0.1" id="duty-gsy-rd100">
+        </div>
+        <div class="field-group">
+          <label>Jsy Duty (ppl)</label>
+          <input type="number" step="0.01" id="duty-jsy">
+        </div>
+        <div class="field-group">
+          <label>UK Duty (ppl)</label>
+          <input type="number" step="0.01" id="duty-uk">
+        </div>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- Fixed save bar -->
+<!-- Save bar -->
 <div class="save-bar">
-  <div class="hint">Edit any values above, then <strong>Save &amp; Download</strong> the new prices.json — replace the old file to update the site.</div>
-  <button class="save-btn" onclick="saveAndDownload()">⬇ Save &amp; Download prices.json</button>
+  <div class="save-hint">
+    <strong>All done? Hit Save.</strong><br>
+    A prices.json file will download — drag it into the Fuel Prices folder to go live.
+  </div>
+  <button class="save-btn" onclick="saveAndDownload()">
+    ⬇ Save &amp; Download
+  </button>
 </div>
 
-<div class="toast" id="toast">Downloaded! Replace prices.json with the new file.</div>
+<div class="toast" id="toast">✓ Downloaded! Drop the file into your Fuel Prices folder.</div>
 
 <script>
 let currentData = null;
 
+// ── Init ──────────────────────────────────────────────────
 async function init() {
   try {
     const res = await fetch('prices.json?' + Date.now());
     currentData = await res.json();
   } catch(e) {
-    currentData = { updated: '', stations: [], average: {}, brent_crude: {}, heating_oil: { suppliers: [] }, duty: {}, footer_notes: [] };
+    currentData = { updated:'', stations:[], average:{}, brent_crude:{}, heating_oil:{suppliers:[]}, duty:{}, footer_notes:[] };
   }
   populate();
 }
@@ -345,17 +547,9 @@ async function init() {
 function populate() {
   const d = currentData;
   document.getElementById('updated').value = d.updated || '';
-
-  // Stations
-  const tbody = document.getElementById('station-body');
-  tbody.innerHTML = '';
   (d.stations || []).forEach(s => addStation(s));
-
-  // Average
   document.getElementById('avg-unleaded').value = d.average?.unleaded ?? '';
   document.getElementById('avg-diesel').value   = d.average?.diesel   ?? '';
-
-  // Brent
   const b = d.brent_crude || {};
   document.getElementById('bc-today').value     = b.today     ?? '';
   document.getElementById('bc-lastweek').value  = b.last_week ?? '';
@@ -363,13 +557,7 @@ function populate() {
   document.getElementById('bc-high-date').value = b.high_date ?? '';
   document.getElementById('bc-low').value       = b.low       ?? '';
   document.getElementById('bc-low-date').value  = b.low_date  ?? '';
-
-  // Heating oil
-  const hbody = document.getElementById('heat-body');
-  hbody.innerHTML = '';
   (d.heating_oil?.suppliers || []).forEach(h => addHeatRow(h));
-
-  // Duty
   const duty = d.duty || {};
   document.getElementById('duty-gsy-ppl').value   = duty.gsy_ppl   ?? '';
   document.getElementById('duty-gsy-rd100').value = duty.gsy_rd100 ?? '';
@@ -377,71 +565,155 @@ function populate() {
   document.getElementById('duty-uk').value        = duty.uk_duty   ?? '';
 }
 
+// ── Date helper ───────────────────────────────────────────
+function setToday() {
+  const d = new Date();
+  const day = String(d.getDate()).padStart(2, '0');
+  const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  const yr  = d.getFullYear();
+  document.getElementById('updated').value = `${day}/${mon}/${yr}`;
+}
+
+// ── Station row ───────────────────────────────────────────
 function addStation(s = {}) {
-  const tbody = document.getElementById('station-body');
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td class="name-cell"><input type="text" class="s-name" value="${esc(s.name||'')}" placeholder="Forecourt name"></td>
-    <td><input type="number" step="0.1" class="s-unleaded" value="${s.unleaded||''}" placeholder="—"></td>
-    <td><input type="number" step="0.1" class="s-diesel"   value="${s.diesel||''}"   placeholder="—"></td>
-    <td><input type="number" step="0.1" class="s-super"    value="${s.super||''}"    placeholder="—"></td>
-    <td><input type="number" step="0.1" class="s-bio"      value="${s.bio_diesel||''}" placeholder="—"></td>
-    <td><input type="number" step="0.1" class="s-df"       value="${s.df_diesel||''}"  placeholder="—"></td>
-    <td><input type="text" class="s-notes notes-input" value="${esc(s.notes||'')}" placeholder="Notes / offers"></td>
-    <td><input type="text" class="s-date" value="${esc(s.date||'')}" placeholder="02/Jun"></td>
-    <td><input type="number" step="0.0001" class="s-lat" value="${s.lat||''}" placeholder="49.46" style="width:80px"></td>
-    <td><input type="number" step="0.0001" class="s-lng" value="${s.lng||''}" placeholder="-2.54" style="width:80px"></td>
-    <td><button class="del-btn" title="Remove row" onclick="this.closest('tr').remove()">✕</button></td>
+  const list = document.getElementById('station-list');
+  const div = document.createElement('div');
+  div.className = 'station-row';
+  div.innerHTML = `
+    <div class="station-main">
+      <div class="station-name-cell">
+        <input type="text" class="s-name" value="${esc(s.name||'')}" placeholder="Forecourt name">
+      </div>
+      <div class="price-cell">
+        <div class="price-label ul">Unleaded</div>
+        <input type="number" step="0.1" class="s-unleaded" value="${s.unleaded||''}" placeholder="—">
+      </div>
+      <div class="price-cell">
+        <div class="price-label ds">Diesel</div>
+        <input type="number" step="0.1" class="s-diesel" value="${s.diesel||''}" placeholder="—">
+      </div>
+      <div class="station-actions">
+        <button class="icon-btn" title="More options" onclick="toggleExtra(this)">⋯</button>
+        <button class="icon-btn danger" title="Remove station" onclick="this.closest('.station-row').remove()">🗑</button>
+      </div>
+    </div>
+    <div class="station-extra">
+      <div class="extra-field">
+        <label>Super 97/99</label>
+        <input type="number" step="0.1" class="s-super" value="${s.super||''}" placeholder="—">
+      </div>
+      <div class="extra-field">
+        <label>Bio/HVO Diesel</label>
+        <input type="number" step="0.1" class="s-bio" value="${s.bio_diesel||''}" placeholder="—">
+      </div>
+      <div class="extra-field">
+        <label>DF Diesel</label>
+        <input type="number" step="0.1" class="s-df" value="${s.df_diesel||''}" placeholder="—">
+      </div>
+      <div class="extra-field">
+        <label>Date</label>
+        <input type="text" class="s-date" value="${esc(s.date||'')}" placeholder="02/Jun">
+      </div>
+      <div class="extra-field wide">
+        <label>Notes / Offers</label>
+        <input type="text" class="s-notes" value="${esc(s.notes||'')}" placeholder="e.g. 2p off with loyalty card">
+      </div>
+    </div>
+    <span class="adv-toggle" onclick="toggleAdv(this)">▸ Map pin coordinates (advanced)</span>
+    <div class="station-advanced">
+      <div class="adv-label">Only change these if the map pin is in the wrong place</div>
+      <div class="extra-field" style="min-width:140px">
+        <label>Latitude</label>
+        <input type="number" step="0.000001" class="s-lat" value="${s.lat||''}" placeholder="49.4652">
+      </div>
+      <div class="extra-field" style="min-width:140px">
+        <label>Longitude</label>
+        <input type="number" step="0.000001" class="s-lng" value="${s.lng||''}" placeholder="-2.5729">
+      </div>
+    </div>
   `;
-  tbody.appendChild(tr);
+  list.appendChild(div);
 }
 
+function toggleExtra(btn) {
+  const extra = btn.closest('.station-row').querySelector('.station-extra');
+  extra.classList.toggle('open');
+  btn.classList.toggle('active');
+}
+
+function toggleAdv(span) {
+  const adv = span.nextElementSibling;
+  adv.classList.toggle('open');
+  span.textContent = adv.classList.contains('open')
+    ? '▾ Map pin coordinates (advanced)'
+    : '▸ Map pin coordinates (advanced)';
+}
+
+// ── Heating oil row ───────────────────────────────────────
 function addHeatRow(h = {}) {
-  const tbody = document.getElementById('heat-body');
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td><input type="text" class="h-name" value="${esc(h.name||'')}" placeholder="Supplier name"></td>
-    <td><input type="number" step="0.01" class="h-500" value="${h.price_500l||''}" placeholder="—"></td>
-    <td><input type="number" step="0.01" class="h-700" value="${h.price_700l||''}" placeholder="—"></td>
-    <td><input type="number" step="0.01" class="h-900" value="${h.price_900l||''}" placeholder="—"></td>
-    <td><input type="text" class="h-tel" value="${esc(h.tel||'')}" placeholder="Tel"></td>
-    <td><input type="text" class="h-notes" value="${esc(h.notes||'')}" placeholder="Notes" style="min-width:180px"></td>
-    <td><button class="del-btn" title="Remove row" onclick="this.closest('tr').remove()">✕</button></td>
+  const list = document.getElementById('heat-list');
+  const div = document.createElement('div');
+  div.className = 'heat-row';
+  div.innerHTML = `
+    <div class="heat-main">
+      <div class="heat-name-cell">
+        <input type="text" class="h-name" value="${esc(h.name||'')}" placeholder="Supplier name">
+      </div>
+      <div class="heat-price-cell">
+        <div class="price-label">500L</div>
+        <input type="number" step="0.01" class="h-500" value="${h.price_500l||''}" placeholder="—">
+      </div>
+      <div class="heat-price-cell">
+        <div class="price-label">700L</div>
+        <input type="number" step="0.01" class="h-700" value="${h.price_700l||''}" placeholder="—">
+      </div>
+      <div class="heat-price-cell">
+        <div class="price-label">900L</div>
+        <input type="number" step="0.01" class="h-900" value="${h.price_900l||''}" placeholder="—">
+      </div>
+      <div class="heat-notes-cell">
+        <input type="text" class="h-notes" value="${esc(h.notes||'')}" placeholder="Notes / offers">
+      </div>
+      <div class="heat-actions">
+        <button class="icon-btn danger" onclick="this.closest('.heat-row').remove()">🗑</button>
+      </div>
+    </div>
   `;
-  tbody.appendChild(tr);
+  list.appendChild(div);
 }
 
+// ── Collect & save ────────────────────────────────────────
 function collectData() {
   const stations = [];
-  document.querySelectorAll('#station-body tr').forEach(tr => {
-    const name = tr.querySelector('.s-name').value.trim();
+  document.querySelectorAll('.station-row').forEach(row => {
+    const name = row.querySelector('.s-name').value.trim();
     if (!name) return;
     stations.push({
       name,
-      unleaded:   numOrNull(tr.querySelector('.s-unleaded').value),
-      diesel:     numOrNull(tr.querySelector('.s-diesel').value),
-      super:      numOrNull(tr.querySelector('.s-super').value),
-      bio_diesel: numOrNull(tr.querySelector('.s-bio').value),
-      df_diesel:  numOrNull(tr.querySelector('.s-df').value),
-      notes:      tr.querySelector('.s-notes').value.trim(),
-      date:       tr.querySelector('.s-date').value.trim(),
-      lat:        numOrNull(tr.querySelector('.s-lat').value),
-      lng:        numOrNull(tr.querySelector('.s-lng').value),
+      unleaded:   numOrNull(row.querySelector('.s-unleaded').value),
+      diesel:     numOrNull(row.querySelector('.s-diesel').value),
+      super:      numOrNull(row.querySelector('.s-super').value),
+      bio_diesel: numOrNull(row.querySelector('.s-bio').value),
+      df_diesel:  numOrNull(row.querySelector('.s-df').value),
+      notes:      row.querySelector('.s-notes').value.trim(),
+      date:       row.querySelector('.s-date').value.trim(),
+      lat:        numOrNull(row.querySelector('.s-lat').value),
+      lng:        numOrNull(row.querySelector('.s-lng').value),
       facebook:   ''
     });
   });
 
   const heatSuppliers = [];
-  document.querySelectorAll('#heat-body tr').forEach(tr => {
-    const name = tr.querySelector('.h-name').value.trim();
+  document.querySelectorAll('.heat-row').forEach(row => {
+    const name = row.querySelector('.h-name').value.trim();
     if (!name) return;
     heatSuppliers.push({
       name,
-      price_500l: numOrNull(tr.querySelector('.h-500').value),
-      price_700l: numOrNull(tr.querySelector('.h-700').value),
-      price_900l: numOrNull(tr.querySelector('.h-900').value),
-      tel:        tr.querySelector('.h-tel').value.trim(),
-      notes:      tr.querySelector('.h-notes').value.trim()
+      price_500l: numOrNull(row.querySelector('.h-500').value),
+      price_700l: numOrNull(row.querySelector('.h-700').value),
+      price_900l: numOrNull(row.querySelector('.h-900').value),
+      tel:        '',
+      notes:      row.querySelector('.h-notes').value.trim()
     });
   });
 
@@ -478,45 +750,31 @@ function saveAndDownload() {
   const blob = new Blob([json], { type: 'application/json' });
   const url  = URL.createObjectURL(blob);
   const a    = document.createElement('a');
-  a.href     = url;
-  a.download = 'prices.json';
-  a.click();
+  a.href = url; a.download = 'prices.json'; a.click();
   URL.revokeObjectURL(url);
-  showToast();
-}
-
-function showToast() {
   const t = document.getElementById('toast');
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
+  setTimeout(() => t.classList.remove('show'), 4000);
 }
 
-function numOrNull(v) {
-  const n = parseFloat(v);
-  return isNaN(n) ? null : n;
-}
-
-function esc(s) {
-  return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
-}
+function numOrNull(v) { const n = parseFloat(v); return isNaN(n) ? null : n; }
+function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
 init();
 </script>
 
+<!-- Password -->
 <script>
-// Password is stored as a SHA-256 hash — change the hash below to change the password.
-// Current password: GuernseyFuel2026
-// To generate a new hash: https://emn178.github.io/online-tools/sha256.html
 const PASSWORD_HASH = '5f6528370182fce91879fbc1d1f8b82ce455a7fc6d81e74adb486f133bbd34ea';
 
 async function checkPassword() {
   const input = document.getElementById('lock-input').value;
-  const hash = await sha256(input);
+  const hash  = await sha256(input);
   if (hash === PASSWORD_HASH) {
     sessionStorage.setItem('fuel_admin_auth', '1');
     document.getElementById('lock-screen').classList.add('hidden');
   } else {
-    document.getElementById('lock-error').textContent = 'Incorrect password. Try again.';
+    document.getElementById('lock-error').textContent = 'Incorrect password — please try again.';
     document.getElementById('lock-input').value = '';
     document.getElementById('lock-input').focus();
   }
@@ -526,14 +784,11 @@ document.getElementById('lock-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') checkPassword();
 });
 
-async function sha256(message) {
-  const msgBuffer = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+async function sha256(msg) {
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-// Skip lock if already authenticated this session
 if (sessionStorage.getItem('fuel_admin_auth') === '1') {
   document.getElementById('lock-screen').classList.add('hidden');
 }
