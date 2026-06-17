@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guernsey Fuel Prices</title>
+<style>
+  :root {
+    --bg: #f0f2f0;
+    --card: #ffffff;
+    --ink: #16201c;
+    --muted: #5d6b64;
+    --line: #d8ded9;
+    --best: #1a7a48;
+    --best-bg: #d6f0e2;
+    --header-bg: #1a3a2a;
+    --header-ink: #ffffff;
+    --avg-bg: #fffbe6;
+    --section-bg: #f7f9f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    padding: 16px 12px 64px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .page-header {
+    background: var(--header-bg);
+    color: var(--header-ink);
+    border-radius: 14px;
+    padding: 20px 22px 16px;
+    margin-bottom: 16px;
+  }
+  .page-header h1 { font-size: clamp(1.3rem, 5vw, 2rem); font-weight: 800; letter-spacing: -0.02em; }
+  .page-header .sub { opacity: 0.7; font-size: 0.85rem; margin-top: 4px; }
+  .page-header .updated { opacity: 1; font-weight: 700; }
+  .admin-link { float: right; background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600; border-radius: 8px; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); }
+  .admin-link:hover { background: rgba(255,255,255,0.25); }
+
+  /* Duty bar */
+  .duty-bar {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .duty-bar span { white-space: nowrap; }
+  .duty-bar strong { color: var(--ink); }
+
+  /* Section label */
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 20px 0 8px;
+  }
+
+  /* Main price table */
+  .price-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .price-table thead th {
+    background: var(--header-bg);
+    color: var(--header-ink);
+    padding: 10px 12px;
+    text-align: right;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    white-space: nowrap;
+  }
+  .price-table thead th:first-child { text-align: left; }
+  .price-table tbody tr { border-top: 1px solid var(--line); }
+  .price-table tbody tr:first-child { border-top: none; }
+  .price-table tbody tr:hover { background: #f5f8f5; }
+  .price-table td { padding: 10px 12px; vertical-align: middle; }
+  .price-table td.station-name { font-weight: 600; font-size: 0.95rem; }
+  .price-table td.num { text-align: right; font-variant-numeric: tabular-nums; font-size: 1rem; font-weight: 700; }
+  .price-table td.notes-col { color: var(--muted); font-size: 0.78rem; max-width: 220px; }
+  .price-table td.date-col { color: var(--muted); font-size: 0.78rem; white-space: nowrap; text-align: right; }
+  .best { color: var(--best); background: var(--best-bg); border-radius: 6px; padding: 2px 6px; }
+  .dash { color: var(--line); }
+  .avg-row td { background: var(--avg-bg); font-weight: 700; font-style: italic; border-top: 2px solid #d4c97a !important; }
+
+  /* Brent crude */
+  .brent-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .brent-card .bc-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+  .brent-card .bc-val { font-size: 1.4rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .brent-card .bc-today { color: var(--best); }
+  .brent-card .bc-sub { font-size: 0.75rem; color: var(--muted); }
+  .brent-item { text-align: center; }
+
+  /* Heating oil table */
+  .heat-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .heat-table thead th { background: #3a5a48; color: #fff; padding: 9px 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-align: right; }
+  .heat-table thead th:first-child { text-align: left; }
+  .heat-table tbody tr { border-top: 1px solid var(--line); }
+  .heat-table tbody tr:hover { background: #f5f8f5; }
+  .heat-table td { padding: 9px 12px; font-size: 0.9rem; }
+  .heat-table td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+  .heat-table td.notes-col { color: var(--muted); font-size: 0.78rem; }
+
+  /* Footer notes */
+  .footer-notes {
+    margin-top: 24px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .footer-notes p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+  .footer-notes p:first-child { color: var(--ink); font-weight: 600; margin-top: 0; }
+
+  @media (max-width: 600px) {
+    .price-table td, .price-table thead th { padding: 8px 7px; }
+    .price-table td.notes-col { display: none; }
+    .duty-bar { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-header">
+    <a class="admin-link" href="admin.html">✏ Update Prices</a>
+    <h1>Guernsey Fuel Prices</h1>
+    <p class="sub">Pump price · pence per litre · updated <span class="updated" id="updated">—</span></p>
+  </div>
+
+  <div class="duty-bar" id="duty-bar"></div>
+
+  <div class="section-label">Forecourt Prices</div>
+  <table class="price-table" id="main-table">
+    <thead>
+      <tr>
+        <th>Forecourt</th>
+        <th>Unleaded<br>95 Ron</th>
+        <th>Diesel</th>
+        <th>Super<br>97/99</th>
+        <th>Bio/HVO<br>Diesel</th>
+        <th>DF<br>Diesel</th>
+        <th class="notes-col" style="text-align:left">Notes / Offers</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody id="station-rows"></tbody>
+  </table>
+
+  <div class="section-label">Brent Crude Oil ($ per barrel)</div>
+  <div class="brent-card" id="brent-card"></div>
+
+  <div class="section-label">Heating Oil Prices — updated every Tuesday</div>
+  <table class="heat-table" id="heat-table">
+    <thead>
+      <tr>
+        <th>Supplier</th>
+        <th>500L</th>
+        <th>700L</th>
+        <th>900L</th>
+        <th>Tel</th>
+        <th class="notes-col" style="text-align:left">Notes / Offers</th>
+      </tr>
+    </thead>
+    <tbody id="heat-rows"></tbody>
+  </table>
+
+  <div class="footer-notes" id="footer-notes"></div>
+
+</div>
+
+<script>
+async function load() {
+  let data;
+  try {
+    const res = await fetch('prices.json?' + Date.now());
+    data = await res.json();
+  } catch(e) {
+    document.getElementById('main-table').innerHTML = '<tr><td colspan="8" style="padding:24px;text-align:center;color:#888">Could not load prices.json</td></tr>';
+    return;
+  }
+
+  document.getElementById('updated').textContent = data.updated || '—';
+
+  // Duty bar
+  if (data.duty) {
+    const d = data.duty;
+    document.getElementById('duty-bar').innerHTML =
+      `<span>Gsy Duty: <strong>${d.gsy_ppl}ppl / ${d.gsy_rd100}p RD100</strong></span>` +
+      `<span>Jsy Duty: <strong>${d.jsy_ppl}ppl</strong></span>` +
+      `<span>UK Duty: <strong>${d.uk_duty}ppl</strong></span>`;
+  }
+
+  // Main table
+  const stations = data.stations || [];
+  const minU = Math.min(...stations.filter(s => s.unleaded > 0).map(s => s.unleaded));
+  const minD = Math.min(...stations.filter(s => s.diesel > 0).map(s => s.diesel));
+  const minS = Math.min(...stations.filter(s => s.super > 0).map(s => s.super));
+  const minB = Math.min(...stations.filter(s => s.bio_diesel > 0).map(s => s.bio_diesel));
+
+  const tbody = document.getElementById('station-rows');
+  tbody.innerHTML = stations.map(s => `
+    <tr>
+      <td class="station-name">${s.name}</td>
+      <td class="num">${p(s.unleaded, s.unleaded === minU)}</td>
+      <td class="num">${p(s.diesel, s.diesel === minD)}</td>
+      <td class="num">${p(s.super, s.super === minS)}</td>
+      <td class="num">${p(s.bio_diesel, s.bio_diesel === minB)}</td>
+      <td class="num">${p(s.df_diesel, false)}</td>
+      <td class="notes-col">${s.notes || ''}</td>
+      <td class="date-col">${s.date || ''}</td>
+    </tr>
+  `).join('') + (data.average ? `
+    <tr class="avg-row">
+      <td class="station-name">AVERAGE GSY PRICE</td>
+      <td class="num">${data.average.unleaded ? data.average.unleaded.toFixed(1) : '—'}</td>
+      <td class="num">${data.average.diesel ? data.average.diesel.toFixed(1) : '—'}</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="num">—</td>
+      <td class="notes-col"></td>
+      <td class="date-col"></td>
+    </tr>
+  ` : '');
+
+  // Brent crude
+  if (data.brent_crude) {
+    const b = data.brent_crude;
+    document.getElementById('brent-card').innerHTML = `
+      <div class="brent-item"><div class="bc-label">Today</div><div class="bc-val bc-today">$${b.today}</div></div>
+      <div class="brent-item"><div class="bc-label">Last Week</div><div class="bc-val">$${b.last_week}</div></div>
+      <div class="brent-item"><div class="bc-label">All-time High</div><div class="bc-val" style="color:#c0392b">$${b.high}</div><div class="bc-sub">${b.high_date}</div></div>
+      <div class="brent-item"><div class="bc-label">All-time Low</div><div class="bc-val" style="color:#888">$${b.low}</div><div class="bc-sub">${b.low_date}</div></div>
+    `;
+  }
+
+  // Heating oil
+  if (data.heating_oil) {
+    const hrows = document.getElementById('heat-rows');
+    hrows.innerHTML = (data.heating_oil.suppliers || []).map(h => `
+      <tr>
+        <td style="font-weight:600">${h.name}</td>
+        <td class="num">${h.price_500l ? h.price_500l.toFixed(2) : '—'}</td>
+        <td class="num">${h.price_700l ? h.price_700l.toFixed(2) : '—'}</td>
+        <td class="num">${h.price_900l ? h.price_900l.toFixed(2) : '—'}</td>
+        <td class="num" style="font-weight:400;color:#5d6b64">${h.tel || '—'}</td>
+        <td class="notes-col">${h.notes || ''}</td>
+      </tr>
+    `).join('');
+  }
+
+  // Footer notes
+  if (data.footer_notes && data.footer_notes.length) {
+    document.getElementById('footer-notes').innerHTML =
+      data.footer_notes.map((n, i) => `<p>${n}</p>`).join('');
+  }
+}
+
+function p(val, best) {
+  if (!val || val <= 0) return `<span class="dash">—</span>`;
+  const txt = val.toFixed(1);
+  return best ? `<span class="best">${txt}</span>` : txt;
+}
+
+load();
+</script>
+</body>
+</html>

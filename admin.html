@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Update Fuel Prices</title>
+<style>
+  :root {
+    --bg: #f0f2f0;
+    --card: #ffffff;
+    --ink: #16201c;
+    --muted: #5d6b64;
+    --line: #d8ded9;
+    --green: #1a7a48;
+    --green-bg: #d6f0e2;
+    --header-bg: #1a3a2a;
+    --red: #c0392b;
+    --red-bg: #fdecea;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 14px;
+    padding: 16px 12px 80px;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+
+  .page-header {
+    background: var(--header-bg);
+    color: #fff;
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .page-header h1 { font-size: 1.5rem; font-weight: 800; }
+  .page-header .sub { opacity: 0.7; font-size: 0.83rem; margin-top: 2px; }
+  .back-link { color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 6px 12px; }
+  .back-link:hover { background: rgba(255,255,255,0.25); }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; margin-bottom: 18px; }
+  .card h2 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--header-bg); border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+
+  /* Updated date */
+  .meta-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .meta-row label { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+  .meta-row input[type=text] { border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px; font-size: 0.95rem; width: 180px; }
+
+  /* Station table */
+  .station-table { width: 100%; border-collapse: collapse; }
+  .station-table th {
+    background: #f5f7f5;
+    border: 1px solid var(--line);
+    padding: 7px 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-align: center;
+    white-space: nowrap;
+  }
+  .station-table th:first-child { text-align: left; }
+  .station-table td { border: 1px solid var(--line); padding: 4px 5px; vertical-align: middle; }
+  .station-table tr:hover td { background: #f9fbf9; }
+  .station-table td.name-cell { min-width: 180px; }
+  .station-table input[type=text],
+  .station-table input[type=number] {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 0.92rem;
+    padding: 4px 4px;
+    outline: none;
+    font-family: inherit;
+  }
+  .station-table input[type=number] { text-align: right; width: 72px; }
+  .station-table input:focus { background: #eef8f3; border-radius: 4px; }
+  .station-table .notes-input { min-width: 200px; }
+  .del-btn { background: none; border: none; cursor: pointer; color: #ccc; font-size: 1rem; padding: 2px 6px; border-radius: 4px; }
+  .del-btn:hover { color: var(--red); background: var(--red-bg); }
+
+  /* Add station */
+  .add-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #f0f7f3; border: 1px dashed var(--green); color: var(--green);
+    border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; margin-top: 10px;
+  }
+  .add-btn:hover { background: var(--green-bg); }
+
+  /* Average / brent / heating rows */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field-row { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  .field-row label { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+  .field-row input { border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: 0.95rem; font-family: inherit; }
+  .field-row input:focus { outline: 2px solid var(--green); outline-offset: -1px; }
+
+  .heat-table { width: 100%; border-collapse: collapse; }
+  .heat-table th { background: #f5f7f5; border: 1px solid var(--line); padding: 7px 8px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: center; }
+  .heat-table th:first-child { text-align: left; }
+  .heat-table td { border: 1px solid var(--line); padding: 4px 5px; }
+  .heat-table input[type=text], .heat-table input[type=number] { width: 100%; border: none; background: transparent; font-size: 0.92rem; padding: 4px; outline: none; font-family: inherit; }
+  .heat-table input[type=number] { text-align: right; }
+  .heat-table input:focus { background: #eef8f3; border-radius: 4px; }
+
+  /* Save bar */
+  .save-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--header-bg);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    z-index: 100;
+  }
+  .save-bar .hint { color: rgba(255,255,255,0.65); font-size: 0.82rem; }
+  .save-bar .hint strong { color: #fff; }
+  .save-btn {
+    background: #2ecc71; color: #fff; border: none; border-radius: 10px;
+    padding: 12px 28px; font-size: 1rem; font-weight: 700; cursor: pointer;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .save-btn:hover { background: #27ae60; }
+
+  .toast {
+    position: fixed; top: 20px; right: 20px;
+    background: var(--green); color: #fff; border-radius: 10px;
+    padding: 12px 20px; font-weight: 600; font-size: 0.9rem;
+    opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 200;
+  }
+  .toast.show { opacity: 1; }
+
+  @media (max-width: 700px) {
+    .two-col { grid-template-columns: 1fr; }
+    .station-table .notes-input { min-width: 120px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="page-header">
+    <div>
+      <h1>Update Fuel Prices</h1>
+      <div class="sub">Edit the values below, then click Save &amp; Download</div>
+    </div>
+    <a class="back-link" href="index.html">← View Prices</a>
+  </div>
+
+  <!-- Meta -->
+  <div class="card">
+    <h2>Date Updated</h2>
+    <div class="meta-row">
+      <label for="updated">Updated label</label>
+      <input type="text" id="updated" placeholder="e.g. 02/Jun/2026">
+    </div>
+  </div>
+
+  <!-- Forecourt prices -->
+  <div class="card">
+    <h2>Forecourt Prices</h2>
+    <div style="overflow-x:auto">
+      <table class="station-table" id="station-table">
+        <thead>
+          <tr>
+            <th>Forecourt Name</th>
+            <th>Unleaded<br>95 Ron</th>
+            <th>Diesel</th>
+            <th>Super<br>97/99</th>
+            <th>Bio/HVO<br>Diesel</th>
+            <th>DF<br>Diesel</th>
+            <th>Notes / Offers</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="station-body"></tbody>
+      </table>
+    </div>
+    <button class="add-btn" onclick="addStation()">+ Add Forecourt</button>
+  </div>
+
+  <!-- Average -->
+  <div class="card">
+    <h2>Average GSY Price</h2>
+    <div class="two-col">
+      <div class="field-row">
+        <label>Average Unleaded (ppl)</label>
+        <input type="number" step="0.1" id="avg-unleaded" placeholder="e.g. 171.1">
+      </div>
+      <div class="field-row">
+        <label>Average Diesel (ppl)</label>
+        <input type="number" step="0.1" id="avg-diesel" placeholder="e.g. 182.1">
+      </div>
+    </div>
+  </div>
+
+  <!-- Brent crude -->
+  <div class="card">
+    <h2>Brent Crude Oil ($ per barrel)</h2>
+    <div class="two-col">
+      <div class="field-row">
+        <label>Today's Price ($)</label>
+        <input type="number" step="0.01" id="bc-today" placeholder="e.g. 93.82">
+      </div>
+      <div class="field-row">
+        <label>Last Week ($)</label>
+        <input type="number" step="0.01" id="bc-lastweek" placeholder="e.g. 100.73">
+      </div>
+      <div class="field-row">
+        <label>All-time High ($)</label>
+        <input type="number" step="0.01" id="bc-high" placeholder="e.g. 130.59">
+      </div>
+      <div class="field-row">
+        <label>All-time High Date</label>
+        <input type="text" id="bc-high-date" placeholder="e.g. Mar '22">
+      </div>
+      <div class="field-row">
+        <label>All-time Low ($)</label>
+        <input type="number" step="0.01" id="bc-low" placeholder="e.g. 55.81">
+      </div>
+      <div class="field-row">
+        <label>All-time Low Date</label>
+        <input type="text" id="bc-low-date" placeholder="e.g. Jan '21">
+      </div>
+    </div>
+  </div>
+
+  <!-- Heating oil -->
+  <div class="card">
+    <h2>Heating Oil Prices</h2>
+    <div style="overflow-x:auto">
+      <table class="heat-table" id="heat-table">
+        <thead>
+          <tr>
+            <th>Supplier</th>
+            <th>500L (ppl)</th>
+            <th>700L (ppl)</th>
+            <th>900L (ppl)</th>
+            <th>Tel</th>
+            <th>Notes / Offers</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="heat-body"></tbody>
+      </table>
+    </div>
+    <button class="add-btn" onclick="addHeatRow()">+ Add Supplier</button>
+  </div>
+
+  <!-- Duty -->
+  <div class="card">
+    <h2>Duty Rates (pence per litre)</h2>
+    <div class="two-col">
+      <div class="field-row">
+        <label>Gsy Duty (ppl)</label>
+        <input type="number" step="0.1" id="duty-gsy-ppl">
+      </div>
+      <div class="field-row">
+        <label>Gsy RD100 (p)</label>
+        <input type="number" step="0.1" id="duty-gsy-rd100">
+      </div>
+      <div class="field-row">
+        <label>Jsy Duty (ppl)</label>
+        <input type="number" step="0.01" id="duty-jsy">
+      </div>
+      <div class="field-row">
+        <label>UK Duty (ppl)</label>
+        <input type="number" step="0.01" id="duty-uk">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Fixed save bar -->
+<div class="save-bar">
+  <div class="hint">Edit any values above, then <strong>Save &amp; Download</strong> the new prices.json — replace the old file to update the site.</div>
+  <button class="save-btn" onclick="saveAndDownload()">⬇ Save &amp; Download prices.json</button>
+</div>
+
+<div class="toast" id="toast">Downloaded! Replace prices.json with the new file.</div>
+
+<script>
+let currentData = null;
+
+async function init() {
+  try {
+    const res = await fetch('prices.json?' + Date.now());
+    currentData = await res.json();
+  } catch(e) {
+    currentData = { updated: '', stations: [], average: {}, brent_crude: {}, heating_oil: { suppliers: [] }, duty: {}, footer_notes: [] };
+  }
+  populate();
+}
+
+function populate() {
+  const d = currentData;
+  document.getElementById('updated').value = d.updated || '';
+
+  // Stations
+  const tbody = document.getElementById('station-body');
+  tbody.innerHTML = '';
+  (d.stations || []).forEach(s => addStation(s));
+
+  // Average
+  document.getElementById('avg-unleaded').value = d.average?.unleaded ?? '';
+  document.getElementById('avg-diesel').value   = d.average?.diesel   ?? '';
+
+  // Brent
+  const b = d.brent_crude || {};
+  document.getElementById('bc-today').value     = b.today     ?? '';
+  document.getElementById('bc-lastweek').value  = b.last_week ?? '';
+  document.getElementById('bc-high').value      = b.high      ?? '';
+  document.getElementById('bc-high-date').value = b.high_date ?? '';
+  document.getElementById('bc-low').value       = b.low       ?? '';
+  document.getElementById('bc-low-date').value  = b.low_date  ?? '';
+
+  // Heating oil
+  const hbody = document.getElementById('heat-body');
+  hbody.innerHTML = '';
+  (d.heating_oil?.suppliers || []).forEach(h => addHeatRow(h));
+
+  // Duty
+  const duty = d.duty || {};
+  document.getElementById('duty-gsy-ppl').value   = duty.gsy_ppl   ?? '';
+  document.getElementById('duty-gsy-rd100').value = duty.gsy_rd100 ?? '';
+  document.getElementById('duty-jsy').value       = duty.jsy_ppl   ?? '';
+  document.getElementById('duty-uk').value        = duty.uk_duty   ?? '';
+}
+
+function addStation(s = {}) {
+  const tbody = document.getElementById('station-body');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="name-cell"><input type="text" class="s-name" value="${esc(s.name||'')}" placeholder="Forecourt name"></td>
+    <td><input type="number" step="0.1" class="s-unleaded" value="${s.unleaded||''}" placeholder="—"></td>
+    <td><input type="number" step="0.1" class="s-diesel"   value="${s.diesel||''}"   placeholder="—"></td>
+    <td><input type="number" step="0.1" class="s-super"    value="${s.super||''}"    placeholder="—"></td>
+    <td><input type="number" step="0.1" class="s-bio"      value="${s.bio_diesel||''}" placeholder="—"></td>
+    <td><input type="number" step="0.1" class="s-df"       value="${s.df_diesel||''}"  placeholder="—"></td>
+    <td><input type="text" class="s-notes notes-input" value="${esc(s.notes||'')}" placeholder="Notes / offers"></td>
+    <td><input type="text" class="s-date" value="${esc(s.date||'')}" placeholder="02/Jun"></td>
+    <td><button class="del-btn" title="Remove row" onclick="this.closest('tr').remove()">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function addHeatRow(h = {}) {
+  const tbody = document.getElementById('heat-body');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><input type="text" class="h-name" value="${esc(h.name||'')}" placeholder="Supplier name"></td>
+    <td><input type="number" step="0.01" class="h-500" value="${h.price_500l||''}" placeholder="—"></td>
+    <td><input type="number" step="0.01" class="h-700" value="${h.price_700l||''}" placeholder="—"></td>
+    <td><input type="number" step="0.01" class="h-900" value="${h.price_900l||''}" placeholder="—"></td>
+    <td><input type="text" class="h-tel" value="${esc(h.tel||'')}" placeholder="Tel"></td>
+    <td><input type="text" class="h-notes" value="${esc(h.notes||'')}" placeholder="Notes" style="min-width:180px"></td>
+    <td><button class="del-btn" title="Remove row" onclick="this.closest('tr').remove()">✕</button></td>
+  `;
+  tbody.appendChild(tr);
+}
+
+function collectData() {
+  const stations = [];
+  document.querySelectorAll('#station-body tr').forEach(tr => {
+    const name = tr.querySelector('.s-name').value.trim();
+    if (!name) return;
+    stations.push({
+      name,
+      unleaded:   numOrNull(tr.querySelector('.s-unleaded').value),
+      diesel:     numOrNull(tr.querySelector('.s-diesel').value),
+      super:      numOrNull(tr.querySelector('.s-super').value),
+      bio_diesel: numOrNull(tr.querySelector('.s-bio').value),
+      df_diesel:  numOrNull(tr.querySelector('.s-df').value),
+      notes:      tr.querySelector('.s-notes').value.trim(),
+      date:       tr.querySelector('.s-date').value.trim(),
+      facebook:   ''
+    });
+  });
+
+  const heatSuppliers = [];
+  document.querySelectorAll('#heat-body tr').forEach(tr => {
+    const name = tr.querySelector('.h-name').value.trim();
+    if (!name) return;
+    heatSuppliers.push({
+      name,
+      price_500l: numOrNull(tr.querySelector('.h-500').value),
+      price_700l: numOrNull(tr.querySelector('.h-700').value),
+      price_900l: numOrNull(tr.querySelector('.h-900').value),
+      tel:        tr.querySelector('.h-tel').value.trim(),
+      notes:      tr.querySelector('.h-notes').value.trim()
+    });
+  });
+
+  return {
+    updated: document.getElementById('updated').value.trim(),
+    stations,
+    average: {
+      unleaded: numOrNull(document.getElementById('avg-unleaded').value),
+      diesel:   numOrNull(document.getElementById('avg-diesel').value)
+    },
+    brent_crude: {
+      high:      numOrNull(document.getElementById('bc-high').value),
+      high_date: document.getElementById('bc-high-date').value.trim(),
+      low:       numOrNull(document.getElementById('bc-low').value),
+      low_date:  document.getElementById('bc-low-date').value.trim(),
+      last_week: numOrNull(document.getElementById('bc-lastweek').value),
+      today:     numOrNull(document.getElementById('bc-today').value)
+    },
+    heating_oil: { suppliers: heatSuppliers },
+    duty: {
+      gsy_ppl:   numOrNull(document.getElementById('duty-gsy-ppl').value),
+      gsy_rd100: numOrNull(document.getElementById('duty-gsy-rd100').value),
+      jsy_ppl:   numOrNull(document.getElementById('duty-jsy').value),
+      uk_duty:   numOrNull(document.getElementById('duty-uk').value)
+    },
+    bulk: currentData?.bulk || [],
+    footer_notes: currentData?.footer_notes || []
+  };
+}
+
+function saveAndDownload() {
+  const data = collectData();
+  const json = JSON.stringify(data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'prices.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast();
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+function numOrNull(v) {
+  const n = parseFloat(v);
+  return isNaN(n) ? null : n;
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+init();
+</script>
+</body>
+</html>
