@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Update Fuel Prices</title>
 <style>
+  #lock-screen {
+    position: fixed; inset: 0; background: #1a3a2a;
+    display: flex; align-items: center; justify-content: center; z-index: 9999;
+  }
+  #lock-screen.hidden { display: none; }
+  .lock-box {
+    background: #fff; border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 360px;
+    text-align: center; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .lock-box h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; color: #1a3a2a; }
+  .lock-box p { font-size: 0.85rem; color: #5d6b64; margin-bottom: 20px; }
+  .lock-box input {
+    width: 100%; border: 1px solid #d8ded9; border-radius: 10px;
+    padding: 11px 14px; font-size: 1rem; margin-bottom: 12px; outline: none;
+  }
+  .lock-box input:focus { border-color: #1a7a48; }
+  .lock-box button {
+    width: 100%; background: #1a7a48; color: #fff; border: none;
+    border-radius: 10px; padding: 12px; font-size: 1rem; font-weight: 700; cursor: pointer;
+  }
+  .lock-box button:hover { background: #155e38; }
+  .lock-error { color: #c0392b; font-size: 0.82rem; margin-top: 8px; min-height: 18px; }
+</style>
+<style>
   :root {
     --bg: #f0f2f0;
     --card: #ffffff;
@@ -147,6 +171,18 @@
 </style>
 </head>
 <body>
+
+<!-- Lock screen -->
+<div id="lock-screen">
+  <div class="lock-box">
+    <h2>🔒 Admin Access</h2>
+    <p>Guernsey Fuel Prices — update tool</p>
+    <input type="password" id="lock-input" placeholder="Enter password" autocomplete="current-password">
+    <button onclick="checkPassword()">Unlock</button>
+    <div class="lock-error" id="lock-error"></div>
+  </div>
+</div>
+
 <div class="wrap">
 
   <div class="page-header">
@@ -465,6 +501,42 @@ function esc(s) {
 }
 
 init();
+</script>
+
+<script>
+// Password is stored as a SHA-256 hash — change the hash below to change the password.
+// Current password: GuernseyFuel2026
+// To generate a new hash: https://emn178.github.io/online-tools/sha256.html
+const PASSWORD_HASH = '5f6528370182fce91879fbc1d1f8b82ce455a7fc6d81e74adb486f133bbd34ea';
+
+async function checkPassword() {
+  const input = document.getElementById('lock-input').value;
+  const hash = await sha256(input);
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem('fuel_admin_auth', '1');
+    document.getElementById('lock-screen').classList.add('hidden');
+  } else {
+    document.getElementById('lock-error').textContent = 'Incorrect password. Try again.';
+    document.getElementById('lock-input').value = '';
+    document.getElementById('lock-input').focus();
+  }
+}
+
+document.getElementById('lock-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') checkPassword();
+});
+
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Skip lock if already authenticated this session
+if (sessionStorage.getItem('fuel_admin_auth') === '1') {
+  document.getElementById('lock-screen').classList.add('hidden');
+}
 </script>
 </body>
 </html>
