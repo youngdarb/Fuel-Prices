@@ -1,0 +1,10 @@
+{
+  "updated": "2026-06-17",
+  "stations": [
+    { "name": "Rubis Bulwer Avenue", "parish": "St Sampson", "unleaded": 0, "diesel": 0 },
+    { "name": "Rubis Les Banques", "parish": "St Peter Port", "unleaded": 0, "diesel": 0 },
+    { "name": "Coop Admiral Park", "parish": "St Peter Port", "unleaded": 0, "diesel": 0 },
+    { "name": "Coop Grandes Maisons", "parish": "St Sampson", "unleaded": 0, "diesel": 0 },
+    { "name": "Bay View Filling Station", "parish": "Vale", "unleaded": 0, "diesel": 0 }
+  ]
+}
