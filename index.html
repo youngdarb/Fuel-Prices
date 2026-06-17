@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID once approved -->
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5807886553089046" crossorigin="anonymous"></script>
 
 <style>
   :root {
@@ -72,22 +72,6 @@
     color: var(--muted);
     margin: 20px 0 8px;
   }
-
-  /* Ad slots */
-  .ad-slot {
-    background: var(--card);
-    border: 1px dashed var(--line);
-    border-radius: 10px;
-    min-height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    font-size: 0.75rem;
-    margin-bottom: 16px;
-    overflow: hidden;
-  }
-  .ad-slot ins { display: block; width: 100%; }
 
   /* Map */
   #map {
@@ -181,21 +165,10 @@
     <p class="sub">Pump price · pence per litre · updated <span class="updated" id="updated">—</span></p>
   </div>
 
-  <!-- Ad: top banner -->
-  <div class="ad-slot">
-    <!-- Paste your AdSense <ins> tag here once approved -->
-    <span>Advertisement</span>
-  </div>
-
   <div class="duty-bar" id="duty-bar"></div>
 
   <div class="section-label">Forecourt Map — click a pin or table row to zoom in</div>
   <div id="map"></div>
-
-  <!-- Ad: mid page -->
-  <div class="ad-slot" style="margin-top:16px">
-    <span>Advertisement</span>
-  </div>
 
   <div class="section-label">Forecourt Prices</div>
   <table class="price-table" id="main-table">
@@ -231,11 +204,6 @@
     </thead>
     <tbody id="heat-rows"></tbody>
   </table>
-
-  <!-- Ad: bottom -->
-  <div class="ad-slot" style="margin-top:20px">
-    <span>Advertisement</span>
-  </div>
 
   <div class="footer-notes" id="footer-notes"></div>
 
