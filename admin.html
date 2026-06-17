@@ -181,6 +181,8 @@
             <th>DF<br>Diesel</th>
             <th>Notes / Offers</th>
             <th>Date</th>
+            <th>Lat</th>
+            <th>Lng</th>
             <th></th>
           </tr>
         </thead>
@@ -351,6 +353,8 @@ function addStation(s = {}) {
     <td><input type="number" step="0.1" class="s-df"       value="${s.df_diesel||''}"  placeholder="—"></td>
     <td><input type="text" class="s-notes notes-input" value="${esc(s.notes||'')}" placeholder="Notes / offers"></td>
     <td><input type="text" class="s-date" value="${esc(s.date||'')}" placeholder="02/Jun"></td>
+    <td><input type="number" step="0.0001" class="s-lat" value="${s.lat||''}" placeholder="49.46" style="width:80px"></td>
+    <td><input type="number" step="0.0001" class="s-lng" value="${s.lng||''}" placeholder="-2.54" style="width:80px"></td>
     <td><button class="del-btn" title="Remove row" onclick="this.closest('tr').remove()">✕</button></td>
   `;
   tbody.appendChild(tr);
@@ -385,6 +389,8 @@ function collectData() {
       df_diesel:  numOrNull(tr.querySelector('.s-df').value),
       notes:      tr.querySelector('.s-notes').value.trim(),
       date:       tr.querySelector('.s-date').value.trim(),
+      lat:        numOrNull(tr.querySelector('.s-lat').value),
+      lng:        numOrNull(tr.querySelector('.s-lng').value),
       facebook:   ''
     });
   });
