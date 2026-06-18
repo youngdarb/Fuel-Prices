@@ -344,8 +344,7 @@
     <div id="report-form-view">
       <h3>📷 Report a Price</h3>
       <p class="report-sub">Spotted an outdated price? Upload a photo of the board and we'll get it updated.</p>
-      <form id="report-form" action="/" method="POST" enctype="multipart/form-data" target="report-submit-frame">
-        <input type="hidden" name="form-name" value="price-report">
+      <form id="report-form" name="price-report" action="/" method="POST" enctype="multipart/form-data" target="report-submit-frame">
         <input type="hidden" name="bot-field" value="">
         <div class="report-field">
           <label>Forecourt</label>
@@ -365,7 +364,7 @@
         </div>
         <div class="report-actions">
           <button type="button" class="report-cancel" onclick="closeReportModal()">Cancel</button>
-          <button type="submit" class="report-submit" id="report-submit-btn" onclick="return validateReport()">Submit Report</button>
+          <button type="button" class="report-submit" id="report-submit-btn" onclick="handleReportSubmit()">Submit Report</button>
         </div>
       </form>
     </div>
@@ -624,16 +623,18 @@ function previewPhoto(input) {
   document.getElementById('upload-area').classList.add('has-file');
 }
 
-function validateReport() {
+function handleReportSubmit() {
   if (!document.getElementById('report-photo').files[0]) {
     alert('Please upload a photo of the price board — this is required to verify the update.');
-    return false;
+    return;
   }
+  reportPending = true;
+  // Submit first via programmatic call — button state cannot block this
+  document.getElementById('report-form').submit();
+  // Disable after submission is already in flight
   const btn = document.getElementById('report-submit-btn');
   btn.disabled = true;
   btn.textContent = 'Submitting…';
-  reportPending = true;
-  return true;
 }
 
 function onReportFrameLoad() {
