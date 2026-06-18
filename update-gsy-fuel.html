@@ -668,6 +668,7 @@ function populate() {
   const b = d.brent_crude || {};
   document.getElementById('bc-today').value     = b.today     ?? '';
   document.getElementById('bc-lastweek').value  = b.last_week ?? '';
+  fetchLiveBrent();
   document.getElementById('bc-high').value      = b.high      ?? '';
   document.getElementById('bc-high-date').value = b.high_date ?? '';
   document.getElementById('bc-low').value       = b.low       ?? '';
@@ -965,6 +966,18 @@ function updateAverages() {
   const d = calcAvg('s-diesel');
   document.getElementById('avg-unleaded').value = u !== null ? u.toFixed(1) : '—';
   document.getElementById('avg-diesel').value   = d !== null ? d.toFixed(1) : '—';
+}
+
+async function fetchLiveBrent() {
+  const todayEl   = document.getElementById('bc-today');
+  const weekEl    = document.getElementById('bc-lastweek');
+  try {
+    const res = await fetch('/.netlify/functions/brent');
+    if (!res.ok) return;
+    const { today, last_week } = await res.json();
+    if (today)     { todayEl.value = today;     todayEl.style.color = 'var(--green)'; todayEl.title = 'Auto-fetched live'; }
+    if (last_week) { weekEl.value  = last_week; weekEl.style.color  = 'var(--green)'; weekEl.title  = 'Auto-fetched live'; }
+  } catch(e) { /* leave existing values if fetch fails */ }
 }
 
 function numOrNull(v) { const n = parseFloat(v); return isNaN(n) ? null : n; }

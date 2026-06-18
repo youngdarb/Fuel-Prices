@@ -424,11 +424,12 @@ async function load() {
 
   if (data.brent_crude) {
     const b = data.brent_crude;
-    document.getElementById('brent-card').innerHTML = `
-      <div class="brent-item"><div class="bc-label">Today</div><div class="bc-val bc-today">$${b.today}</div></div>
-      <div class="brent-item"><div class="bc-label">Last Week</div><div class="bc-val">$${b.last_week}</div></div>
-      <div class="brent-item"><div class="bc-label">All-time High</div><div class="bc-val" style="color:#c0392b">$${b.high}</div><div class="bc-sub">${b.high_date}</div></div>
-      <div class="brent-item"><div class="bc-label">All-time Low</div><div class="bc-val" style="color:#888">$${b.low}</div><div class="bc-sub">${b.low_date}</div></div>`;
+    renderBrent(b.today, b.last_week, b);
+    // Fetch live price and update if successful
+    fetch('/.netlify/functions/brent')
+      .then(r => r.ok ? r.json() : null)
+      .then(live => { if (live?.today) renderBrent(live.today, live.last_week, b); })
+      .catch(() => {});
   }
 
   // Mobile station cards
@@ -573,6 +574,14 @@ function highlightRow(idx) {
 }
 function clearHighlight() {
   document.querySelectorAll('.row-highlight').forEach(r => r.classList.remove('row-highlight'));
+}
+
+function renderBrent(today, lastWeek, b) {
+  document.getElementById('brent-card').innerHTML = `
+    <div class="brent-item"><div class="bc-label">Today</div><div class="bc-val bc-today">$${today}</div></div>
+    <div class="brent-item"><div class="bc-label">Last Week</div><div class="bc-val">$${lastWeek}</div></div>
+    <div class="brent-item"><div class="bc-label">All-time High</div><div class="bc-val" style="color:#c0392b">$${b.high}</div><div class="bc-sub">${b.high_date}</div></div>
+    <div class="brent-item"><div class="bc-label">All-time Low</div><div class="bc-val" style="color:#888">$${b.low}</div><div class="bc-sub">${b.low_date}</div></div>`;
 }
 
 function p(val, best) {
