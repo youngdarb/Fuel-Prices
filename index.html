@@ -288,7 +288,16 @@ async function load() {
 }
 
 function initMap(stations) {
-  map = L.map('map').setView([49.458, -2.555], 12);
+  const bounds = L.latLngBounds(
+    L.latLng(49.38, -2.75),  // south-west corner
+    L.latLng(49.55, -2.35)   // north-east corner
+  );
+  map = L.map('map', {
+    maxBounds: bounds,
+    maxBoundsViscosity: 1.0,  // hard stop — can't drag outside at all
+    minZoom: 11,
+    maxZoom: 18
+  }).setView([49.458, -2.555], 12);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     maxZoom: 18
