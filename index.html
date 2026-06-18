@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+<!-- Chart.js for price history -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5807886553089046" crossorigin="anonymous"></script>
 
@@ -204,6 +207,32 @@
   .m-heat-fv { font-size: 1rem; font-weight: 700; }
   .m-heat-notes { font-size: 0.75rem; color: var(--muted); }
 
+  /* ── Price history ──────────────────────────────────────── */
+  .history-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 12px; overflow: hidden; margin-bottom: 0;
+  }
+  .history-toggle {
+    width: 100%; background: none; border: none; padding: 14px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 700;
+    color: var(--header-bg); text-align: left;
+  }
+  .history-toggle:hover { background: #f5f8f5; }
+  .history-toggle .chevron { font-size: 0.75rem; color: var(--muted); transition: transform 0.2s; }
+  .history-toggle.open .chevron { transform: rotate(180deg); }
+  .history-body { display: none; padding: 16px 18px 20px; border-top: 1px solid var(--line); }
+  .history-body.open { display: block; }
+  .history-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .history-select {
+    border: 2px solid var(--line); border-radius: 8px; padding: 8px 12px;
+    font-size: 0.9rem; font-family: inherit; outline: none; flex: 1; min-width: 180px;
+  }
+  .history-select:focus { border-color: var(--best); }
+  .history-chart-wrap { position: relative; height: 260px; }
+  .history-empty { text-align: center; color: var(--muted); font-size: 0.88rem; padding: 40px 0; }
+  @media (max-width: 640px) { .history-chart-wrap { height: 200px; } }
+
   /* ── Report modal ───────────────────────────────────────── */
   .modal-overlay {
     display: none; position: fixed; inset: 0;
@@ -301,6 +330,25 @@
     <tbody id="station-rows"></tbody>
   </table>
 
+  <div class="section-label" style="margin-top:20px">Price History</div>
+  <div class="history-card">
+    <button class="history-toggle" id="history-toggle" onclick="toggleHistory()">
+      <span>Show price history graph</span>
+      <span class="chevron">▼</span>
+    </button>
+    <div class="history-body" id="history-body">
+      <div class="history-controls">
+        <select class="history-select" id="history-station" onchange="renderHistory()">
+          <option value="">Select a forecourt…</option>
+        </select>
+      </div>
+      <div class="history-chart-wrap">
+        <canvas id="history-chart"></canvas>
+        <div class="history-empty" id="history-empty">Select a forecourt above to see its price history</div>
+      </div>
+    </div>
+  </div>
+
   <div class="section-label">Brent Crude Oil ($ per barrel)</div>
   <div class="brent-card" id="brent-card"></div>
 
@@ -384,6 +432,10 @@ async function load() {
 
   document.getElementById('updated').textContent = data.updated || '—';
   stationData = data.stations || [];
+  loadHistory().then(() => {
+    const sel = document.getElementById('history-station');
+    stationData.forEach(s => { const o = document.createElement('option'); o.value = o.textContent = s.name; sel.appendChild(o); });
+  });
 
   if (data.duty) {
     const d = data.duty;
@@ -590,6 +642,75 @@ function p(val, best) {
 }
 
 load();
+
+// ── Price history ─────────────────────────────────────────
+let historyData = null;
+let historyChart = null;
+
+async function loadHistory() {
+  try {
+    const res = await fetch('price-history.json?' + Date.now());
+    historyData = await res.json();
+  } catch(_) { historyData = { entries: [] }; }
+}
+
+function toggleHistory() {
+  const body    = document.getElementById('history-body');
+  const toggle  = document.getElementById('history-toggle');
+  const isOpen  = body.classList.toggle('open');
+  toggle.classList.toggle('open', isOpen);
+  toggle.querySelector('span').textContent = isOpen ? 'Hide price history graph' : 'Show price history graph';
+  if (isOpen && !historyChart) renderHistory();
+}
+
+function renderHistory() {
+  const sel      = document.getElementById('history-station').value;
+  const emptyEl  = document.getElementById('history-empty');
+  const canvas   = document.getElementById('history-chart');
+
+  if (historyChart) { historyChart.destroy(); historyChart = null; }
+
+  if (!sel || !historyData?.entries?.length) {
+    canvas.style.display = 'none';
+    emptyEl.style.display = '';
+    emptyEl.textContent = sel ? 'No history recorded yet — data builds up each time prices are published.' : 'Select a forecourt above to see its price history';
+    return;
+  }
+
+  const points = historyData.entries
+    .filter(e => e.stations?.[sel])
+    .map(e => ({ date: e.date, ul: e.stations[sel].ul, ds: e.stations[sel].ds }));
+
+  if (!points.length) {
+    canvas.style.display = 'none';
+    emptyEl.style.display = '';
+    emptyEl.textContent = 'No history recorded for this forecourt yet.';
+    return;
+  }
+
+  canvas.style.display = '';
+  emptyEl.style.display = 'none';
+
+  historyChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: points.map(p => p.date),
+      datasets: [
+        { label: 'Unleaded (ppl)', data: points.map(p => p.ul), borderColor: '#1a7a48', backgroundColor: 'rgba(26,122,72,0.08)', tension: 0.3, pointRadius: 3, pointHoverRadius: 5 },
+        { label: 'Diesel (ppl)',   data: points.map(p => p.ds), borderColor: '#1a3a6e', backgroundColor: 'rgba(26,58,110,0.08)', tension: 0.3, pointRadius: 3, pointHoverRadius: 5 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'top', labels: { font: { size: 12 }, boxWidth: 12 } } },
+      scales: {
+        x: { ticks: { maxRotation: 45, font: { size: 11 } }, grid: { color: '#f0f0f0' } },
+        y: { ticks: { font: { size: 11 }, callback: v => v + 'p' }, grid: { color: '#f0f0f0' } }
+      }
+    }
+  });
+}
 
 // ── Report modal ──────────────────────────────────────────
 let reportPending = false;
