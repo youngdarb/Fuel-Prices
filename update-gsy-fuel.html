@@ -353,6 +353,58 @@ body {
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
+/* ── Reports queue ──────────────────────────────────────── */
+.reports-card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 16px; margin-bottom: 20px; overflow: hidden;
+}
+.reports-head {
+  padding: 18px 24px; display: flex; align-items: center;
+  gap: 16px; border-bottom: 1px solid var(--line); background: #fafbfa;
+  justify-content: space-between; flex-wrap: wrap;
+}
+.reports-head-left { display: flex; align-items: center; gap: 16px; }
+.reports-head h2 { font-size: 1.1rem; font-weight: 700; color: var(--header-bg); }
+.reports-head p { font-size: 0.85rem; color: var(--muted); margin-top: 1px; }
+.badge { background: #c0392b; color: #fff; border-radius: 50px; padding: 2px 9px; font-size: 0.75rem; font-weight: 800; }
+.refresh-btn {
+  background: var(--green-bg); color: var(--green); border: 1px solid #a8d8be;
+  border-radius: 10px; padding: 8px 14px; font-size: 0.85rem; font-weight: 700; cursor: pointer;
+}
+.refresh-btn:hover { background: #c2ebd5; }
+.report-items { padding: 16px 24px; display: flex; flex-direction: column; gap: 12px; }
+.report-item {
+  border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+  display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: start;
+}
+.report-item-info { display: flex; flex-direction: column; gap: 4px; }
+.report-station-name { font-weight: 700; font-size: 1rem; }
+.report-note { font-size: 0.85rem; color: var(--muted); }
+.report-time { font-size: 0.75rem; color: #aaa; }
+.report-photo { margin-top: 8px; }
+.report-photo img { max-width: 240px; max-height: 160px; border-radius: 8px; border: 1px solid var(--line); cursor: pointer; }
+.report-actions-cell { display: flex; flex-direction: column; gap: 6px; }
+.done-btn {
+  background: var(--green); color: #fff; border: none; border-radius: 8px;
+  padding: 8px 14px; font-size: 0.85rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+}
+.done-btn:hover { background: #155e38; }
+.done-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.reports-empty { padding: 24px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+.netlify-setup { padding: 20px 24px; }
+.netlify-setup p { font-size: 0.88rem; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+.netlify-setup .field-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.netlify-setup input {
+  flex: 1; min-width: 200px; border: 2px solid var(--line); border-radius: 10px;
+  padding: 10px 12px; font-size: 0.9rem; font-family: monospace; outline: none;
+}
+.netlify-setup input:focus { border-color: var(--green); }
+.netlify-connect-btn {
+  background: var(--green); color: #fff; border: none; border-radius: 10px;
+  padding: 10px 20px; font-size: 0.9rem; font-weight: 700; cursor: pointer;
+}
+.netlify-connect-btn:hover { background: #155e38; }
+
 /* ── Collapsible advanced section ───────────────────────── */
 .adv-toggle {
   font-size: 0.78rem; color: var(--muted); cursor: pointer;
@@ -390,6 +442,31 @@ body {
       <div class="sub">Work through each step, then hit the green Save button at the bottom</div>
     </div>
     <a class="back-link" href="index.html">← View Live Site</a>
+  </div>
+
+  <!-- Price Reports Queue -->
+  <div class="reports-card" id="reports-card">
+    <div class="reports-head">
+      <div class="reports-head-left">
+        <div class="step-num" style="background:#c0392b">!</div>
+        <div>
+          <h2>Price Reports <span class="badge" id="reports-badge" style="display:none">0</span></h2>
+          <p>Photos submitted by the public flagging outdated prices</p>
+        </div>
+      </div>
+      <button class="refresh-btn" onclick="loadReports()">↻ Refresh</button>
+    </div>
+    <div id="reports-body">
+      <div class="netlify-setup" id="netlify-setup">
+        <p>To show submitted price reports here, enter your <strong>Netlify Personal Access Token</strong> and <strong>Site ID</strong>. Find your token at <strong>app.netlify.com → User settings → OAuth applications → Personal access tokens</strong>. Your Site ID is under <strong>Site settings → General</strong>.</p>
+        <div class="field-row">
+          <input type="password" id="netlify-token-input" placeholder="Netlify personal access token">
+          <input type="text" id="netlify-site-input" placeholder="Site ID (e.g. a1b2c3d4-…)">
+        </div>
+        <button class="netlify-connect-btn" onclick="saveNetlifyConfig()">Connect</button>
+      </div>
+      <div class="report-items" id="report-items" style="display:none"></div>
+    </div>
   </div>
 
   <!-- STEP 1: Date -->
@@ -646,6 +723,10 @@ function addStation(s = {}) {
         <input type="number" step="0.1" class="s-bio" value="${s.bio_diesel||''}" placeholder="—">
       </div>
       <div class="extra-field">
+        <label>Marine Petrol</label>
+        <input type="number" step="0.1" class="s-marine" value="${s.marine||''}" placeholder="—">
+      </div>
+      <div class="extra-field">
         <label>DF Diesel</label>
         <input type="number" step="0.1" class="s-df" value="${s.df_diesel||''}" placeholder="—">
       </div>
@@ -732,6 +813,7 @@ function collectData() {
       unleaded:   numOrNull(row.querySelector('.s-unleaded').value),
       diesel:     numOrNull(row.querySelector('.s-diesel').value),
       super:      numOrNull(row.querySelector('.s-super').value),
+      marine:     numOrNull(row.querySelector('.s-marine').value),
       bio_diesel: numOrNull(row.querySelector('.s-bio').value),
       df_diesel:  numOrNull(row.querySelector('.s-df').value),
       notes:      row.querySelector('.s-notes').value.trim(),
@@ -873,6 +955,111 @@ function numOrNull(v) { const n = parseFloat(v); return isNaN(n) ? null : n; }
 function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
 init();
+</script>
+
+<!-- Reports queue -->
+<script>
+function saveNetlifyConfig() {
+  const token = document.getElementById('netlify-token-input').value.trim();
+  const site  = document.getElementById('netlify-site-input').value.trim();
+  if (!token || !site) { alert('Please enter both the token and site ID.'); return; }
+  localStorage.setItem('netlify_token', token);
+  localStorage.setItem('netlify_site',  site);
+  loadReports();
+}
+
+async function loadReports() {
+  const token = localStorage.getItem('netlify_token');
+  const site  = localStorage.getItem('netlify_site');
+  if (!token || !site) return;
+
+  document.getElementById('netlify-setup').style.display = 'none';
+  const itemsEl = document.getElementById('report-items');
+  itemsEl.style.display = 'flex';
+  itemsEl.innerHTML = '<div class="reports-empty">Loading…</div>';
+
+  try {
+    // Find the price-report form
+    const formsRes = await fetch(`https://api.netlify.com/api/v1/sites/${site}/forms`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!formsRes.ok) throw new Error(`Netlify error ${formsRes.status} — check your token and site ID.`);
+    const forms = await formsRes.json();
+    const form  = forms.find(f => f.name === 'price-report');
+    if (!form) {
+      itemsEl.innerHTML = '<div class="reports-empty">No price-report form found yet — it appears after the first submission.</div>';
+      return;
+    }
+
+    const subRes = await fetch(`https://api.netlify.com/api/v1/forms/${form.id}/submissions?per_page=50`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const subs = await subRes.json();
+
+    const badge = document.getElementById('reports-badge');
+    if (subs.length > 0) {
+      badge.textContent = subs.length;
+      badge.style.display = '';
+    } else {
+      badge.style.display = 'none';
+    }
+
+    if (!subs.length) {
+      itemsEl.innerHTML = '<div class="reports-empty">No pending reports — all clear! ✓</div>';
+      return;
+    }
+
+    itemsEl.innerHTML = subs.map(s => {
+      const data    = s.data || {};
+      const fileUrl = s.ordered_human_fields?.find(f => f.name === 'photo')?.value || '';
+      const when    = new Date(s.created_at).toLocaleString('en-GB', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' });
+      return `<div class="report-item" id="sub-${s.id}">
+        <div class="report-item-info">
+          <div class="report-station-name">${data.station || 'Unknown station'}</div>
+          ${data.note ? `<div class="report-note">"${data.note}"</div>` : ''}
+          <div class="report-time">${when}</div>
+          ${fileUrl ? `<div class="report-photo"><img src="${fileUrl}" alt="Price board photo" onclick="window.open('${fileUrl}','_blank')"></div>` : '<div class="report-note" style="margin-top:6px">No photo attached</div>'}
+        </div>
+        <div class="report-actions-cell">
+          <button class="done-btn" onclick="dismissReport('${s.id}', this)">✓ Done</button>
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) {
+    itemsEl.innerHTML = `<div class="reports-empty" style="color:#c0392b">${e.message}</div>`;
+  }
+}
+
+async function dismissReport(id, btn) {
+  const token = localStorage.getItem('netlify_token');
+  btn.disabled = true;
+  btn.textContent = '…';
+  try {
+    const res = await fetch(`https://api.netlify.com/api/v1/submissions/${id}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) throw new Error('Delete failed');
+    document.getElementById(`sub-${id}`).remove();
+    const remaining = document.querySelectorAll('.report-item').length;
+    const badge = document.getElementById('reports-badge');
+    if (remaining === 0) {
+      document.getElementById('report-items').innerHTML = '<div class="reports-empty">No pending reports — all clear! ✓</div>';
+      badge.style.display = 'none';
+    } else {
+      badge.textContent = remaining;
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = '✓ Done';
+    alert('Could not delete submission — ' + e.message);
+  }
+}
+
+// Auto-load if already configured
+if (localStorage.getItem('netlify_token') && localStorage.getItem('netlify_site')) {
+  document.addEventListener('DOMContentLoaded', loadReports);
+}
 </script>
 
 <!-- Password -->

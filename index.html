@@ -204,6 +204,57 @@
   .m-heat-fv { font-size: 1rem; font-weight: 700; }
   .m-heat-notes { font-size: 0.75rem; color: var(--muted); }
 
+  /* ── Report modal ───────────────────────────────────────── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55); z-index: 500;
+    align-items: center; justify-content: center; padding: 16px;
+  }
+  .modal-overlay.open { display: flex; }
+  .report-modal {
+    background: #fff; border-radius: 18px; padding: 28px 24px;
+    width: 100%; max-width: 420px; box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  }
+  .report-modal h3 { font-size: 1.15rem; font-weight: 800; color: var(--header-bg); margin-bottom: 4px; }
+  .report-modal .report-sub { font-size: 0.82rem; color: var(--muted); margin-bottom: 20px; }
+  .report-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .report-field label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
+  .report-field select, .report-field textarea {
+    border: 2px solid var(--line); border-radius: 10px;
+    padding: 10px 12px; font-size: 0.95rem; font-family: inherit; outline: none;
+  }
+  .report-field select:focus, .report-field textarea:focus { border-color: var(--best); }
+  .report-field textarea { resize: vertical; min-height: 70px; }
+  .photo-upload-area {
+    border: 2px dashed var(--line); border-radius: 10px;
+    padding: 20px; text-align: center; cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .photo-upload-area:hover, .photo-upload-area.has-file { border-color: var(--best); background: #f0faf5; }
+  .photo-upload-area input { display: none; }
+  .photo-upload-area .upload-label { font-size: 0.9rem; color: var(--muted); }
+  .photo-upload-area .upload-label strong { color: var(--best); }
+  #photo-preview { max-width: 100%; max-height: 160px; border-radius: 8px; margin-top: 10px; display: none; }
+  .report-actions { display: flex; gap: 10px; margin-top: 20px; }
+  .report-cancel { flex: 1; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 600; cursor: pointer; }
+  .report-submit {
+    flex: 2; background: var(--best); color: #fff; border: none;
+    border-radius: 10px; padding: 12px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+  }
+  .report-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+  .report-success { text-align: center; padding: 16px 0; }
+  .report-success .tick { font-size: 2.5rem; margin-bottom: 10px; }
+  .report-success p { font-size: 0.95rem; color: var(--muted); }
+
+  .report-fab {
+    position: fixed; bottom: 20px; right: 20px;
+    background: var(--header-bg); color: #fff; border: none;
+    border-radius: 50px; padding: 12px 20px; font-size: 0.88rem; font-weight: 700;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25); z-index: 200;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .report-fab:hover { background: #2a5a3a; }
+
   @media (max-width: 640px) {
     body { padding: 12px 10px 48px; }
     #map { height: 260px; }
@@ -240,6 +291,7 @@
         <th>Unleaded<br>95 Ron</th>
         <th>Diesel</th>
         <th>Super<br>97/99</th>
+        <th>Marine<br>Petrol</th>
         <th>Bio/HVO<br>Diesel</th>
         <th>DF<br>Diesel</th>
         <th class="notes-col" style="text-align:left">Notes / Offers</th>
@@ -270,6 +322,53 @@
 
   <div class="footer-notes" id="footer-notes"></div>
 
+</div>
+
+<!-- Netlify detects this at build time to register the form -->
+<form name="price-report" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="station" type="text">
+  <input name="note" type="text">
+  <input name="photo" type="file">
+  <input name="bot-field" type="text">
+</form>
+
+<!-- Report floating button -->
+<button class="report-fab" onclick="openReportModal()">📷 Report a price</button>
+
+<!-- Report modal -->
+<div class="modal-overlay" id="report-overlay" onclick="closeReportModal(event)">
+  <div class="report-modal" id="report-modal">
+    <div id="report-form-view">
+      <h3>📷 Report a Price</h3>
+      <p class="report-sub">Spotted an outdated price? Upload a photo of the board and we'll get it updated.</p>
+      <div class="report-field">
+        <label>Forecourt</label>
+        <select id="report-station"></select>
+      </div>
+      <div class="report-field">
+        <label>Photo of price board <span style="color:#c0392b">*</span></label>
+        <div class="photo-upload-area" id="upload-area" onclick="document.getElementById('report-photo').click()">
+          <input type="file" id="report-photo" accept="image/*" capture="environment" onchange="previewPhoto(this)">
+          <div class="upload-label"><strong>Tap to take / upload a photo</strong><br>A clear photo of the price board is required</div>
+          <img id="photo-preview" alt="Preview">
+        </div>
+      </div>
+      <div class="report-field">
+        <label>Note (optional)</label>
+        <textarea id="report-note" placeholder="e.g. Unleaded is now 169.9p"></textarea>
+      </div>
+      <div class="report-actions">
+        <button class="report-cancel" onclick="closeReportModal()">Cancel</button>
+        <button class="report-submit" id="report-submit-btn" onclick="submitReport()">Submit Report</button>
+      </div>
+    </div>
+    <div id="report-success-view" class="report-success" style="display:none">
+      <div class="tick">✅</div>
+      <h3 style="margin-bottom:8px">Thanks!</h3>
+      <p>Your report has been sent for review. We'll update the price shortly.</p>
+      <div class="report-actions"><button class="report-submit" style="flex:1;margin-top:8px" onclick="closeReportModal()">Close</button></div>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -310,6 +409,7 @@ async function load() {
       <td class="num">${p(s.unleaded,   s.unleaded   === minU)}</td>
       <td class="num">${p(s.diesel,     s.diesel     === minD)}</td>
       <td class="num">${p(s.super,      s.super      === minS)}</td>
+      <td class="num">${p(s.marine,     false)}</td>
       <td class="num">${p(s.bio_diesel, s.bio_diesel === minB)}</td>
       <td class="num">${p(s.df_diesel,  false)}</td>
       <td class="notes-col">${s.notes || ''}</td>
@@ -320,7 +420,7 @@ async function load() {
       <td class="station-name">AVERAGE GSY PRICE</td>
       <td class="num">${data.average.unleaded ? data.average.unleaded.toFixed(1) : '—'}</td>
       <td class="num">${data.average.diesel   ? data.average.diesel.toFixed(1)   : '—'}</td>
-      <td class="num">—</td><td class="num">—</td><td class="num">—</td>
+      <td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td>
       <td class="notes-col"></td><td class="date-col"></td>
     </tr>` : '');
 
@@ -340,6 +440,7 @@ async function load() {
       { label: 'Unleaded', val: s.unleaded,   best: s.unleaded   === minU },
       { label: 'Diesel',   val: s.diesel,     best: s.diesel     === minD },
       { label: 'Super',    val: s.super,      best: s.super      === minS },
+      { label: 'Marine',   val: s.marine,     best: false },
       { label: 'Bio',      val: s.bio_diesel, best: s.bio_diesel === minB },
       { label: 'DF',       val: s.df_diesel,  best: false },
     ].filter(f => f.val > 0);
@@ -482,6 +583,58 @@ function p(val, best) {
 }
 
 load();
+
+// ── Report modal ──────────────────────────────────────────
+function openReportModal(stationName) {
+  const sel = document.getElementById('report-station');
+  sel.innerHTML = stationData.map(s => `<option${s.name === stationName ? ' selected' : ''}>${s.name}</option>`).join('');
+  document.getElementById('report-form-view').style.display = '';
+  document.getElementById('report-success-view').style.display = 'none';
+  document.getElementById('report-note').value = '';
+  document.getElementById('report-photo').value = '';
+  document.getElementById('photo-preview').style.display = 'none';
+  document.getElementById('upload-area').classList.remove('has-file');
+  document.getElementById('report-overlay').classList.add('open');
+}
+
+function closeReportModal(e) {
+  if (e && e.target !== document.getElementById('report-overlay')) return;
+  document.getElementById('report-overlay').classList.remove('open');
+}
+
+function previewPhoto(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const preview = document.getElementById('photo-preview');
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = 'block';
+  document.getElementById('upload-area').classList.add('has-file');
+}
+
+async function submitReport() {
+  const photo = document.getElementById('report-photo').files[0];
+  if (!photo) { alert('Please upload a photo of the price board — this is required to verify the update.'); return; }
+  const btn = document.getElementById('report-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+  try {
+    const fd = new FormData();
+    fd.append('form-name', 'price-report');
+    fd.append('bot-field', '');
+    fd.append('station', document.getElementById('report-station').value);
+    fd.append('note', document.getElementById('report-note').value);
+    fd.append('photo', photo);
+    const res = await fetch('/', { method: 'POST', body: fd });
+    if (!res.ok) throw new Error('Submission failed');
+    document.getElementById('report-form-view').style.display = 'none';
+    document.getElementById('report-success-view').style.display = '';
+  } catch(e) {
+    alert('Something went wrong — please try again.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Submit Report';
+  }
+}
 </script>
 </body>
 </html>
