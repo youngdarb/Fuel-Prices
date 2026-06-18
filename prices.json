@@ -221,6 +221,19 @@
       "lat": 49.4863326,
       "lng": -2.520071,
       "facebook": ""
+    },
+    {
+      "name": "Boatworks+",
+      "unleaded": 107,
+      "diesel": null,
+      "super": null,
+      "bio_diesel": null,
+      "df_diesel": 153,
+      "notes": "Bulk rates available",
+      "date": "18/Jun",
+      "lat": 49.45,
+      "lng": 2.53,
+      "facebook": ""
     }
   ],
   "average": {
