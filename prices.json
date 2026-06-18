@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -24,7 +24,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -38,7 +38,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4774364,
       "lng": -2.5231679,
       "facebook": ""
@@ -52,7 +52,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
       "facebook": ""
@@ -80,7 +80,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "16/Jun",
+      "date": "18/Jun",
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -94,7 +94,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "16/Jun",
+      "date": "18/Jun",
       "lat": 49.486,
       "lng": -2.5687,
       "facebook": ""
@@ -108,7 +108,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -122,7 +122,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "17/Jun",
+      "date": "18/Jun",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -278,7 +278,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 90.38,
-    "today": 77.64
+    "today": 77.92
   },
   "heating_oil": {
     "suppliers": [
