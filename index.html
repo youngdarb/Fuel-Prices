@@ -303,6 +303,8 @@ function initMap(stations) {
     maxZoom: 18
   }).addTo(map);
 
+  window.addEventListener('resize', () => map.invalidateSize());
+
   const minU = Math.min(...stations.filter(s => s.unleaded > 0).map(s => s.unleaded));
   const minD = Math.min(...stations.filter(s => s.diesel  > 0).map(s => s.diesel));
 
