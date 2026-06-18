@@ -199,9 +199,9 @@
     {
       "name": "Cobo Service Station",
       "unleaded": 175.9,
-      "diesel": 186.9,
-      "super": null,
-      "bio_diesel": 233.9,
+      "diesel": 185.9,
+      "super": 233.9,
+      "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
       "date": "17/Jun",
