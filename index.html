@@ -431,7 +431,11 @@ async function load() {
   }
 
   document.getElementById('updated').textContent = data.updated || '—';
-  stationData = data.stations || [];
+  stationData = (data.stations || []).slice().sort((a, b) => {
+    const ul = (a.unleaded || Infinity) - (b.unleaded || Infinity);
+    if (ul !== 0) return ul;
+    return (a.diesel || Infinity) - (b.diesel || Infinity);
+  });
   loadHistory().then(() => {
     const sel = document.getElementById('history-station');
     stationData.forEach(s => { const o = document.createElement('option'); o.value = o.textContent = s.name; sel.appendChild(o); });
