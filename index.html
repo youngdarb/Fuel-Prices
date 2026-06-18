@@ -148,11 +148,72 @@
   .footer-notes p { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
   .footer-notes p:first-child { color: var(--ink); font-weight: 600; margin-top: 0; }
 
-  @media (max-width: 600px) {
-    .price-table td, .price-table thead th { padding: 8px 7px; }
-    .price-table td.notes-col { display: none; }
-    .duty-bar { gap: 12px; }
-    #map { height: 300px; }
+  /* ── Mobile card layout ─────────────────────────────────── */
+  #mobile-cards { display: none; }
+
+  .m-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    active-scale: 0.98;
+  }
+  .m-card:active { background: #f0f7f3; }
+  .m-card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .m-name { font-weight: 700; font-size: 1rem; color: var(--ink); }
+  .m-date { font-size: 0.72rem; color: var(--muted); white-space: nowrap; margin-left: 8px; }
+  .m-prices { display: flex; gap: 10px; flex-wrap: wrap; }
+  .m-fuel { background: var(--bg); border-radius: 8px; padding: 8px 14px; text-align: center; min-width: 72px; }
+  .m-fl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 2px; }
+  .m-fv { font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--ink); }
+  .m-fv.best { color: var(--best); }
+  .m-notes { font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
+
+  .m-avg-card {
+    background: var(--avg-bg);
+    border: 1px solid #d4c97a;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .m-avg-label { font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+  .m-avg-prices { display: flex; gap: 16px; }
+  .m-avg-item { text-align: center; }
+  .m-avg-fl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .m-avg-fv { font-size: 1.05rem; font-weight: 800; }
+
+  /* Mobile heat cards */
+  #mobile-heat { display: none; }
+  .m-heat-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+  }
+  .m-heat-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
+  .m-heat-prices { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+  .m-heat-item { background: var(--bg); border-radius: 8px; padding: 7px 12px; text-align: center; }
+  .m-heat-fl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 2px; }
+  .m-heat-fv { font-size: 1rem; font-weight: 700; }
+  .m-heat-notes { font-size: 0.75rem; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    body { padding: 12px 10px 48px; }
+    #map { height: 260px; }
+    .duty-bar { gap: 10px; font-size: 0.75rem; }
+    .price-table { display: none; }
+    #mobile-cards { display: block; }
+    .heat-table { display: none; }
+    #mobile-heat { display: block; }
+    .brent-card { gap: 12px; padding: 12px 14px; }
+    .bc-val { font-size: 1.15rem; }
   }
 </style>
 </head>
@@ -171,6 +232,7 @@
   <div id="map"></div>
 
   <div class="section-label">Forecourt Prices</div>
+  <div id="mobile-cards"></div>
   <table class="price-table" id="main-table">
     <thead>
       <tr>
@@ -191,6 +253,7 @@
   <div class="brent-card" id="brent-card"></div>
 
   <div class="section-label">Heating Oil Prices — updated every Tuesday</div>
+  <div id="mobile-heat"></div>
   <table class="heat-table" id="heat-table">
     <thead>
       <tr>
@@ -270,6 +333,35 @@ async function load() {
       <div class="brent-item"><div class="bc-label">All-time Low</div><div class="bc-val" style="color:#888">$${b.low}</div><div class="bc-sub">${b.low_date}</div></div>`;
   }
 
+  // Mobile station cards
+  const mobileCards = document.getElementById('mobile-cards');
+  mobileCards.innerHTML = stationData.map((s, i) => {
+    const fuels = [
+      { label: 'Unleaded', val: s.unleaded,   best: s.unleaded   === minU },
+      { label: 'Diesel',   val: s.diesel,     best: s.diesel     === minD },
+      { label: 'Super',    val: s.super,      best: s.super      === minS },
+      { label: 'Bio',      val: s.bio_diesel, best: s.bio_diesel === minB },
+      { label: 'DF',       val: s.df_diesel,  best: false },
+    ].filter(f => f.val > 0);
+    return `<div class="m-card" onclick="flyToStation(${i})">
+      <div class="m-card-top">
+        <span class="m-name">${s.name}</span>
+        <span class="m-date">${s.date || ''}</span>
+      </div>
+      <div class="m-prices">${fuels.map(f =>
+        `<div class="m-fuel"><div class="m-fl">${f.label}</div><div class="m-fv${f.best ? ' best' : ''}">${f.val.toFixed(1)}</div></div>`
+      ).join('')}</div>
+      ${s.notes ? `<div class="m-notes">${s.notes}</div>` : ''}
+    </div>`;
+  }).join('') + (data.average ? `
+    <div class="m-avg-card">
+      <div class="m-avg-label">Island Average</div>
+      <div class="m-avg-prices">
+        <div class="m-avg-item"><div class="m-avg-fl">Unleaded</div><div class="m-avg-fv">${data.average.unleaded?.toFixed(1) ?? '—'}</div></div>
+        <div class="m-avg-item"><div class="m-avg-fl">Diesel</div><div class="m-avg-fv">${data.average.diesel?.toFixed(1) ?? '—'}</div></div>
+      </div>
+    </div>` : '');
+
   if (data.heating_oil) {
     document.getElementById('heat-rows').innerHTML = (data.heating_oil.suppliers || []).map(h => `
       <tr>
@@ -280,6 +372,24 @@ async function load() {
         <td class="num" style="font-weight:400;color:#5d6b64">${h.tel || '—'}</td>
         <td class="notes-col">${h.notes || ''}</td>
       </tr>`).join('');
+  }
+
+  // Mobile heating oil cards
+  if (data.heating_oil) {
+    document.getElementById('mobile-heat').innerHTML = (data.heating_oil.suppliers || []).map(h => {
+      const prices = [
+        { label: '500L', val: h.price_500l },
+        { label: '700L', val: h.price_700l },
+        { label: '900L', val: h.price_900l },
+      ].filter(p => p.val);
+      return `<div class="m-heat-card">
+        <div class="m-heat-name">${h.name}</div>
+        <div class="m-heat-prices">${prices.map(p =>
+          `<div class="m-heat-item"><div class="m-heat-fl">${p.label}</div><div class="m-heat-fv">${p.val.toFixed(2)}p</div></div>`
+        ).join('')}</div>
+        ${h.notes ? `<div class="m-heat-notes">${h.notes}</div>` : ''}
+      </div>`;
+    }).join('');
   }
 
   if (data.footer_notes && data.footer_notes.length) {
