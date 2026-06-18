@@ -510,18 +510,18 @@ body {
       <div class="step-num">3</div>
       <div>
         <h2>Average GSY Price</h2>
-        <p>The island-wide average shown at the bottom of the price table</p>
+        <p>Calculated automatically from the forecourt prices above</p>
       </div>
     </div>
     <div class="step-body">
       <div class="grid-2">
         <div class="field-group">
           <label>Average Unleaded (ppl)</label>
-          <input type="number" step="0.1" id="avg-unleaded" placeholder="e.g. 171.1">
+          <input type="text" id="avg-unleaded" readonly style="background:#f8faf8;color:var(--muted);cursor:default" placeholder="—">
         </div>
         <div class="field-group">
           <label>Average Diesel (ppl)</label>
-          <input type="number" step="0.1" id="avg-diesel" placeholder="e.g. 182.1">
+          <input type="text" id="avg-diesel" readonly style="background:#f8faf8;color:var(--muted);cursor:default" placeholder="—">
         </div>
       </div>
     </div>
@@ -664,8 +664,7 @@ function populate() {
   const d = currentData;
   document.getElementById('updated').value = d.updated || '';
   (d.stations || []).forEach(s => addStation(s));
-  document.getElementById('avg-unleaded').value = d.average?.unleaded ?? '';
-  document.getElementById('avg-diesel').value   = d.average?.diesel   ?? '';
+  updateAverages();
   const b = d.brent_crude || {};
   document.getElementById('bc-today').value     = b.today     ?? '';
   document.getElementById('bc-lastweek').value  = b.last_week ?? '';
@@ -755,6 +754,10 @@ function addStation(s = {}) {
   list.appendChild(div);
 }
 
+document.getElementById('station-list').addEventListener('input', e => {
+  if (e.target.classList.contains('s-unleaded') || e.target.classList.contains('s-diesel')) updateAverages();
+});
+
 function toggleExtra(btn) {
   const extra = btn.closest('.station-row').querySelector('.station-extra');
   extra.classList.toggle('open');
@@ -842,8 +845,8 @@ function collectData() {
     updated: document.getElementById('updated').value.trim(),
     stations,
     average: {
-      unleaded: numOrNull(document.getElementById('avg-unleaded').value),
-      diesel:   numOrNull(document.getElementById('avg-diesel').value)
+      unleaded: calcAvg('s-unleaded'),
+      diesel:   calcAvg('s-diesel')
     },
     brent_crude: {
       high:      numOrNull(document.getElementById('bc-high').value),
@@ -949,6 +952,19 @@ function showToast(msg, bg = '#27ae60') {
   t.style.background = bg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 5000);
+}
+
+function calcAvg(cls) {
+  const vals = [...document.querySelectorAll(`.${cls}`)].map(i => parseFloat(i.value)).filter(n => !isNaN(n) && n > 0);
+  if (!vals.length) return null;
+  return Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 10) / 10;
+}
+
+function updateAverages() {
+  const u = calcAvg('s-unleaded');
+  const d = calcAvg('s-diesel');
+  document.getElementById('avg-unleaded').value = u !== null ? u.toFixed(1) : '—';
+  document.getElementById('avg-diesel').value   = d !== null ? d.toFixed(1) : '—';
 }
 
 function numOrNull(v) { const n = parseFloat(v); return isNaN(n) ? null : n; }
