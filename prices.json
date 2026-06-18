@@ -1,5 +1,5 @@
 {
-  "updated": "02/Jun/2026",
+  "updated": "18/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -9,7 +9,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -22,7 +22,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -35,7 +35,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4774364,
       "lng": -2.5231679,
       "facebook": ""
@@ -48,7 +48,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
       "facebook": ""
@@ -61,7 +61,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4868347,
       "lng": -2.5196197,
       "facebook": ""
@@ -74,7 +74,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "02/Jun",
+      "date": "16/Jun",
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -87,7 +87,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "02/Jun",
+      "date": "16/Jun",
       "lat": 49.486,
       "lng": -2.5687,
       "facebook": ""
@@ -100,7 +100,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -113,7 +113,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -126,7 +126,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "02/Jun",
+      "date": "18/Jun",
       "lat": 49.4572646,
       "lng": -2.6242246,
       "facebook": ""
@@ -165,7 +165,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4964766,
       "lng": -2.5163108,
       "facebook": ""
@@ -191,7 +191,7 @@
       "bio_diesel": null,
       "df_diesel": 151.9,
       "notes": "4p off with Rubis Card",
-      "date": "02/Jun",
+      "date": "14/Jun",
       "lat": 49.4884542,
       "lng": -2.519431,
       "facebook": ""
@@ -204,7 +204,7 @@
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "02/Jun",
+      "date": "17/Jun",
       "lat": 49.4726415,
       "lng": -2.5841675,
       "facebook": ""
