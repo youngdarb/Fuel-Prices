@@ -207,7 +207,7 @@
   /* ── Report modal ───────────────────────────────────────── */
   .modal-overlay {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55); z-index: 500;
+    background: rgba(0,0,0,0.55); z-index: 2000;
     align-items: center; justify-content: center; padding: 16px;
   }
   .modal-overlay.open { display: flex; }
@@ -250,7 +250,7 @@
     position: fixed; bottom: 20px; right: 20px;
     background: var(--header-bg); color: #fff; border: none;
     border-radius: 50px; padding: 12px 20px; font-size: 0.88rem; font-weight: 700;
-    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25); z-index: 200;
+    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.25); z-index: 1500;
     display: flex; align-items: center; gap: 8px;
   }
   .report-fab:hover { background: #2a5a3a; }
@@ -324,13 +324,16 @@
 
 </div>
 
-<!-- Netlify detects this at build time to register the form -->
+<!-- Netlify registers this form at build time -->
 <form name="price-report" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input name="station" type="text">
   <input name="note" type="text">
   <input name="photo" type="file">
   <input name="bot-field" type="text">
 </form>
+
+<!-- Invisible iframe — form posts here so the page never reloads -->
+<iframe name="report-submit-frame" style="display:none" onload="onReportFrameLoad()"></iframe>
 
 <!-- Report floating button -->
 <button class="report-fab" onclick="openReportModal()">📷 Report a price</button>
@@ -341,26 +344,30 @@
     <div id="report-form-view">
       <h3>📷 Report a Price</h3>
       <p class="report-sub">Spotted an outdated price? Upload a photo of the board and we'll get it updated.</p>
-      <div class="report-field">
-        <label>Forecourt</label>
-        <select id="report-station"></select>
-      </div>
-      <div class="report-field">
-        <label>Photo of price board <span style="color:#c0392b">*</span></label>
-        <div class="photo-upload-area" id="upload-area" onclick="document.getElementById('report-photo').click()">
-          <input type="file" id="report-photo" accept="image/*" capture="environment" onchange="previewPhoto(this)">
-          <div class="upload-label"><strong>Tap to take / upload a photo</strong><br>A clear photo of the price board is required</div>
-          <img id="photo-preview" alt="Preview">
+      <form id="report-form" action="/" method="POST" enctype="multipart/form-data" target="report-submit-frame">
+        <input type="hidden" name="form-name" value="price-report">
+        <input type="hidden" name="bot-field" value="">
+        <div class="report-field">
+          <label>Forecourt</label>
+          <select name="station" id="report-station"></select>
         </div>
-      </div>
-      <div class="report-field">
-        <label>Note (optional)</label>
-        <textarea id="report-note" placeholder="e.g. Unleaded is now 169.9p"></textarea>
-      </div>
-      <div class="report-actions">
-        <button class="report-cancel" onclick="closeReportModal()">Cancel</button>
-        <button class="report-submit" id="report-submit-btn" onclick="submitReport()">Submit Report</button>
-      </div>
+        <div class="report-field">
+          <label>Photo of price board <span style="color:#c0392b">*</span></label>
+          <div class="photo-upload-area" id="upload-area" onclick="document.getElementById('report-photo').click()">
+            <input type="file" name="photo" id="report-photo" accept="image/*" capture="environment" onchange="previewPhoto(this)">
+            <div class="upload-label"><strong>Tap to take / upload a photo</strong><br>A clear photo of the price board is required</div>
+            <img id="photo-preview" alt="Preview">
+          </div>
+        </div>
+        <div class="report-field">
+          <label>Note (optional)</label>
+          <textarea name="note" id="report-note" placeholder="e.g. Unleaded is now 169.9p"></textarea>
+        </div>
+        <div class="report-actions">
+          <button type="button" class="report-cancel" onclick="closeReportModal()">Cancel</button>
+          <button type="submit" class="report-submit" id="report-submit-btn" onclick="return validateReport()">Submit Report</button>
+        </div>
+      </form>
     </div>
     <div id="report-success-view" class="report-success" style="display:none">
       <div class="tick">✅</div>
@@ -585,6 +592,8 @@ function p(val, best) {
 load();
 
 // ── Report modal ──────────────────────────────────────────
+let reportPending = false;
+
 function openReportModal(stationName) {
   const sel = document.getElementById('report-station');
   sel.innerHTML = stationData.map(s => `<option${s.name === stationName ? ' selected' : ''}>${s.name}</option>`).join('');
@@ -594,6 +603,10 @@ function openReportModal(stationName) {
   document.getElementById('report-photo').value = '';
   document.getElementById('photo-preview').style.display = 'none';
   document.getElementById('upload-area').classList.remove('has-file');
+  const btn = document.getElementById('report-submit-btn');
+  btn.disabled = false;
+  btn.textContent = 'Submit Report';
+  reportPending = false;
   document.getElementById('report-overlay').classList.add('open');
 }
 
@@ -611,29 +624,23 @@ function previewPhoto(input) {
   document.getElementById('upload-area').classList.add('has-file');
 }
 
-async function submitReport() {
-  const photo = document.getElementById('report-photo').files[0];
-  if (!photo) { alert('Please upload a photo of the price board — this is required to verify the update.'); return; }
+function validateReport() {
+  if (!document.getElementById('report-photo').files[0]) {
+    alert('Please upload a photo of the price board — this is required to verify the update.');
+    return false;
+  }
   const btn = document.getElementById('report-submit-btn');
   btn.disabled = true;
   btn.textContent = 'Submitting…';
-  try {
-    const fd = new FormData();
-    fd.append('form-name', 'price-report');
-    fd.append('bot-field', '');
-    fd.append('station', document.getElementById('report-station').value);
-    fd.append('note', document.getElementById('report-note').value);
-    fd.append('photo', photo);
-    const res = await fetch('/', { method: 'POST', body: fd });
-    if (!res.ok) throw new Error('Submission failed');
-    document.getElementById('report-form-view').style.display = 'none';
-    document.getElementById('report-success-view').style.display = '';
-  } catch(e) {
-    alert('Something went wrong — please try again.');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Submit Report';
-  }
+  reportPending = true;
+  return true;
+}
+
+function onReportFrameLoad() {
+  if (!reportPending) return;
+  reportPending = false;
+  document.getElementById('report-form-view').style.display = 'none';
+  document.getElementById('report-success-view').style.display = '';
 }
 </script>
 </body>
