@@ -234,6 +234,19 @@
       "lat": 49.45398,
       "lng": -2.53,
       "facebook": ""
+    },
+    {
+      "name": "QEII Marina",
+      "unleaded": 151,
+      "diesel": null,
+      "super": null,
+      "bio_diesel": null,
+      "df_diesel": 105,
+      "notes": "",
+      "date": "18/Jun",
+      "lat": null,
+      "lng": null,
+      "facebook": ""
     }
   ],
   "average": {
