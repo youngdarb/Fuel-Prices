@@ -171,8 +171,8 @@
     },
     {
       "name": "Whiteway Motors",
-      "unleaded": 171.5,
-      "diesel": 183,
+      "unleaded": 169.5,
+      "diesel": 180,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -269,8 +269,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.7,
-    "diesel": 181.6
+    "unleaded": 170.6,
+    "diesel": 181.4
   },
   "brent_crude": {
     "high": 130.59,
@@ -278,7 +278,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 90.38,
-    "today": 77.92
+    "today": 79.76
   },
   "heating_oil": {
     "suppliers": [
