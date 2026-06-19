@@ -968,9 +968,7 @@ async function loadReports() {
   const secret = sessionStorage.getItem('fuel_admin_hash');
   if (!secret) return;
 
-  document.getElementById('netlify-setup').style.display = 'none';
   const itemsEl = document.getElementById('report-items');
-  itemsEl.style.display = 'flex';
   itemsEl.innerHTML = '<div class="reports-empty">Loading…</div>';
 
   try {
