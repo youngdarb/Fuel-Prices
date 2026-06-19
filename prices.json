@@ -308,6 +308,20 @@
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
+    },
+    {
+      "name": "Forest Road Garage",
+      "unleaded": null,
+      "diesel": null,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "",
+      "lat": 49.43403,
+      "lng": -2.57827,
+      "facebook": ""
     }
   ],
   "average": {
