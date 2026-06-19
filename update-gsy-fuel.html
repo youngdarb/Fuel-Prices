@@ -1044,7 +1044,7 @@ async function dismissReport(id, btn) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadReports);
+// loadReports is called after login, not on DOMContentLoaded
 </script>
 
 <!-- Password -->
@@ -1058,6 +1058,7 @@ async function checkPassword() {
     sessionStorage.setItem('fuel_admin_auth', '1');
     sessionStorage.setItem('fuel_admin_hash', hash);
     document.getElementById('lock-screen').classList.add('hidden');
+    loadReports();
   } else {
     document.getElementById('lock-error').textContent = 'Incorrect password — please try again.';
     document.getElementById('lock-input').value = '';
@@ -1076,6 +1077,7 @@ async function sha256(msg) {
 
 if (sessionStorage.getItem('fuel_admin_auth') === '1') {
   document.getElementById('lock-screen').classList.add('hidden');
+  document.addEventListener('DOMContentLoaded', loadReports);
 }
 </script>
 </body>
