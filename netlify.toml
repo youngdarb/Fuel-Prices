@@ -1,2 +1,5 @@
 [build]
   ignore = "git diff --quiet HEAD^ HEAD -- . ':(exclude)prices.json' ':(exclude)price-history.json'"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "update-gsy-fuel.html"
