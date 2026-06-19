@@ -316,25 +316,6 @@ body {
 .save-btn:hover:not(:disabled) { background: #219a52; transform: translateY(-1px); }
 .save-btn:active { transform: none; }
 .save-btn:disabled { background: #4a7a5e; cursor: not-allowed; opacity: 0.7; }
-.token-toggle {
-  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.8); border-radius: 10px; padding: 10px 14px;
-  font-size: 0.82rem; font-weight: 600; cursor: pointer; white-space: nowrap;
-}
-.token-toggle:hover { background: rgba(255,255,255,0.2); }
-.token-panel {
-  display: none; position: fixed; bottom: 80px; right: 24px;
-  background: #fff; border-radius: 14px; padding: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3); width: 340px; z-index: 200;
-}
-.token-panel.open { display: block; }
-.token-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--header-bg); }
-.token-panel p { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
-.token-panel input {
-  width: 100%; border: 2px solid var(--line); border-radius: 10px;
-  padding: 10px 12px; font-size: 0.9rem; font-family: monospace; outline: none; margin-bottom: 10px;
-}
-.token-panel input:focus { border-color: var(--green); }
 .token-save-btn {
   background: var(--green); color: #fff; border: none; border-radius: 10px;
   padding: 10px 20px; font-size: 0.9rem; font-weight: 700; cursor: pointer; width: 100%;
@@ -644,14 +625,6 @@ body {
 
 </div>
 
-<!-- Token panel -->
-<div class="token-panel" id="token-panel">
-  <h3>GitHub Token</h3>
-  <p>A GitHub token lets the admin panel publish directly to the live site. You only need to do this once — it's saved in your browser.<br><br>Go to <strong>github.com → Settings → Developer settings → Personal access tokens → Fine-grained</strong>, create a token with <strong>Contents: Read and write</strong> for the Fuel-Prices repo.</p>
-  <input type="password" id="token-input" placeholder="github_pat_…" autocomplete="off">
-  <button class="token-save-btn" onclick="saveToken()">Save Token</button>
-  <div class="token-status" id="token-status"></div>
-</div>
 
 <!-- Save bar -->
 <div class="save-bar">
@@ -660,7 +633,6 @@ body {
     <span id="save-sub">Changes go live on the website in about 30 seconds.</span>
   </div>
   <div class="save-bar-right">
-    <button class="token-toggle" onclick="toggleTokenPanel()" id="token-toggle-btn">⚙ GitHub Token</button>
     <button class="save-btn" id="publish-btn" onclick="publishLive()">
       &#9654; Publish Live
     </button>
@@ -929,52 +901,9 @@ const REPO  = 'youngdarb/Fuel-Prices';
 const BRANCH = 'main';
 const FILE  = 'prices.json';
 
-function toggleTokenPanel() {
-  const panel = document.getElementById('token-panel');
-  panel.classList.toggle('open');
-  if (panel.classList.contains('open')) {
-    const stored = localStorage.getItem('gh_fuel_token') || '';
-    document.getElementById('token-input').value = stored ? '••••••••••••••••' : '';
-    document.getElementById('token-status').textContent = stored ? '✓ Token saved' : '';
-    document.getElementById('token-status').style.color = '#27ae60';
-  }
-}
-
-function saveToken() {
-  const val = document.getElementById('token-input').value.trim();
-  if (!val || val.startsWith('•')) {
-    document.getElementById('token-status').textContent = 'No change — enter a new token to update.';
-    document.getElementById('token-status').style.color = '#888';
-    return;
-  }
-  localStorage.setItem('gh_fuel_token', val);
-  document.getElementById('token-input').value = '••••••••••••••••';
-  document.getElementById('token-status').textContent = '✓ Token saved!';
-  document.getElementById('token-status').style.color = '#27ae60';
-  setTimeout(() => document.getElementById('token-panel').classList.remove('open'), 1200);
-}
-
-async function ghGet(token, path) {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}?ref=${BRANCH}`, {
-    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json' }
-  });
-  if (!r.ok) throw new Error(`GitHub error ${r.status}`);
-  return r.json();
-}
-
-async function ghPut(token, path, content, sha, message) {
-  const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-    method: 'PUT',
-    headers: { Authorization: `Bearer ${token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify({ message, content, sha, branch: BRANCH })
-  });
-  if (!r.ok) { const e = await r.json(); throw new Error(e.message || `GitHub error ${r.status}`); }
-  return r.json();
-}
-
 async function publishLive() {
-  const token = localStorage.getItem('gh_fuel_token');
-  if (!token) { toggleTokenPanel(); showToast('Enter your GitHub token first ↗', '#e67e22'); return; }
+  const secret = sessionStorage.getItem('fuel_admin_hash');
+  if (!secret) { showToast('Session expired — please log in again.', '#e67e22'); return; }
 
   const btn = document.getElementById('publish-btn');
   const sub = document.getElementById('save-sub');
@@ -982,27 +911,18 @@ async function publishLive() {
   btn.textContent = '⏳ Publishing…';
 
   try {
-    const data  = collectData();
-    const now   = new Date();
-    const label = `${String(now.getDate()).padStart(2,'0')}/${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][now.getMonth()]}/${now.getFullYear()}`;
+    const data = collectData();
+    const res  = await fetch('/.netlify/functions/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, data })
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Publish failed');
 
-    // Commit prices.json
-    const { sha: priceSha } = await ghGet(token, 'prices.json');
-    await ghPut(token, 'prices.json', btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))), priceSha, `Update fuel prices ${label}`);
-
-    // Append to price-history.json (non-fatal if it fails)
-    try {
-      const { sha: histSha, content: histB64 } = await ghGet(token, 'price-history.json');
-      const history = JSON.parse(decodeURIComponent(escape(atob(histB64.replace(/\n/g, '')))));
-      const entry = { date: label, ts: now.getTime(), stations: {} };
-      data.stations.forEach(s => { if (s.name) entry.stations[s.name] = { ul: s.unleaded, ds: s.diesel }; });
-      history.entries.push(entry);
-      if (history.entries.length > 104) history.entries = history.entries.slice(-104);
-      await ghPut(token, 'price-history.json', btoa(unescape(encodeURIComponent(JSON.stringify(history)))), histSha, `Update price history ${label}`);
-    } catch (_) { /* prices.json already saved — history failure is non-fatal */ }
-
+    const now = new Date();
     showToast('✓ Published! Site updates in ~30 seconds.', '#27ae60');
-    sub.textContent = `Last published: ${label} at ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
+    sub.textContent = `Last published: ${json.label} at ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
   } catch(e) {
     showToast('✗ ' + e.message, '#c0392b');
   } finally {
@@ -1164,6 +1084,7 @@ async function checkPassword() {
   const hash  = await sha256(input);
   if (hash === PASSWORD_HASH) {
     sessionStorage.setItem('fuel_admin_auth', '1');
+    sessionStorage.setItem('fuel_admin_hash', hash);
     document.getElementById('lock-screen').classList.add('hidden');
   } else {
     document.getElementById('lock-error').textContent = 'Incorrect password — please try again.';
