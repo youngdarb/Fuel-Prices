@@ -593,7 +593,11 @@ function setMapFuel(fuel) {
 }
 
 function isOtherStation(s) {
-  return !s.unleaded && !s.diesel;
+  return !!(s.super || s.marine || s.bio_diesel || s.df_diesel);
+}
+
+function otherPinVal(s) {
+  return s.super || s.marine || s.bio_diesel || s.df_diesel;
 }
 
 function refreshMapPins() {
@@ -606,7 +610,7 @@ function refreshMapPins() {
     if (mapFuel === 'other') {
       if (!other) { markers[i].setOpacity(0); return; }
       markers[i].setOpacity(1);
-      const val = s.marine || s.df_diesel;
+      const val = otherPinVal(s);
       markers[i].setIcon(L.divIcon({
         className: '',
         html: `<div style="background:#dc2626;color:#fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);width:32px;height:32px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;">
