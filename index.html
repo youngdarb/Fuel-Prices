@@ -308,7 +308,13 @@
 
   <div class="duty-bar" id="duty-bar"></div>
 
-  <div class="section-label">Forecourt Map — click a pin or table row to zoom in</div>
+  <div class="section-label" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <span>Forecourt Map — click a pin or table row to zoom in</span>
+    <div style="display:flex;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;font-size:0.8rem;">
+      <button id="map-toggle-ul" onclick="setMapFuel('unleaded')" style="padding:4px 14px;border:none;cursor:pointer;background:var(--green);color:#fff;font-weight:600;">Unleaded</button>
+      <button id="map-toggle-ds" onclick="setMapFuel('diesel')"   style="padding:4px 14px;border:none;cursor:pointer;background:var(--card);color:var(--muted);font-weight:600;">Diesel</button>
+    </div>
+  </div>
   <div id="map"></div>
 
   <div class="section-label">Forecourt Prices</div>
@@ -569,6 +575,38 @@ async function load() {
   if (data.footer_notes && data.footer_notes.length) {
     document.getElementById('footer-notes').innerHTML = data.footer_notes.map(n => `<p>${n}</p>`).join('');
   }
+}
+
+let mapFuel = 'unleaded';
+
+function setMapFuel(fuel) {
+  mapFuel = fuel;
+  document.getElementById('map-toggle-ul').style.background = fuel === 'unleaded' ? 'var(--green)' : 'var(--card)';
+  document.getElementById('map-toggle-ul').style.color      = fuel === 'unleaded' ? '#fff' : 'var(--muted)';
+  document.getElementById('map-toggle-ds').style.background = fuel === 'diesel'   ? 'var(--green)' : 'var(--card)';
+  document.getElementById('map-toggle-ds').style.color      = fuel === 'diesel'   ? '#fff' : 'var(--muted)';
+  refreshMapPins();
+}
+
+function refreshMapPins() {
+  const stations = stationData;
+  const minU = Math.min(...stations.filter(s => s.unleaded > 0).map(s => s.unleaded));
+  const minD = Math.min(...stations.filter(s => s.diesel  > 0).map(s => s.diesel));
+  stations.forEach((s, i) => {
+    if (!markers[i]) return;
+    const val = mapFuel === 'diesel' ? s.diesel : s.unleaded;
+    const isBest = mapFuel === 'diesel' ? s.diesel === minD : s.unleaded === minU;
+    const pinColor = isBest ? '#1a7a48' : '#1a3a2a';
+    markers[i].setIcon(L.divIcon({
+      className: '',
+      html: `<div style="background:${pinColor};color:#fff;border-radius:50% 50% 50% 0;transform:rotate(-45deg);width:32px;height:32px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;">
+        <span style="transform:rotate(45deg);font-size:9px;font-weight:700;line-height:1">${val ? val.toFixed(0) : '?'}</span>
+      </div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 32],
+      popupAnchor: [0, -34]
+    }));
+  });
 }
 
 function initMap(stations) {
