@@ -294,11 +294,25 @@
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
+    },
+    {
+      "name": "Co-Op St Andrew",
+      "unleaded": 167.9,
+      "diesel": 178.9,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "",
+      "lat": 49.44831,
+      "lng": -2.56425,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 170.3,
-    "diesel": 181.2
+    "unleaded": 170.2,
+    "diesel": 181.1
   },
   "brent_crude": {
     "high": 130.59,
