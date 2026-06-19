@@ -444,6 +444,29 @@ body {
     <a class="back-link" href="index.html">← View Live Site</a>
   </div>
 
+  <!-- Announcements -->
+  <div class="reports-card" id="ann-card" style="margin-bottom:16px">
+    <div class="reports-head">
+      <div class="reports-head-left">
+        <div class="step-num" style="background:#1d4ed8">📢</div>
+        <div>
+          <h2>Announcements</h2>
+          <p>Post a message to the top of the public page</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="ann-msg" type="text" placeholder="Announcement message…" style="flex:1;min-width:200px;padding:9px 12px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.9rem;font-family:inherit">
+        <input id="ann-start" type="date" style="padding:9px 10px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.85rem">
+        <input id="ann-end"   type="date" style="padding:9px 10px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.85rem">
+        <button onclick="addAnnouncement()" style="padding:9px 16px;background:#1d4ed8;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem">+ Add</button>
+      </div>
+      <div style="font-size:0.75rem;color:#888">Leave start/end blank to show indefinitely. End date is inclusive.</div>
+      <div id="ann-list" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </div>
+
   <!-- Price Reports Queue -->
   <div class="reports-card" id="reports-card">
     <div class="reports-head">
@@ -648,6 +671,35 @@ body {
 
 <script>
 let currentData = null;
+let currentAnnouncements = [];
+
+function renderAnnList() {
+  const el = document.getElementById('ann-list');
+  if (!currentAnnouncements.length) { el.innerHTML = '<div style="color:#888;font-size:0.85rem">No announcements yet.</div>'; return; }
+  el.innerHTML = currentAnnouncements.map((a, i) => `
+    <div style="display:flex;align-items:center;gap:10px;background:#f5f7f5;border-radius:8px;padding:10px 12px">
+      <span style="flex:1;font-size:0.88rem">${a.message}</span>
+      <span style="font-size:0.75rem;color:#888;white-space:nowrap">${a.start || '—'} → ${a.end || '—'}</span>
+      <button onclick="removeAnn(${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:1rem;line-height:1">✕</button>
+    </div>`).join('');
+}
+
+function addAnnouncement() {
+  const msg   = document.getElementById('ann-msg').value.trim();
+  const start = document.getElementById('ann-start').value;
+  const end   = document.getElementById('ann-end').value;
+  if (!msg) { alert('Please enter a message.'); return; }
+  currentAnnouncements.push({ id: Date.now(), message: msg, start: start || null, end: end || null });
+  document.getElementById('ann-msg').value = '';
+  document.getElementById('ann-start').value = '';
+  document.getElementById('ann-end').value = '';
+  renderAnnList();
+}
+
+function removeAnn(i) {
+  currentAnnouncements.splice(i, 1);
+  renderAnnList();
+}
 
 // ── Init ──────────────────────────────────────────────────
 async function init() {
@@ -655,8 +707,10 @@ async function init() {
     const res = await fetch('prices.json?' + Date.now());
     currentData = await res.json();
   } catch(e) {
-    currentData = { updated:'', stations:[], average:{}, brent_crude:{}, heating_oil:{suppliers:[]}, duty:{}, footer_notes:[] };
+    currentData = { updated:'', stations:[], average:{}, brent_crude:{}, heating_oil:{suppliers:[]}, duty:{}, footer_notes:[], announcements:[] };
   }
+  currentAnnouncements = currentData.announcements || [];
+  renderAnnList();
   populate();
 }
 
@@ -865,7 +919,8 @@ function collectData() {
       uk_duty:   numOrNull(document.getElementById('duty-uk').value)
     },
     bulk: currentData?.bulk || [],
-    footer_notes: currentData?.footer_notes || []
+    footer_notes: currentData?.footer_notes || [],
+    announcements: currentAnnouncements
   };
 }
 
