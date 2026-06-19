@@ -446,5 +446,12 @@
     "*E10/B7 bio-fuels sold by ATF, please check suitability for older & high performance vehicles",
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
-  "announcements": []
+  "announcements": [
+    {
+      "id": 1781897215318,
+      "message": "Welcome to our brand new App. Please share the link with friends",
+      "start": null,
+      "end": null
+    }
+  ]
 }
