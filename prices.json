@@ -310,7 +310,7 @@
       "facebook": ""
     },
     {
-      "name": "Forest Road Garage",
+      "name": "Forest Road Garage (no price)",
       "unleaded": null,
       "diesel": null,
       "super": null,
@@ -321,6 +321,34 @@
       "date": "",
       "lat": 49.43403,
       "lng": -2.57827,
+      "facebook": ""
+    },
+    {
+      "name": "La Villette Garage (No price)",
+      "unleaded": null,
+      "diesel": null,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "",
+      "lat": 49.43431,
+      "lng": -2.56708,
+      "facebook": ""
+    },
+    {
+      "name": "Trev’s (no price)",
+      "unleaded": null,
+      "diesel": null,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "",
+      "lat": 49.49716,
+      "lng": -2.52048,
       "facebook": ""
     }
   ],
