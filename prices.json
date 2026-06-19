@@ -67,8 +67,8 @@
       "df_diesel": null,
       "notes": "CIFL OWNED",
       "date": "18/Jun",
-      "lat": 49.4868347,
-      "lng": -2.5196197,
+      "lat": 49.48753,
+      "lng": -2.52956,
       "facebook": ""
     },
     {
@@ -277,8 +277,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 90.38,
-    "today": 79.76
+    "last_week": 87.33,
+    "today": 79.94
   },
   "heating_oil": {
     "suppliers": [
