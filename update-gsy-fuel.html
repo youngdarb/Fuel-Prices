@@ -461,15 +461,7 @@ body {
       <button class="refresh-btn" onclick="loadReports()">↻ Refresh</button>
     </div>
     <div id="reports-body">
-      <div class="netlify-setup" id="netlify-setup">
-        <p>To show submitted price reports here, enter your <strong>Netlify Personal Access Token</strong> and <strong>Site ID</strong>. Find your token at <strong>app.netlify.com → User settings → OAuth applications → Personal access tokens</strong>. Your Site ID is under <strong>Site settings → General</strong>.</p>
-        <div class="field-row">
-          <input type="password" id="netlify-token-input" placeholder="Netlify personal access token">
-          <input type="text" id="netlify-site-input" placeholder="Site ID (e.g. a1b2c3d4-…)">
-        </div>
-        <button class="netlify-connect-btn" onclick="saveNetlifyConfig()">Connect</button>
-      </div>
-      <div class="report-items" id="report-items" style="display:none"></div>
+      <div class="report-items" id="report-items"></div>
     </div>
   </div>
 
@@ -972,19 +964,9 @@ init();
 
 <!-- Reports queue -->
 <script>
-function saveNetlifyConfig() {
-  const token = document.getElementById('netlify-token-input').value.trim();
-  const site  = document.getElementById('netlify-site-input').value.trim();
-  if (!token || !site) { alert('Please enter both the token and site ID.'); return; }
-  localStorage.setItem('netlify_token', token);
-  localStorage.setItem('netlify_site',  site);
-  loadReports();
-}
-
 async function loadReports() {
-  const token = localStorage.getItem('netlify_token');
-  const site  = localStorage.getItem('netlify_site');
-  if (!token || !site) return;
+  const secret = sessionStorage.getItem('fuel_admin_hash');
+  if (!secret) return;
 
   document.getElementById('netlify-setup').style.display = 'none';
   const itemsEl = document.getElementById('report-items');
@@ -992,22 +974,14 @@ async function loadReports() {
   itemsEl.innerHTML = '<div class="reports-empty">Loading…</div>';
 
   try {
-    // Find the price-report form
-    const formsRes = await fetch(`https://api.netlify.com/api/v1/sites/${site}/forms`, {
-      headers: { Authorization: `Bearer ${token}` }
+    const res  = await fetch('/.netlify/functions/reports', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, action: 'list' })
     });
-    if (!formsRes.ok) throw new Error(`Netlify error ${formsRes.status} — check your token and site ID.`);
-    const forms = await formsRes.json();
-    const form  = forms.find(f => f.name === 'price-report');
-    if (!form) {
-      itemsEl.innerHTML = '<div class="reports-empty">No price-report form found yet — it appears after the first submission.</div>';
-      return;
-    }
-
-    const subRes = await fetch(`https://api.netlify.com/api/v1/forms/${form.id}/submissions?per_page=50`, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    const subs = await subRes.json();
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Failed to load reports');
+    const subs = json.submissions;
 
     const badge = document.getElementById('reports-badge');
     if (subs.length > 0) {
@@ -1044,13 +1018,14 @@ async function loadReports() {
 }
 
 async function dismissReport(id, btn) {
-  const token = localStorage.getItem('netlify_token');
+  const secret = sessionStorage.getItem('fuel_admin_hash');
   btn.disabled = true;
   btn.textContent = '…';
   try {
-    const res = await fetch(`https://api.netlify.com/api/v1/submissions/${id}`, {
-      method: 'DELETE',
-      headers: { Authorization: `Bearer ${token}` }
+    const res = await fetch('/.netlify/functions/reports', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, action: 'dismiss', submissionId: id })
     });
     if (!res.ok) throw new Error('Delete failed');
     document.getElementById(`sub-${id}`).remove();
@@ -1069,10 +1044,7 @@ async function dismissReport(id, btn) {
   }
 }
 
-// Auto-load if already configured
-if (localStorage.getItem('netlify_token') && localStorage.getItem('netlify_site')) {
-  document.addEventListener('DOMContentLoaded', loadReports);
-}
+document.addEventListener('DOMContentLoaded', loadReports);
 </script>
 
 <!-- Password -->
