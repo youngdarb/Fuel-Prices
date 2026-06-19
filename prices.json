@@ -1,5 +1,5 @@
 {
-  "updated": "18/Jun/2026",
+  "updated": "19/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "18/Jun",
+      "date": "19/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -24,7 +24,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "18/Jun",
+      "date": "19/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -276,7 +276,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "19/Jun",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
@@ -290,7 +290,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "19/Jun",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
@@ -304,7 +304,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "19/Jun",
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
