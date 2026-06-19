@@ -95,8 +95,8 @@
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
       "date": "18/Jun",
-      "lat": 49.486,
-      "lng": -2.5687,
+      "lat": 49.48621,
+      "lng": -2.56486,
       "facebook": ""
     },
     {
@@ -278,7 +278,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 87.33,
-    "today": 79.94
+    "today": 80.13
   },
   "heating_oil": {
     "suppliers": [
