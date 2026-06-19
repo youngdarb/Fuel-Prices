@@ -714,6 +714,8 @@ function initMap(stations) {
       .addTo(map)
       .bindPopup(buildPopup(s, minU, minD));
 
+    if (isOtherStation(s)) marker.setOpacity(0);
+
     marker.on('popupopen',  () => highlightRow(i));
     marker.on('popupclose', () => clearHighlight());
     markers[i] = marker;
