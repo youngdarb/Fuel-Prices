@@ -220,7 +220,7 @@
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "19/Jun",
+      "date": "20/Jun",
       "lat": 49.4726415,
       "lng": -2.5841675,
       "facebook": ""
@@ -233,8 +233,8 @@
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
-      "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "19/Jun",
+      "notes": "4p off with Rubis Card. Super is SUPER-99 RON",
+      "date": "02/Jun",
       "lat": 49.4863326,
       "lng": -2.520071,
       "facebook": ""
@@ -446,12 +446,5 @@
     "*E10/B7 bio-fuels sold by ATF, please check suitability for older & high performance vehicles",
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
-  "announcements": [
-    {
-      "id": 1781897215318,
-      "message": "Welcome to our brand new App. Please share the link with friends",
-      "start": null,
-      "end": null
-    }
-  ]
+  "announcements": []
 }
