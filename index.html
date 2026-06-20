@@ -501,7 +501,7 @@ let map, markers = [], stationData = [];
 async function load() {
   let data;
   try {
-    const res = await fetch('prices.json?' + Date.now());
+    const res = await fetch('https://raw.githubusercontent.com/youngdarb/Fuel-Prices/main/prices.json?' + Date.now());
     data = await res.json();
   } catch(e) {
     document.getElementById('station-rows').innerHTML = '<tr><td colspan="8" style="padding:24px;text-align:center;color:#888">Could not load prices.json</td></tr>';
@@ -817,7 +817,7 @@ let historyChart = null;
 
 async function loadHistory() {
   try {
-    const res = await fetch('price-history.json?' + Date.now());
+    const res = await fetch('https://raw.githubusercontent.com/youngdarb/Fuel-Prices/main/price-history.json?' + Date.now());
     historyData = await res.json();
   } catch(_) { historyData = { entries: [] }; }
 }
