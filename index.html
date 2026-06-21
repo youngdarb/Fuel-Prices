@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guernsey Fuel Prices</title>
+<title>Guernsey Fuel Prices — Live Petrol &amp; Diesel Prices Across Guernsey</title>
+<meta name="description" content="Up-to-date petrol and diesel pump prices at every forecourt across Guernsey. Updated weekly. Compare unleaded, diesel, super, marine and heating oil prices.">
+<meta name="keywords" content="Guernsey fuel prices, petrol Guernsey, diesel Guernsey, pump prices, forecourt, GSY fuel">
+<meta property="og:title" content="Guernsey Fuel Prices">
+<meta property="og:description" content="Live petrol and diesel pump prices at every forecourt across Guernsey, updated weekly.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gsyfuel.netlify.app/">
+<link rel="canonical" href="https://gsyfuel.netlify.app/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "GSY Fuel Prices",
+  "url": "https://gsyfuel.netlify.app",
+  "description": "Live petrol and diesel prices at every forecourt across Guernsey"
+}
+</script>
 
 <!-- Leaflet map -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -318,8 +334,14 @@
 <body>
 <div class="wrap">
 
-  <div class="page-header">
+  <nav style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+    <a href="index.html" style="font-size:0.82rem;font-weight:600;color:#1a7a48;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Live Prices</a>
+    <a href="forecourts.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Forecourts</a>
+    <a href="about.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">About</a>
+    <a href="privacy.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Privacy</a>
+  </nav>
 
+  <div class="page-header">
     <h1>Guernsey Fuel Prices</h1>
     <p class="sub">Pump price · pence per litre · updated <span class="updated" id="updated">—</span></p>
   </div>
@@ -943,5 +965,16 @@ function onReportFrameLoad() {
   document.getElementById('report-success-view').style.display = '';
 }
 </script>
+
+<footer style="margin-top:32px;padding:20px 0 8px;border-top:1px solid var(--line);text-align:center;font-size:0.78rem;color:var(--muted)">
+  <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:10px">
+    <a href="index.html" style="color:var(--muted);text-decoration:none">Live Prices</a>
+    <a href="forecourts.html" style="color:var(--muted);text-decoration:none">Forecourts</a>
+    <a href="about.html" style="color:var(--muted);text-decoration:none">About</a>
+    <a href="privacy.html" style="color:var(--muted);text-decoration:none">Privacy Policy</a>
+  </div>
+  <div>GSY Fuel Prices &copy; 2026. Prices are indicative and updated weekly. Always verify at the pump.</div>
+</footer>
+
 </body>
 </html>
