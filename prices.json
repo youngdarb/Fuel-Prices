@@ -362,7 +362,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 87.33,
-    "today": 80.59
+    "today": 78.55
   },
   "heating_oil": {
     "suppliers": [
@@ -375,7 +375,7 @@
         "notes": "ATF Smart 123.00, Premium Kero 125.00 (900L)"
       },
       {
-        "name": "CIFL (Planned delivery)",
+        "name": "CIFL (Planned del.)",
         "price_500l": 123,
         "price_700l": null,
         "price_900l": 121,
@@ -446,5 +446,12 @@
     "*E10/B7 bio-fuels sold by ATF, please check suitability for older & high performance vehicles",
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
-  "announcements": []
+  "announcements": [
+    {
+      "id": 1782133093039,
+      "message": "1ppl drop due this week for Rubis forecourts on both unleaded & diesel",
+      "start": null,
+      "end": "2026-06-28"
+    }
+  ]
 }
