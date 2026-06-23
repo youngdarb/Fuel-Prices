@@ -1,5 +1,5 @@
 {
-  "updated": "20/Jun/2026",
+  "updated": "23/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -213,8 +213,8 @@
     },
     {
       "name": "Cobo Service Station",
-      "unleaded": 175.9,
-      "diesel": 185.9,
+      "unleaded": 174.9,
+      "diesel": 184.9,
       "super": null,
       "marine": null,
       "bio_diesel": 233.9,
@@ -227,8 +227,8 @@
     },
     {
       "name": "Vale Garage SS",
-      "unleaded": 175.9,
-      "diesel": 185.9,
+      "unleaded": 174.9,
+      "diesel": 184.9,
       "super": 210.9,
       "marine": null,
       "bio_diesel": null,
@@ -353,16 +353,16 @@
     }
   ],
   "average": {
-    "unleaded": 170.2,
-    "diesel": 181.1
+    "unleaded": 170.1,
+    "diesel": 181
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 87.33,
-    "today": 78.55
+    "last_week": 83.17,
+    "today": 76.97
   },
   "heating_oil": {
     "suppliers": [
@@ -446,12 +446,5 @@
     "*E10/B7 bio-fuels sold by ATF, please check suitability for older & high performance vehicles",
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
-  "announcements": [
-    {
-      "id": 1782133093039,
-      "message": "1ppl drop due this week for Rubis forecourts on both unleaded & diesel",
-      "start": null,
-      "end": "2026-06-28"
-    }
-  ]
+  "announcements": []
 }
