@@ -38,7 +38,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.47907,
       "lng": -2.52142,
       "facebook": ""
@@ -52,7 +52,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
       "facebook": ""
@@ -66,7 +66,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.48753,
       "lng": -2.52956,
       "facebook": ""
@@ -80,7 +80,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -94,7 +94,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.48621,
       "lng": -2.56486,
       "facebook": ""
@@ -108,7 +108,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -122,7 +122,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -136,7 +136,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4572646,
       "lng": -2.6242246,
       "facebook": ""
@@ -150,7 +150,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "18/Jun",
+      "date": "25/Jun",
       "lat": 49.4582297,
       "lng": -2.5456378,
       "facebook": ""
@@ -164,7 +164,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "18/Jun",
+      "date": "25/Jun",
       "lat": 49.4368394,
       "lng": -2.5540839,
       "facebook": ""
@@ -178,7 +178,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4964766,
       "lng": -2.5163108,
       "facebook": ""
@@ -192,7 +192,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "17/June",
+      "date": "25/June",
       "lat": 49.4462445,
       "lng": -2.55357,
       "facebook": ""
@@ -206,23 +206,9 @@
       "bio_diesel": null,
       "df_diesel": 151.9,
       "notes": "4p off with Rubis Card",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4867,
       "lng": -2.51968,
-      "facebook": ""
-    },
-    {
-      "name": "Cobo Service Station",
-      "unleaded": 175.9,
-      "diesel": 185.9,
-      "super": null,
-      "marine": null,
-      "bio_diesel": 233.9,
-      "df_diesel": null,
-      "notes": "4p off with Rubis Card",
-      "date": "21/Jun",
-      "lat": 49.4726415,
-      "lng": -2.5841675,
       "facebook": ""
     },
     {
@@ -234,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4863326,
       "lng": -2.520071,
       "facebook": ""
@@ -248,7 +234,7 @@
       "bio_diesel": null,
       "df_diesel": 107,
       "notes": "Bulk rates available",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.45398,
       "lng": -2.53,
       "facebook": ""
@@ -262,7 +248,7 @@
       "bio_diesel": null,
       "df_diesel": 105,
       "notes": "",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4613,
       "lng": -2.53055,
       "facebook": ""
@@ -276,7 +262,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
@@ -290,7 +276,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "25/Jun",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
@@ -311,14 +297,14 @@
     },
     {
       "name": "Forest Road Garage (no price)",
-      "unleaded": 177.9,
+      "unleaded": null,
       "diesel": null,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "25/Jun",
+      "date": "",
       "lat": 49.43403,
       "lng": -2.57827,
       "facebook": ""
@@ -353,8 +339,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.5,
-    "diesel": 181.1
+    "unleaded": 169.9,
+    "diesel": 180.8
   },
   "brent_crude": {
     "high": 130.59,
@@ -362,7 +348,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 79.55,
-    "today": 73.29
+    "today": 75.84
   },
   "heating_oil": {
     "suppliers": [
