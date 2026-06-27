@@ -1,5 +1,5 @@
 {
-  "updated": "27/Jun/2026",
+  "updated": "20/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -24,7 +24,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -38,7 +38,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.47907,
       "lng": -2.52142,
       "facebook": ""
@@ -52,7 +52,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
       "facebook": ""
@@ -66,7 +66,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.48753,
       "lng": -2.52956,
       "facebook": ""
@@ -80,7 +80,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -94,7 +94,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.48621,
       "lng": -2.56486,
       "facebook": ""
@@ -108,7 +108,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -122,7 +122,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -136,7 +136,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4572646,
       "lng": -2.6242246,
       "facebook": ""
@@ -157,16 +157,30 @@
     },
     {
       "name": "St Martins Garage",
-      "unleaded": 166.9,
-      "diesel": 177.9,
-      "super": 181.9,
+      "unleaded": 167.9,
+      "diesel": 178.9,
+      "super": 182.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "27/Jun",
+      "date": "18/Jun",
       "lat": 49.4368394,
       "lng": -2.5540839,
+      "facebook": ""
+    },
+    {
+      "name": "Whiteway Motors",
+      "unleaded": 169.5,
+      "diesel": 180,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": 91,
+      "notes": "GPD, Prize draw entry 2x£50 fuel",
+      "date": "21/Jun",
+      "lat": 49.4964766,
+      "lng": -2.5163108,
       "facebook": ""
     },
     {
@@ -178,21 +192,21 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "27/Jun",
+      "date": "17/June",
       "lat": 49.4462445,
       "lng": -2.55357,
       "facebook": ""
     },
     {
       "name": "Granada Motors",
-      "unleaded": 174.9,
-      "diesel": 185.9,
+      "unleaded": 175.9,
+      "diesel": 186.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": 152.9,
+      "df_diesel": 151.9,
       "notes": "4p off with Rubis Card",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4867,
       "lng": -2.51968,
       "facebook": ""
@@ -206,7 +220,7 @@
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4726415,
       "lng": -2.5841675,
       "facebook": ""
@@ -262,7 +276,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
@@ -276,7 +290,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
@@ -290,21 +304,21 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "27/Jun",
+      "date": "21/Jun",
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
     },
     {
       "name": "Forest Road Garage (no price)",
-      "unleaded": null,
+      "unleaded": 177.9,
       "diesel": null,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "25/Jun",
       "lat": 49.43403,
       "lng": -2.57827,
       "facebook": ""
@@ -339,8 +353,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.1,
-    "diesel": 181
+    "unleaded": 170.5,
+    "diesel": 181.1
   },
   "brent_crude": {
     "high": 130.59,
