@@ -66,7 +66,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "29/Jun",
+      "date": "28/Jun",
       "lat": 49.48753,
       "lng": -2.52956,
       "facebook": ""
@@ -150,7 +150,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "18/Jun",
+      "date": "29/Jun",
       "lat": 49.4582297,
       "lng": -2.5456378,
       "facebook": ""
@@ -199,14 +199,14 @@
     },
     {
       "name": "Granada Motors",
-      "unleaded": 174.9,
-      "diesel": 185.9,
+      "unleaded": 175.9,
+      "diesel": 186.9,
       "super": null,
-      "marine": 151.9,
+      "marine": null,
       "bio_diesel": null,
-      "df_diesel": 99.9,
+      "df_diesel": 151.9,
       "notes": "4p off with Rubis Card",
-      "date": "28/Jun",
+      "date": "21/Jun",
       "lat": 49.4867,
       "lng": -2.51968,
       "facebook": ""
@@ -311,14 +311,14 @@
     },
     {
       "name": "Forest Road Garage (no price)",
-      "unleaded": 177.9,
+      "unleaded": null,
       "diesel": null,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "28/Jun",
+      "date": "",
       "lat": 49.43403,
       "lng": -2.57827,
       "facebook": ""
@@ -353,8 +353,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.4,
-    "diesel": 180.9
+    "unleaded": 170.1,
+    "diesel": 181
   },
   "brent_crude": {
     "high": 130.59,
@@ -362,7 +362,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 77.9,
-    "today": 72.98
+    "today": 73.83
   },
   "heating_oil": {
     "suppliers": [
