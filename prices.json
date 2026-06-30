@@ -1,44 +1,44 @@
 {
-  "updated": "29/Jun/2026",
+  "updated": "30/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
     },
     {
       "name": "Northern Motor Works",
-      "unleaded": 168.9,
-      "diesel": 178.9,
+      "unleaded": 169.9,
+      "diesel": 179.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "29/Jun",
+      "date": "21/Jun",
       "lat": 49.47907,
       "lng": -2.52142,
       "facebook": ""
@@ -59,14 +59,14 @@
     },
     {
       "name": "Braye Road Garage",
-      "unleaded": 168.9,
-      "diesel": 178.9,
+      "unleaded": 169.9,
+      "diesel": 179.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "28/Jun",
+      "date": "21/Jun",
       "lat": 49.48753,
       "lng": -2.52956,
       "facebook": ""
@@ -150,7 +150,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "29/Jun",
+      "date": "18/Jun",
       "lat": 49.4582297,
       "lng": -2.5456378,
       "facebook": ""
@@ -269,42 +269,42 @@
     },
     {
       "name": "Co-Op St Martin",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
@@ -353,16 +353,16 @@
     }
   ],
   "average": {
-    "unleaded": 170.1,
-    "diesel": 181
+    "unleaded": 169.9,
+    "diesel": 180.8
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 77.9,
-    "today": 73.83
+    "last_week": 77.08,
+    "today": 73.51
   },
   "heating_oil": {
     "suppliers": [
