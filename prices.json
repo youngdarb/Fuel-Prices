@@ -3,28 +3,28 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -254,57 +254,43 @@
       "facebook": ""
     },
     {
-      "name": "QEII Marina",
-      "unleaded": null,
-      "diesel": null,
-      "super": null,
-      "marine": 151,
-      "bio_diesel": null,
-      "df_diesel": 105,
-      "notes": "",
-      "date": "21/Jun",
-      "lat": 49.4613,
-      "lng": -2.53055,
-      "facebook": ""
-    },
-    {
       "name": "Co-Op St Martin",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
@@ -353,8 +339,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.4,
-    "diesel": 180.9
+    "unleaded": 170.2,
+    "diesel": 180.7
   },
   "brent_crude": {
     "high": 130.59,
