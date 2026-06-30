@@ -1,5 +1,5 @@
 {
-  "updated": "30/Jun/2026",
+  "updated": "20/Jun/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -45,16 +45,30 @@
     },
     {
       "name": "Camp du Roi Fuel Express",
-      "unleaded": 168.9,
-      "diesel": 178.9,
-      "super": 181.9,
+      "unleaded": 169.9,
+      "diesel": 179.9,
+      "super": null,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "30/Jun",
+      "date": "21/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
+      "facebook": ""
+    },
+    {
+      "name": "Braye Road Garage",
+      "unleaded": 169.9,
+      "diesel": 179.9,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "CIFL OWNED",
+      "date": "21/Jun",
+      "lat": 49.48753,
+      "lng": -2.52956,
       "facebook": ""
     },
     {
@@ -87,28 +101,28 @@
     },
     {
       "name": "Landes du Marché",
-      "unleaded": 171.9,
-      "diesel": 181.9,
+      "unleaded": 169.9,
+      "diesel": 179.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "30/Jun",
+      "date": "21/Jun",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
     },
     {
       "name": "Perelle Garage",
-      "unleaded": 171.9,
-      "diesel": 181.9,
+      "unleaded": 169.9,
+      "diesel": 179.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "30/Jun",
+      "date": "21/Jun",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -164,7 +178,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "30/Jun",
+      "date": "21/Jun",
       "lat": 49.4964766,
       "lng": -2.5163108,
       "facebook": ""
@@ -297,14 +311,14 @@
     },
     {
       "name": "Forest Road Garage (no price)",
-      "unleaded": null,
+      "unleaded": 177.9,
       "diesel": null,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "28/Jun",
       "lat": 49.43403,
       "lng": -2.57827,
       "facebook": ""
@@ -339,8 +353,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.4,
-    "diesel": 181.3
+    "unleaded": 170.5,
+    "diesel": 181.1
   },
   "brent_crude": {
     "high": 130.59,
