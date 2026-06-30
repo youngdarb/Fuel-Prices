@@ -45,30 +45,16 @@
     },
     {
       "name": "Camp du Roi Fuel Express",
-      "unleaded": 169.9,
-      "diesel": 179.9,
-      "super": null,
+      "unleaded": 168.9,
+      "diesel": 178.9,
+      "super": 181.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4767776,
       "lng": -2.5611685,
-      "facebook": ""
-    },
-    {
-      "name": "Braye Road Garage",
-      "unleaded": 169.9,
-      "diesel": 179.9,
-      "super": null,
-      "marine": null,
-      "bio_diesel": null,
-      "df_diesel": null,
-      "notes": "CIFL OWNED",
-      "date": "21/Jun",
-      "lat": 49.48753,
-      "lng": -2.52956,
       "facebook": ""
     },
     {
@@ -178,7 +164,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "21/Jun",
+      "date": "30/Jun",
       "lat": 49.4964766,
       "lng": -2.5163108,
       "facebook": ""
