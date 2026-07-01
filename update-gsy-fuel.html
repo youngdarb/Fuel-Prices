@@ -668,7 +668,7 @@ function removeAnn(i) {
 // ── Init ──────────────────────────────────────────────────
 async function init() {
   try {
-    const res = await fetch('prices.json?' + Date.now());
+    const res = await fetch('https://raw.githubusercontent.com/youngdarb/Fuel-Prices/main/prices.json?' + Date.now());
     currentData = await res.json();
   } catch(e) {
     currentData = { updated:'', stations:[], average:{}, brent_crude:{}, heating_oil:{suppliers:[]}, duty:{}, footer_notes:[], announcements:[] };
