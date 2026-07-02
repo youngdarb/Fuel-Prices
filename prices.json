@@ -1,5 +1,5 @@
 {
-  "updated": "01/Jul/2026",
+  "updated": "02/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -157,14 +157,14 @@
     },
     {
       "name": "St Martins Garage",
-      "unleaded": 167.9,
-      "diesel": 178.9,
+      "unleaded": 166.9,
+      "diesel": 177.9,
       "super": 182.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "18/Jun",
+      "date": "1/Jul",
       "lat": 49.4368394,
       "lng": -2.5540839,
       "facebook": ""
@@ -350,6 +350,20 @@
       "lat": 49.49716,
       "lng": -2.52048,
       "facebook": ""
+    },
+    {
+      "name": "GPD Fuel Pontoon SS",
+      "unleaded": null,
+      "diesel": null,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": 90.7,
+      "notes": "",
+      "date": "02/Jul",
+      "lat": 49.48242,
+      "lng": -2.51341,
+      "facebook": ""
     }
   ],
   "average": {
@@ -361,8 +375,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 73.74,
-    "today": 70.96
+    "last_week": 75.26,
+    "today": 70.68
   },
   "heating_oil": {
     "suppliers": [
@@ -392,9 +406,9 @@
       },
       {
         "name": "GPD (from 500L)",
-        "price_500l": 118.29,
-        "price_700l": 118.29,
-        "price_900l": 118.29,
+        "price_500l": 118.249,
+        "price_700l": 118.249,
+        "price_900l": 118.49,
         "tel": "",
         "notes": ""
       }
