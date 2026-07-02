@@ -3,7 +3,7 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 166.8,
+      "unleaded": 166.9,
       "diesel": 177.9,
       "super": null,
       "marine": null,
@@ -362,7 +362,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 73.74,
-    "today": 71.9
+    "today": 70.96
   },
   "heating_oil": {
     "suppliers": [
