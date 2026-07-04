@@ -3,7 +3,7 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 166.8,
+      "unleaded": 166.9,
       "diesel": 177.9,
       "super": null,
       "marine": null,
@@ -11,6 +11,7 @@
       "df_diesel": null,
       "notes": "Rubis supplied",
       "date": "2/July",
+      "group": null,
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -25,6 +26,7 @@
       "df_diesel": null,
       "notes": "Rubis supplied",
       "date": "2/July",
+      "group": null,
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -39,6 +41,7 @@
       "df_diesel": null,
       "notes": "CIFL",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
       "facebook": ""
@@ -53,6 +56,7 @@
       "df_diesel": null,
       "notes": "CIFL MANAGED",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4767776,
       "lng": -2.5611685,
       "facebook": ""
@@ -67,6 +71,7 @@
       "df_diesel": null,
       "notes": "CIFL OWNED",
       "date": "2/Jul",
+      "group": null,
       "lat": 49.48753,
       "lng": -2.52956,
       "facebook": ""
@@ -81,6 +86,7 @@
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
       "date": "2/Jul",
+      "group": null,
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -95,6 +101,7 @@
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
       "date": "2/Jul",
+      "group": null,
       "lat": 49.48621,
       "lng": -2.56486,
       "facebook": ""
@@ -109,6 +116,7 @@
       "df_diesel": null,
       "notes": "Discount card",
       "date": "2/July",
+      "group": null,
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -123,6 +131,7 @@
       "df_diesel": null,
       "notes": "Discount card",
       "date": "2/July",
+      "group": null,
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -137,6 +146,7 @@
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
       "date": "2/Jul",
+      "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
       "facebook": ""
@@ -151,6 +161,7 @@
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
       "facebook": ""
@@ -165,6 +176,7 @@
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4368394,
       "lng": -2.5540839,
       "facebook": ""
@@ -179,6 +191,7 @@
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
       "facebook": ""
@@ -193,6 +206,7 @@
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
       "date": "30/Jun",
+      "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
       "facebook": ""
@@ -207,6 +221,7 @@
       "df_diesel": 99.9,
       "notes": "4p off with Rubis Card",
       "date": "02/Jul",
+      "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
       "facebook": ""
@@ -221,6 +236,7 @@
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4726415,
       "lng": -2.5841675,
       "facebook": ""
@@ -235,6 +251,7 @@
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4863326,
       "lng": -2.520071,
       "facebook": ""
@@ -249,6 +266,7 @@
       "df_diesel": 107,
       "notes": "Bulk rates available",
       "date": "21/Jun",
+      "group": null,
       "lat": 49.45398,
       "lng": -2.53,
       "facebook": ""
@@ -263,6 +281,7 @@
       "df_diesel": 105,
       "notes": "",
       "date": "21/Jun",
+      "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
       "facebook": ""
@@ -277,6 +296,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "1/Jul",
+      "group": null,
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
@@ -291,6 +311,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "1/July",
+      "group": null,
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
@@ -305,6 +326,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "1/July",
+      "group": null,
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
@@ -319,6 +341,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "",
+      "group": null,
       "lat": 49.43403,
       "lng": -2.57827,
       "facebook": ""
@@ -333,6 +356,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "",
+      "group": null,
       "lat": 49.44145,
       "lng": -2.62988,
       "facebook": ""
@@ -347,6 +371,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "",
+      "group": null,
       "lat": 49.49716,
       "lng": -2.52048,
       "facebook": ""
@@ -361,6 +386,7 @@
       "df_diesel": 90.7,
       "notes": "",
       "date": "02/Jul",
+      "group": null,
       "lat": 49.48242,
       "lng": -2.51341,
       "facebook": ""
