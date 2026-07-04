@@ -39,7 +39,7 @@ exports.handler = async function (event) {
   }
 
   try {
-    const { secret, data } = JSON.parse(event.body);
+    const { secret, data, action } = JSON.parse(event.body);
 
     // Verify against the admin password hash stored in env
     if (!secret || secret !== process.env.ADMIN_HASH) {
@@ -49,6 +49,14 @@ exports.handler = async function (event) {
     const token = process.env.GH_TOKEN;
     if (!token) {
       return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: 'GH_TOKEN not configured' }) };
+    }
+
+    // Fetch the live prices.json via the GitHub API — never cached,
+    // unlike raw.githubusercontent.com which serves stale data for up to 5 minutes
+    if (action === 'get') {
+      const { content } = await ghGet(token, 'prices.json');
+      const json = Buffer.from(content.replace(/\n/g, ''), 'base64').toString('utf8');
+      return { statusCode: 200, headers: corsHeaders, body: json };
     }
 
     const now   = new Date();

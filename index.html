@@ -153,6 +153,12 @@
   .dash { color: var(--line); }
   .avg-row td { background: var(--avg-bg); font-weight: 700; font-style: italic; border-top: 2px solid #d4c97a !important; }
   .row-highlight td { background: #e8f5ee !important; }
+  .group-header { cursor: pointer; background: #f4f7f5; }
+  .group-header:hover td { background: #eaf2ee; }
+  .group-header td { font-weight: 700; }
+  .group-toggle { display: inline-block; width: 14px; color: var(--green); }
+  .group-badge { display: inline-block; font-size: 0.72rem; font-weight: 600; background: #d6f0e2; color: var(--green); border-radius: 10px; padding: 1px 7px; margin-left: 6px; vertical-align: middle; }
+  .group-child td { background: #fafcfa; }
 
   /* Brent crude */
   .brent-card {
@@ -579,19 +585,68 @@ async function load() {
   const minB = Math.min(...stationData.filter(s => s.bio_diesel > 0).map(s => s.bio_diesel));
 
   const tbody = document.getElementById('station-rows');
-  tbody.innerHTML = stationData.map((s, i) => `
-    <tr data-idx="${i}" onclick="flyToStation(${i})">
-      <td class="station-name">${s.name}</td>
-      <td class="num">${p(s.unleaded,   s.unleaded   === minU)}</td>
-      <td class="num">${p(s.diesel,     s.diesel     === minD)}</td>
-      <td class="num">${p(s.super,      s.super      === minS)}</td>
-      <td class="num">${p(s.marine,     false)}</td>
-      <td class="num">${p(s.bio_diesel, s.bio_diesel === minB)}</td>
-      <td class="num">${p(s.df_diesel,  false)}</td>
-      <td class="notes-col">${s.notes || ''}</td>
-      <td class="date-col">${s.date || ''}</td>
-    </tr>
-  `).join('') + (data.average ? `
+  // Build rows, collapsing grouped stations
+  const seenGroups = {};
+  const rows = [];
+  stationData.forEach((s, i) => {
+    const g = s.group ? s.group.toLowerCase() : null;
+    if (g) {
+      if (seenGroups[g] === undefined) {
+        seenGroups[g] = rows.length;
+        // Representative row for the group — shows shared price
+        rows.push({ type: 'group', group: g, stations: [{ s, i }] });
+      } else {
+        rows[seenGroups[g]].stations.push({ s, i });
+      }
+    } else {
+      rows.push({ type: 'single', s, i });
+    }
+  });
+
+  tbody.innerHTML = rows.map(row => {
+    if (row.type === 'single') {
+      const s = row.s; const i = row.i;
+      return `<tr data-idx="${i}" onclick="flyToStation(${i})">
+        <td class="station-name">${s.name}</td>
+        <td class="num">${p(s.unleaded,   s.unleaded   === minU)}</td>
+        <td class="num">${p(s.diesel,     s.diesel     === minD)}</td>
+        <td class="num">${p(s.super,      s.super      === minS)}</td>
+        <td class="num">${p(s.marine,     false)}</td>
+        <td class="num">${p(s.bio_diesel, s.bio_diesel === minB)}</td>
+        <td class="num">${p(s.df_diesel,  false)}</td>
+        <td class="notes-col">${s.notes || ''}</td>
+        <td class="date-col">${s.date || ''}</td>
+      </tr>`;
+    } else {
+      // Group row: show first station's prices, with expand toggle
+      const rep = row.stations[0].s;
+      const gid = 'grp-' + row.group;
+      const count = row.stations.length;
+      const subRows = row.stations.map(({s, i}) => `
+        <tr class="group-child" data-group="${row.group}" data-idx="${i}" onclick="flyToStation(${i})" style="display:none">
+          <td class="station-name" style="padding-left:28px;color:#5d6b64">${s.name}</td>
+          <td class="num">${p(s.unleaded,   s.unleaded   === minU)}</td>
+          <td class="num">${p(s.diesel,     s.diesel     === minD)}</td>
+          <td class="num">${p(s.super,      s.super      === minS)}</td>
+          <td class="num">${p(s.marine,     false)}</td>
+          <td class="num">${p(s.bio_diesel, s.bio_diesel === minB)}</td>
+          <td class="num">${p(s.df_diesel,  false)}</td>
+          <td class="notes-col">${s.notes || ''}</td>
+          <td class="date-col">${s.date || ''}</td>
+        </tr>`).join('');
+      return `<tr class="group-header" onclick="toggleGroup('${row.group}', this)">
+        <td class="station-name"><span class="group-toggle">▸</span> ${row.group.charAt(0).toUpperCase()+row.group.slice(1)} <span class="group-badge">${count} sites</span></td>
+        <td class="num">${p(rep.unleaded,   rep.unleaded   === minU)}</td>
+        <td class="num">${p(rep.diesel,     rep.diesel     === minD)}</td>
+        <td class="num">${p(rep.super,      rep.super      === minS)}</td>
+        <td class="num">${p(rep.marine,     false)}</td>
+        <td class="num">${p(rep.bio_diesel, rep.bio_diesel === minB)}</td>
+        <td class="num">${p(rep.df_diesel,  false)}</td>
+        <td class="notes-col">${rep.notes || ''}</td>
+        <td class="date-col">${rep.date || ''}</td>
+      </tr>${subRows}`;
+    }
+  }).join('') + (data.average ? `
     <tr class="avg-row">
       <td class="station-name">AVERAGE GSY PRICE</td>
       <td class="num">${data.average.unleaded ? data.average.unleaded.toFixed(1) : '—'}</td>
@@ -804,6 +859,14 @@ function dismissAnn(id) {
   sessionStorage.setItem('ann_dismissed', JSON.stringify(dismissed));
   const el = document.getElementById('ann-' + id);
   if (el) el.remove();
+}
+
+function toggleGroup(group, headerRow) {
+  const children = document.querySelectorAll(`.group-child[data-group="${group}"]`);
+  const toggle = headerRow.querySelector('.group-toggle');
+  const open = children[0].style.display === 'none';
+  children.forEach(r => r.style.display = open ? '' : 'none');
+  toggle.textContent = open ? '▾' : '▸';
 }
 
 function flyToStation(idx) {

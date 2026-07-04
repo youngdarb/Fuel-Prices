@@ -666,12 +666,24 @@ function removeAnn(i) {
 }
 
 // ── Init ──────────────────────────────────────────────────
+let loadedOk = false;
 async function init() {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/youngdarb/Fuel-Prices/main/prices.json?' + Date.now());
+    // Load via the serverless function (GitHub API, never cached).
+    // raw.githubusercontent.com serves stale data for up to 5 minutes,
+    // which caused published prices to appear "reset" on refresh.
+    const secret = sessionStorage.getItem('fuel_admin_hash');
+    const res = await fetch('/.netlify/functions/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ secret, action: 'get' })
+    });
+    if (!res.ok) throw new Error('load failed');
     currentData = await res.json();
+    loadedOk = true;
   } catch(e) {
     currentData = { updated:'', stations:[], average:{}, brent_crude:{}, heating_oil:{suppliers:[]}, duty:{}, footer_notes:[], announcements:[] };
+    showToast('⚠ Could not load current prices — publishing is disabled. Refresh to retry.', '#c0392b');
   }
   currentAnnouncements = currentData.announcements || [];
   renderAnnList();
@@ -752,9 +764,17 @@ function addStation(s = {}) {
         <label>Date</label>
         <input type="text" class="s-date" value="${esc(s.date||'')}" placeholder="02/Jun">
       </div>
+      <div class="extra-field">
+        <label>Group <span style="font-weight:400;color:#999;font-size:0.78rem">(e.g. coop)</span></label>
+        <input type="text" class="s-group" value="${esc(s.group||'')}" placeholder="—">
+      </div>
       <div class="extra-field wide">
         <label>Notes / Offers</label>
         <input type="text" class="s-notes" value="${esc(s.notes||'')}" placeholder="e.g. 2p off with loyalty card">
+      </div>
+      <div class="extra-field wide" style="align-items:center;gap:8px">
+        <button type="button" onclick="applyGroupPrice(this)" style="background:var(--green);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:0.82rem;font-weight:700;cursor:pointer">Apply prices to whole group</button>
+        <span style="font-size:0.78rem;color:#999">Sets unleaded &amp; diesel on all stations with the same group name</span>
       </div>
     </div>
     <span class="adv-toggle" onclick="toggleAdv(this)">▸ Map pin coordinates (advanced)</span>
@@ -781,6 +801,24 @@ function toggleExtra(btn) {
   const extra = btn.closest('.station-row').querySelector('.station-extra');
   extra.classList.toggle('open');
   btn.classList.toggle('active');
+}
+
+function applyGroupPrice(btn) {
+  const row = btn.closest('.station-row');
+  const group = row.querySelector('.s-group').value.trim().toLowerCase();
+  if (!group) { alert('Set a group name on this station first.'); return; }
+  const ul = row.querySelector('.s-unleaded').value;
+  const ds = row.querySelector('.s-diesel').value;
+  let count = 0;
+  document.querySelectorAll('.station-row').forEach(r => {
+    if (r.querySelector('.s-group').value.trim().toLowerCase() === group) {
+      r.querySelector('.s-unleaded').value = ul;
+      r.querySelector('.s-diesel').value = ds;
+      count++;
+    }
+  });
+  updateAverages();
+  showToast(`Applied to ${count} station${count !== 1 ? 's' : ''} in group "${group}"`, '#27ae60');
 }
 
 function toggleAdv(span) {
@@ -840,6 +878,7 @@ function collectData() {
       df_diesel:  numOrNull(row.querySelector('.s-df').value),
       notes:      row.querySelector('.s-notes').value.trim(),
       date:       row.querySelector('.s-date').value.trim(),
+      group:      row.querySelector('.s-group').value.trim().toLowerCase() || null,
       lat:        numOrNull(row.querySelector('.s-lat').value),
       lng:        numOrNull(row.querySelector('.s-lng').value),
       facebook:   ''
@@ -896,6 +935,7 @@ const FILE  = 'prices.json';
 async function publishLive() {
   const secret = sessionStorage.getItem('fuel_admin_hash');
   if (!secret) { showToast('Session expired — please log in again.', '#e67e22'); return; }
+  if (!loadedOk) { showToast('✗ Current prices never loaded — publishing blocked to avoid wiping data. Refresh the page.', '#c0392b'); return; }
 
   const btn = document.getElementById('publish-btn');
   const sub = document.getElementById('save-sub');
@@ -959,7 +999,9 @@ async function fetchLiveBrent() {
 function numOrNull(v) { const n = parseFloat(v); return isNaN(n) ? null : n; }
 function esc(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
-init();
+// init() needs the session hash to authenticate the load —
+// on a fresh device it runs after login (see checkPassword), not here
+if (sessionStorage.getItem('fuel_admin_hash')) init();
 </script>
 
 <!-- Reports queue -->
@@ -1056,6 +1098,7 @@ async function checkPassword() {
     sessionStorage.setItem('fuel_admin_auth', '1');
     sessionStorage.setItem('fuel_admin_hash', hash);
     document.getElementById('lock-screen').classList.add('hidden');
+    init();
     loadReports();
   } else {
     document.getElementById('lock-error').textContent = 'Incorrect password — please try again.';
@@ -1073,9 +1116,11 @@ async function sha256(msg) {
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
 }
 
-if (sessionStorage.getItem('fuel_admin_auth') === '1') {
+if (sessionStorage.getItem('fuel_admin_auth') === '1' && sessionStorage.getItem('fuel_admin_hash')) {
   document.getElementById('lock-screen').classList.add('hidden');
   document.addEventListener('DOMContentLoaded', loadReports);
+} else {
+  sessionStorage.removeItem('fuel_admin_auth');
 }
 </script>
 </body>
