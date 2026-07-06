@@ -332,7 +332,7 @@
       "facebook": ""
     },
     {
-      "name": "Forest Road Garage (no price)",
+      "name": "Forest Road Garage (no price displayed)",
       "unleaded": 175.9,
       "diesel": 183.9,
       "super": null,
@@ -347,7 +347,7 @@
       "facebook": ""
     },
     {
-      "name": "Venture Garage (No price)",
+      "name": "Venture Garage (No price displayed)",
       "unleaded": null,
       "diesel": null,
       "super": null,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 71.99,
-    "today": 71.68
+    "today": 72.02
   },
   "heating_oil": {
     "suppliers": [
