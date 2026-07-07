@@ -1,5 +1,5 @@
 {
-  "updated": "04/Jul/2026",
+  "updated": "07/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "4/July",
+      "date": "7/July",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -401,8 +401,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 71.99,
-    "today": 72.02
+    "last_week": 73.15,
+    "today": 72.83
   },
   "heating_oil": {
     "suppliers": [
@@ -486,5 +486,12 @@
     "*E10/B7 bio-fuels sold by ATF, please check suitability for older & high performance vehicles",
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
-  "announcements": []
+  "announcements": [
+    {
+      "id": 1783413161370,
+      "message": "Rubis forecourts due a 1ppl drop on both unleaded & diesel this week",
+      "start": "2026-07-07",
+      "end": "2026-07-12"
+    }
+  ]
 }
