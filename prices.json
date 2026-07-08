@@ -401,8 +401,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 73.15,
-    "today": 72.83
+    "last_week": 72.92,
+    "today": 78.5
   },
   "heating_oil": {
     "suppliers": [
@@ -432,9 +432,9 @@
       },
       {
         "name": "GPD (from 500L)",
-        "price_500l": 118.49,
-        "price_700l": 118.49,
-        "price_900l": 118.49,
+        "price_500l": 114.9,
+        "price_700l": 114.9,
+        "price_900l": 114.9,
         "tel": "",
         "notes": ""
       }
