@@ -1,5 +1,5 @@
 {
-  "updated": "07/Jul/2026",
+  "updated": "08/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 72.92,
-    "today": 78.5
+    "today": 78.16
   },
   "heating_oil": {
     "suppliers": [
