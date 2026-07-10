@@ -1,5 +1,5 @@
 {
-  "updated": "08/Jul/2026",
+  "updated": "10/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -154,13 +154,13 @@
     {
       "name": "Doyle Motors",
       "unleaded": 170.9,
-      "diesel": 181.9,
+      "diesel": 182.9,
       "super": 183.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "6/July",
+      "date": "10/July",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -394,15 +394,15 @@
   ],
   "average": {
     "unleaded": 169.6,
-    "diesel": 180
+    "diesel": 180.1
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 72.92,
-    "today": 78.16
+    "last_week": 71.8,
+    "today": 75.7
   },
   "heating_oil": {
     "suppliers": [
@@ -492,6 +492,12 @@
       "message": "Rubis forecourts due a 1ppl drop on both unleaded & diesel this week",
       "start": "2026-07-07",
       "end": "2026-07-12"
+    },
+    {
+      "id": 1783700290768,
+      "message": "A 4ppl drop from today for GPD Heating Oil",
+      "start": "2026-07-08",
+      "end": "2026-07-11"
     }
   ]
 }
