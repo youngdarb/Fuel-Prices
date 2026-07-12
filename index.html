@@ -11,6 +11,12 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gsyfuel.co.uk/">
 <link rel="canonical" href="https://gsyfuel.co.uk/">
+<meta name="theme-color" content="#1a3a2a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9B%BD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://raw.githubusercontent.com">
+<link rel="preconnect" href="https://tile.openstreetmap.org">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -23,10 +29,10 @@
 
 <!-- Leaflet map -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <!-- Chart.js for price history -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5807886553089046" crossorigin="anonymous"></script>
@@ -813,8 +819,9 @@ function refreshMapPins() {
       }));
     } else {
       const val = mapFuel === 'diesel' ? s.diesel : s.unleaded;
-      // No price for this fuel — hide the pin (no more N/A pins)
-      if (other || !val) { markers[i].setOpacity(0); return; }
+      // Hide only when the station has no price for this fuel —
+      // stations selling super/marine alongside unleaded/diesel stay visible
+      if (!val) { markers[i].setOpacity(0); return; }
       markers[i].setOpacity(1);
       const isBest = mapFuel === 'diesel' ? s.diesel === minD : s.unleaded === minU;
       const pinColor = isBest
@@ -953,7 +960,12 @@ function p(val, best) {
   return best ? `<span class="best">${val.toFixed(1)}</span>` : val.toFixed(1);
 }
 
-load();
+// Leaflet/Chart.js are deferred; DOMContentLoaded fires after they execute
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', load);
+} else {
+  load();
+}
 
 // ── Price history ─────────────────────────────────────────
 let historyData = null;

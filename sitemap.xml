@@ -2,21 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gsyfuel.co.uk/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gsyfuel.co.uk/forecourts.html</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gsyfuel.co.uk/about.html</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gsyfuel.co.uk/privacy.html</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
