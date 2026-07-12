@@ -82,6 +82,13 @@
   .announcement .ann-text { flex: 1; }
   .announcement .ann-close { background: none; border: none; color: rgba(255,255,255,0.7); cursor: pointer; font-size: 1.1rem; flex-shrink: 0; padding: 0; line-height: 1; }
   .announcement .ann-close:hover { color: #fff; }
+  .ann-feed-link { font-size: 0.8rem; font-weight: 600; color: var(--muted); cursor: pointer; margin-bottom: 12px; user-select: none; }
+  .ann-feed-link:hover { color: var(--ink); }
+  .ann-feed { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 4px 16px; margin-bottom: 12px; }
+  .ann-feed-item { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .ann-feed-item:last-child { border-bottom: none; }
+  .ann-feed-date { font-size: 0.72rem; color: var(--muted); margin-bottom: 2px; }
+  .ann-feed-msg { font-size: 0.86rem; line-height: 1.5; }
 
   .admin-link { float: right; background: rgba(255,255,255,0.15); color: #fff; text-decoration: none; font-size: 0.8rem; font-weight: 600; border-radius: 8px; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); }
   .admin-link:hover { background: rgba(255,255,255,0.25); }
@@ -553,12 +560,23 @@ async function load() {
   });
   const dismissed = JSON.parse(sessionStorage.getItem('ann_dismissed') || '[]');
   const annEl = document.getElementById('announcements');
+  allAnnouncements = (data.announcements || []).slice().sort((a, b) => (b.id || 0) - (a.id || 0));
   annEl.innerHTML = active.filter(a => !dismissed.includes(a.id)).map(a => `
     <div class="announcement" id="ann-${a.id}">
       <span class="ann-icon">📢</span>
       <span class="ann-text">${a.message}</span>
       <button class="ann-close" onclick="dismissAnn(${a.id})" aria-label="Dismiss">✕</button>
-    </div>`).join('');
+    </div>`).join('') + (allAnnouncements.length ? `
+    <div class="ann-feed-link" onclick="toggleAnnFeed()">📋 <span id="ann-feed-label">View recent announcements (${allAnnouncements.length})</span></div>
+    <div class="ann-feed" id="ann-feed" style="display:none">
+      ${allAnnouncements.map(a => {
+        const d = a.id ? new Date(a.id).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+        return `<div class="ann-feed-item">
+          <div class="ann-feed-date">${d}${a.start || a.end ? ` · shown ${a.start || '…'} to ${a.end || '…'}` : ''}</div>
+          <div class="ann-feed-msg">${a.message}</div>
+        </div>`;
+      }).join('')}
+    </div>` : '');
   stationData = (data.stations || []).slice().sort((a, b) => {
     const ul = (a.unleaded || Infinity) - (b.unleaded || Infinity);
     if (ul !== 0) return ul;
@@ -771,9 +789,10 @@ function refreshMapPins() {
         iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -34]
       }));
     } else {
-      if (other) { markers[i].setOpacity(0); return; }
-      markers[i].setOpacity(1);
       const val = mapFuel === 'diesel' ? s.diesel : s.unleaded;
+      // No price for this fuel — hide the pin (no more N/A pins)
+      if (other || !val) { markers[i].setOpacity(0); return; }
+      markers[i].setOpacity(1);
       const isBest = mapFuel === 'diesel' ? s.diesel === minD : s.unleaded === minU;
       const pinColor = isBest
         ? (mapFuel === 'diesel' ? '#1d4ed8' : '#1a7a48')
@@ -829,7 +848,9 @@ function initMap(stations) {
       .addTo(map)
       .bindPopup(buildPopup(s, minU, minD));
 
-    if (isOtherStation(s)) marker.setOpacity(0);
+    // Hide pins with no unleaded price on the default view —
+    // covers other-fuel stations AND stations with no prices at all
+    if (!s.unleaded) marker.setOpacity(0);
 
     marker.on('popupopen',  () => highlightRow(i));
     marker.on('popupclose', () => clearHighlight());
@@ -851,6 +872,16 @@ function buildPopup(s, minU, minD) {
     ).join('')}</div>
     ${s.notes ? `<div class="popup-notes">${s.notes}</div>` : ''}
     ${s.date  ? `<div class="popup-date">Updated: ${s.date}</div>` : ''}`;
+}
+
+let allAnnouncements = [];
+function toggleAnnFeed() {
+  const feed = document.getElementById('ann-feed');
+  const open = feed.style.display === 'none';
+  feed.style.display = open ? '' : 'none';
+  document.getElementById('ann-feed-label').textContent = open
+    ? 'Hide recent announcements'
+    : `View recent announcements (${allAnnouncements.length})`;
 }
 
 function dismissAnn(id) {
