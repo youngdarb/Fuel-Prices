@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /update-gsy-fuel.html
 
-Sitemap: https://gsyfuel.netlify.app/sitemap.xml
+Sitemap: https://gsyfuel.co.uk/sitemap.xml
