@@ -228,14 +228,14 @@
     },
     {
       "name": "Cobo Service Station",
-      "unleaded": 172.9,
+      "unleaded": 170.9,
       "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "13/July",
+      "date": "14/July",
       "group": null,
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -243,14 +243,14 @@
     },
     {
       "name": "Vale Garage SS",
-      "unleaded": 172.9,
+      "unleaded": 170.9,
       "diesel": 182.9,
       "super": 210.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "13/July",
+      "date": "10/July",
       "group": null,
       "lat": 49.4863326,
       "lng": -2.520071,
@@ -393,7 +393,7 @@
     }
   ],
   "average": {
-    "unleaded": 169.6,
+    "unleaded": 169.4,
     "diesel": 180.1
   },
   "brent_crude": {
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 74.16,
-    "today": 86.83
+    "today": 83.62
   },
   "heating_oil": {
     "suppliers": [
