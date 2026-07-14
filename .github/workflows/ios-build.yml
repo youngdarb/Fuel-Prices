@@ -1,0 +1,40 @@
+name: iOS build
+
+# Manual trigger only — run from the GitHub Actions tab.
+# Unsigned build proves the project compiles. Once Apple Developer
+# enrolment is complete and signing secrets are added, the signed
+# upload steps below can be enabled.
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build (unsigned archive)
+        run: |
+          cd ios
+          xcodebuild -project pwa-shell.xcodeproj \
+            -scheme pwa-shell \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO \
+            archive -archivePath build/GSYFuel.xcarchive
+
+      - name: Upload archive artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GSYFuel-unsigned-archive
+          path: ios/build/GSYFuel.xcarchive
+          retention-days: 7
+
+  # ── Signed build + App Store upload ──────────────────────────
+  # Enabled once these repository secrets exist (Settings → Secrets → Actions):
+  #   APPSTORE_ISSUER_ID, APPSTORE_KEY_ID, APPSTORE_PRIVATE_KEY  (App Store Connect API key)
+  #   BUILD_CERTIFICATE_BASE64, P12_PASSWORD                      (Apple distribution certificate)
+  #   PROVISIONING_PROFILE_BASE64                                 (App Store provisioning profile)
+  # Ask Claude to wire this job up when the Apple Developer account is approved.

@@ -1,5 +1,6 @@
 # Block internal files from being served publicly
 /CLAUDE.md /404.html 404
+/ios/* /404.html 404
 
 # Consolidate all domains onto the primary — one canonical site for SEO
 https://gsyfuel.netlify.app/* https://gsyfuel.co.uk/:splat 301!
