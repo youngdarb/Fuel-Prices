@@ -1,0 +1,4 @@
+# Consolidate all domains onto the primary — one canonical site for SEO
+https://gsyfuel.netlify.app/* https://gsyfuel.co.uk/:splat 301!
+https://gsyfuel.com/* https://gsyfuel.co.uk/:splat 301!
+https://www.gsyfuel.com/* https://gsyfuel.co.uk/:splat 301!
