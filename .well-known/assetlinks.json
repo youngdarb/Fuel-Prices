@@ -2,7 +2,7 @@
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
         "namespace": "android_app",
-        "package_name": "uk.co.gsyfuel.twa",
-        "sha256_cert_fingerprints": ["B8:6F:F4:99:3B:62:9C:CF:FB:26:C9:0E:E6:A0:61:13:D3:23:F7:8E:18:42:DC:17:50:6F:A4:F3:50:51:F6:66"]
+        "package_name": "com.gsyfuelprices",
+        "sha256_cert_fingerprints": ["96:CC:81:0B:0E:BF:61:53:34:E7:02:50:5B:F1:8C:E1:DF:2D:84:AA:6B:D6:44:A7:4B:49:23:19:C3:A8:9B:01"]
       }
     }]
