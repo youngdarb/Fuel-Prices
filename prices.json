@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "10/July",
+      "date": "14/July",
       "group": null,
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -130,7 +130,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "10/July",
+      "date": "14/July",
       "group": null,
       "lat": 49.4587653,
       "lng": -2.6354694,
@@ -220,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": 99.9,
       "notes": "4p off with Rubis Card",
-      "date": "13/Jul",
+      "date": "14/July",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 74.16,
-    "today": 84.94
+    "today": 85.34
   },
   "heating_oil": {
     "suppliers": [
