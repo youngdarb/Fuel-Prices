@@ -6,8 +6,8 @@
 	<string>production</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>gsyfuel.co.uk</string>
-		<string>gsyfuel.co.uk</string>
+		<string>applinks:gsyfuel.co.uk</string>
+		<string>webcredentials:gsyfuel.co.uk</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

@@ -98,7 +98,7 @@
 	<true/>
 	<key>WKAppBoundDomains</key>
 	<array>
-		<string></string>
+		<string>gsyfuel.co.uk</string>
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
@@ -106,6 +106,5 @@
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	</array>
-	<key></key>
 </dict>
 </plist>
