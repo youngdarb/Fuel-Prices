@@ -479,8 +479,9 @@
       <h2 style="font-size:1.1rem;font-weight:800;margin:0 0 6px;color:#1a3a2a">Advertise on GSY Fuel Prices</h2>
       <p style="font-size:0.83rem;color:#5d6b64;margin:0 0 18px;line-height:1.5">We reach Guernsey drivers every week. Get in touch and we'll come back to you with rates and options.</p>
       <div id="advertise-form-view">
-        <form name="advertise-enquiry" data-netlify="true" method="POST" target="advertise-submit-frame" onsubmit="advertPending=true">
+        <form name="advertise-enquiry" data-netlify="true" netlify-honeypot="bot-field" method="POST" target="advertise-submit-frame" onsubmit="advertPending=true">
           <input type="hidden" name="form-name" value="advertise-enquiry">
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
           <div style="display:flex;flex-direction:column;gap:10px">
             <input name="name"    type="text"  placeholder="Your name"         required style="padding:10px 12px;border:1px solid #d8ded9;border-radius:8px;font-size:0.9rem;font-family:inherit">
             <input name="email"   type="email" placeholder="Email address"     required style="padding:10px 12px;border:1px solid #d8ded9;border-radius:8px;font-size:0.9rem;font-family:inherit">
