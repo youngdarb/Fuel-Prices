@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "10/July",
+      "date": "14/July",
       "group": null,
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -70,7 +70,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "10/July",
+      "date": "14/July",
       "group": null,
       "lat": 49.48753,
       "lng": -2.52956,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 74.16,
-    "today": 83.62
+    "today": 84.94
   },
   "heating_oil": {
     "suppliers": [
@@ -498,6 +498,12 @@
       "message": "A 4ppl drop from today for GPD Heating Oil",
       "start": "2026-07-08",
       "end": "2026-07-11"
+    },
+    {
+      "id": 1784049306255,
+      "message": "2ppl drop on unleaded this week, from Rubis CI",
+      "start": "2026-07-14",
+      "end": "2026-07-19"
     }
   ]
 }
