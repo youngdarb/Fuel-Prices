@@ -13,10 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install
+
       - name: Build (unsigned archive)
         run: |
           cd ios
-          xcodebuild -project pwa-shell.xcodeproj \
+          xcodebuild -workspace pwa-shell.xcworkspace \
             -scheme pwa-shell \
             -configuration Release \
             -destination 'generic/platform=iOS' \
