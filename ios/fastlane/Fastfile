@@ -1,0 +1,60 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build signed IPA and upload to TestFlight/App Store Connect"
+  lane :release do
+    api_key = app_store_connect_api_key(
+      key_id: ENV["APPSTORE_KEY_ID"],
+      issuer_id: ENV["APPSTORE_ISSUER_ID"],
+      key_content: ENV["APPSTORE_PRIVATE_KEY"]
+    )
+
+    # CI keychain for the signing certificate
+    create_keychain(
+      name: "ci",
+      password: "ci_password",
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600
+    )
+
+    # Distribution certificate (created if none exists) — no device required
+    cert(
+      api_key: api_key,
+      keychain_path: "~/Library/Keychains/ci-db",
+      keychain_password: "ci_password"
+    )
+
+    # App Store provisioning profile for our bundle id
+    sigh(
+      api_key: api_key,
+      app_identifier: "com.gsyfuelprices.ios",
+      force: true
+    )
+
+    # Switch the Xcode project to manual signing with that profile
+    update_code_signing_settings(
+      use_automatic_signing: false,
+      path: "pwa-shell.xcodeproj",
+      team_id: ENV["APPLE_TEAM_ID"],
+      code_sign_identity: "Apple Distribution",
+      profile_name: lane_context[SharedValues::SIGH_NAME],
+      targets: ["pwa-shell"]
+    )
+
+    build_app(
+      workspace: "pwa-shell.xcworkspace",
+      scheme: "pwa-shell",
+      configuration: "Release",
+      export_method: "app-store",
+      output_directory: "build",
+      output_name: "GSYFuel.ipa"
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      ipa: "build/GSYFuel.ipa",
+      skip_waiting_for_build_processing: true
+    )
+  end
+end
