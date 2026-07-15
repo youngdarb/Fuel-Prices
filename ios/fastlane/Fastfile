@@ -65,14 +65,8 @@ platform :ios do
       output_name: "GSYFuel.ipa"
     )
 
-    produce(
-      app_identifier: BUNDLE_ID,
-      app_name: "GSY Fuel Prices",
-      language: "en-GB",
-      sku: "gsyfuel",
-      skip_devcenter: true
-    )
-
+    # NOTE: the App Store Connect app record cannot be created via API —
+    # it must exist already (My Apps → + → New App, bundle id com.gsyfuelprices.ios)
     upload_to_testflight(
       api_key: api_key,
       ipa: "build/GSYFuel.ipa",
