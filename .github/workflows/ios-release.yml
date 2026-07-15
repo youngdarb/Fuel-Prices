@@ -35,6 +35,7 @@ jobs:
             -authenticationKeyIssuerID ${{ secrets.APPSTORE_ISSUER_ID }} \
             DEVELOPMENT_TEAM=${{ secrets.APPLE_TEAM_ID }} \
             CODE_SIGN_STYLE=Automatic \
+            CODE_SIGN_IDENTITY="Apple Distribution" \
             archive -archivePath build/GSYFuel.xcarchive
 
       - name: Export and upload to App Store Connect
