@@ -1,0 +1,63 @@
+name: iOS release (TestFlight/App Store)
+
+# Manual trigger — run from the Actions tab when you want to ship a build.
+# Uses Apple cloud signing: certificates and provisioning profiles are
+# created/managed automatically via the App Store Connect API key.
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install
+
+      - name: Write App Store Connect API key
+        run: |
+          mkdir -p ~/private_keys
+          echo "${{ secrets.APPSTORE_PRIVATE_KEY }}" > ~/private_keys/AuthKey_${{ secrets.APPSTORE_KEY_ID }}.p8
+
+      - name: Archive (signed, cloud-managed signing)
+        run: |
+          cd ios
+          xcodebuild -workspace pwa-shell.xcworkspace \
+            -scheme pwa-shell \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey_${{ secrets.APPSTORE_KEY_ID }}.p8 \
+            -authenticationKeyID ${{ secrets.APPSTORE_KEY_ID }} \
+            -authenticationKeyIssuerID ${{ secrets.APPSTORE_ISSUER_ID }} \
+            DEVELOPMENT_TEAM=${{ secrets.APPLE_TEAM_ID }} \
+            CODE_SIGN_STYLE=Automatic \
+            archive -archivePath build/GSYFuel.xcarchive
+
+      - name: Export and upload to App Store Connect
+        run: |
+          cd ios
+          cat > ExportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store-connect</string>
+            <key>destination</key>
+            <string>upload</string>
+            <key>teamID</key>
+            <string>${{ secrets.APPLE_TEAM_ID }}</string>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath build/GSYFuel.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey_${{ secrets.APPSTORE_KEY_ID }}.p8 \
+            -authenticationKeyID ${{ secrets.APPSTORE_KEY_ID }} \
+            -authenticationKeyIssuerID ${{ secrets.APPSTORE_ISSUER_ID }}
