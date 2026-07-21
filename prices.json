@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "10/July",
+      "date": "20/July",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "14/July",
+      "date": "20/July",
       "group": null,
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -70,7 +70,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "14/July",
+      "date": "20/July",
       "group": null,
       "lat": 49.48753,
       "lng": -2.52956,
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "20/July",
+      "date": "21/July",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -160,25 +160,10 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "14/July",
+      "date": "20/July",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
-      "facebook": ""
-    },
-    {
-      "name": "St Martins Garage",
-      "unleaded": 166.9,
-      "diesel": 178.9,
-      "super": 181.9,
-      "marine": null,
-      "bio_diesel": null,
-      "df_diesel": null,
-      "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "21/July",
-      "group": null,
-      "lat": 49.4368394,
-      "lng": -2.5540839,
       "facebook": ""
     },
     {
@@ -190,7 +175,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "14/July",
+      "date": "21/July",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -220,7 +205,7 @@
       "bio_diesel": null,
       "df_diesel": 99.9,
       "notes": "4p off with Rubis Card",
-      "date": "14/July",
+      "date": "19/July",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -235,7 +220,7 @@
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "14/July",
+      "date": "19/July",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -250,7 +235,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "14/July",
+      "date": "19/July",
       "group": "vc",
       "lat": 49.4863326,
       "lng": -2.520071,
@@ -393,8 +378,8 @@
     }
   ],
   "average": {
-    "unleaded": 170.1,
-    "diesel": 180.9
+    "unleaded": 170.3,
+    "diesel": 181
   },
   "brent_crude": {
     "high": 130.59,
@@ -402,7 +387,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 84.73,
-    "today": 88.85
+    "today": 90.42
   },
   "heating_oil": {
     "suppliers": [
