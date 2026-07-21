@@ -10,8 +10,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "20/July",
-      "group": null,
+      "date": "21/July",
+      "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
       "facebook": ""
@@ -25,8 +25,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "20/July",
-      "group": null,
+      "date": "21/July",
+      "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
       "facebook": ""
@@ -85,8 +85,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "14/July",
-      "group": null,
+      "date": "21/July",
+      "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
       "facebook": ""
@@ -100,8 +100,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "14/July",
-      "group": null,
+      "date": "21/July",
+      "group": "atf",
       "lat": 49.48621,
       "lng": -2.56486,
       "facebook": ""
@@ -115,8 +115,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "20/July",
-      "group": null,
+      "date": "21/July",
+      "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
       "facebook": ""
@@ -130,8 +130,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "20/July",
-      "group": null,
+      "date": "21/July",
+      "group": "ldm",
       "lat": 49.4587653,
       "lng": -2.6354694,
       "facebook": ""
@@ -236,7 +236,7 @@
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
       "date": "14/July",
-      "group": null,
+      "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
       "facebook": ""
@@ -251,7 +251,7 @@
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
       "date": "14/July",
-      "group": null,
+      "group": "vc",
       "lat": 49.4863326,
       "lng": -2.520071,
       "facebook": ""
@@ -296,7 +296,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "20/July",
-      "group": null,
+      "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
       "facebook": ""
@@ -310,8 +310,8 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "20/July",
-      "group": null,
+      "date": "21/July",
+      "group": "coop",
       "lat": 49.42976,
       "lng": -2.60102,
       "facebook": ""
@@ -326,7 +326,7 @@
       "df_diesel": null,
       "notes": "",
       "date": "20/July",
-      "group": null,
+      "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
       "facebook": ""
@@ -348,12 +348,12 @@
     },
     {
       "name": "Venture Garage (No price displayed)",
-      "unleaded": null,
-      "diesel": null,
+      "unleaded": 175.9,
+      "diesel": 183.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": null,
+      "df_diesel": 100,
       "notes": "",
       "date": "",
       "group": null,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 169.9,
-    "diesel": 180.6
+    "unleaded": 170.2,
+    "diesel": 180.8
   },
   "brent_crude": {
     "high": 130.59,
