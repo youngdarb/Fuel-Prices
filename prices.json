@@ -169,13 +169,13 @@
     {
       "name": "St Martins Garage",
       "unleaded": 166.9,
-      "diesel": 177.9,
+      "diesel": 178.9,
       "super": 181.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "14/July",
+      "date": "21/July",
       "group": null,
       "lat": 49.4368394,
       "lng": -2.5540839,
@@ -394,7 +394,7 @@
   ],
   "average": {
     "unleaded": 170.1,
-    "diesel": 180.8
+    "diesel": 180.9
   },
   "brent_crude": {
     "high": 130.59,
