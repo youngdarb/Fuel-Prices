@@ -375,11 +375,26 @@
       "lat": 49.48242,
       "lng": -2.51341,
       "facebook": ""
+    },
+    {
+      "name": "St Martins Garage",
+      "unleaded": 168.9,
+      "diesel": 179.9,
+      "super": 182.9,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "22/July",
+      "group": null,
+      "lat": null,
+      "lng": null,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 170.3,
-    "diesel": 181.1
+    "unleaded": 170.2,
+    "diesel": 181
   },
   "brent_crude": {
     "high": 130.59,
