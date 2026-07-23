@@ -387,8 +387,8 @@
       "notes": "",
       "date": "22/July",
       "group": null,
-      "lat": null,
-      "lng": null,
+      "lat": 49.43682,
+      "lng": -2.55421,
       "facebook": ""
     }
   ],
@@ -401,8 +401,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 84.95,
-    "today": 93.87
+    "last_week": 84.23,
+    "today": 95.91
   },
   "heating_oil": {
     "suppliers": [
