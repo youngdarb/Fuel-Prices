@@ -1,5 +1,5 @@
 {
-  "updated": "23/Jul/2026",
+  "updated": "25/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -377,7 +377,7 @@
       "facebook": ""
     },
     {
-      "name": "St Martins Garage",
+      "name": "St Martins Garage (CIFL)",
       "unleaded": 168.9,
       "diesel": 179.9,
       "super": 182.9,
@@ -401,8 +401,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 84.23,
-    "today": 100.76
+    "last_week": 88.1,
+    "today": 96.78
   },
   "heating_oil": {
     "suppliers": [
@@ -492,6 +492,12 @@
       "message": "Huge jump in Oil prices this week, thanks to the Great Orange one, nearly back at $100 a barrel. Look out for Co-Op & ATF price increases!",
       "start": "2026-07-23",
       "end": "2026-07-26"
+    },
+    {
+      "id": 1784958369011,
+      "message": "Co-Op have announced much higher fuel prices from Mon 27 July",
+      "start": "2026-07-25",
+      "end": "2026-07-27"
     }
   ]
 }
