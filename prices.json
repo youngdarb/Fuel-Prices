@@ -1,5 +1,5 @@
 {
-  "updated": "25/Jul/2026",
+  "updated": "27/Jul/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -48,14 +48,14 @@
     },
     {
       "name": "Camp du Roi Fuel Express",
-      "unleaded": 168.9,
-      "diesel": 179.9,
-      "super": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
+      "super": 183.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "22/July",
+      "date": "27/July",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "21/July",
+      "date": "27/July",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -175,7 +175,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "21/July",
+      "date": "27/July",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -190,7 +190,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "22/July",
+      "date": "25/July",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -220,7 +220,7 @@
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "21/July",
+      "date": "27/July",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -235,7 +235,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "21/July",
+      "date": "27/July",
       "group": "vc",
       "lat": 49.4863326,
       "lng": -2.520071,
@@ -250,7 +250,7 @@
       "bio_diesel": null,
       "df_diesel": 107,
       "notes": "Bulk rates available",
-      "date": "21/July",
+      "date": "27/July",
       "group": null,
       "lat": 49.45398,
       "lng": -2.53,
@@ -265,7 +265,7 @@
       "bio_diesel": null,
       "df_diesel": 105,
       "notes": "",
-      "date": "21/July",
+      "date": "27/July",
       "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
@@ -393,7 +393,7 @@
     }
   ],
   "average": {
-    "unleaded": 171.1,
+    "unleaded": 171.2,
     "diesel": 182.2
   },
   "brent_crude": {
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 89.22,
-    "today": 89.43
+    "today": 90.19
   },
   "heating_oil": {
     "suppliers": [
