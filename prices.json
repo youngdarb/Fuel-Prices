@@ -3,8 +3,8 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 168.9,
-      "diesel": 179.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -18,8 +18,8 @@
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 168.9,
-      "diesel": 179.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -78,14 +78,14 @@
     },
     {
       "name": "ATF Castel (Thompsons)",
-      "unleaded": 166.9,
-      "diesel": 177.9,
+      "unleaded": 168.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "25/July",
+      "date": "27/July",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -93,8 +93,8 @@
     },
     {
       "name": "ATF Barras Retail Centre",
-      "unleaded": 166.9,
-      "diesel": 177.9,
+      "unleaded": 168.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -273,14 +273,14 @@
     },
     {
       "name": "Co-Op St Martin",
-      "unleaded": 168.9,
-      "diesel": 179.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "20/July",
+      "date": "27/July",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -288,8 +288,8 @@
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 168.9,
-      "diesel": 179.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -303,8 +303,8 @@
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 168.9,
-      "diesel": 179.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -393,16 +393,16 @@
     }
   ],
   "average": {
-    "unleaded": 170.2,
-    "diesel": 181
+    "unleaded": 171.1,
+    "diesel": 182.2
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 88.1,
-    "today": 96.78
+    "last_week": 89.22,
+    "today": 89.43
   },
   "heating_oil": {
     "suppliers": [
