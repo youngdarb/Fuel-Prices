@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "21/July",
+      "date": "28/July",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -213,14 +213,14 @@
     },
     {
       "name": "Cobo Service Station",
-      "unleaded": 171.9,
-      "diesel": 183.9,
+      "unleaded": 170.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "27/July",
+      "date": "28/July",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -228,14 +228,14 @@
     },
     {
       "name": "Vale Garage SS",
-      "unleaded": 171.9,
-      "diesel": 183.9,
+      "unleaded": 170.9,
+      "diesel": 182.9,
       "super": 210.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "27/July",
+      "date": "28/July",
       "group": "vc",
       "lat": 49.4863326,
       "lng": -2.520071,
@@ -393,16 +393,16 @@
     }
   ],
   "average": {
-    "unleaded": 171.2,
-    "diesel": 182.2
+    "unleaded": 171.1,
+    "diesel": 182.1
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 89.22,
-    "today": 90.19
+    "last_week": 91.01,
+    "today": 86.56
   },
   "heating_oil": {
     "suppliers": [
