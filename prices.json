@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "21/July",
+      "date": "01/Aug",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -115,25 +115,10 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "27/July",
+      "date": "01/Aug",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
-      "facebook": ""
-    },
-    {
-      "name": "Perelle Garage",
-      "unleaded": 171.9,
-      "diesel": 181.9,
-      "super": null,
-      "marine": null,
-      "bio_diesel": null,
-      "df_diesel": null,
-      "notes": "Discount card",
-      "date": "21/July",
-      "group": "ldm",
-      "lat": 49.4587653,
-      "lng": -2.6354694,
       "facebook": ""
     },
     {
@@ -145,7 +130,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "30/July",
+      "date": "01/Aug",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -175,7 +160,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "27/July",
+      "date": "01/Aug",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -394,7 +379,7 @@
   ],
   "average": {
     "unleaded": 171.4,
-    "diesel": 182.5
+    "diesel": 182.6
   },
   "brent_crude": {
     "high": 130.59,
@@ -402,7 +387,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 96.78,
-    "today": 89.63
+    "today": 90.12
   },
   "heating_oil": {
     "suppliers": [
