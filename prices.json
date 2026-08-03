@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "31/July",
+      "date": "02/Aug",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -386,8 +386,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 96.78,
-    "today": 90.12
+    "last_week": 88.36,
+    "today": 83.52
   },
   "heating_oil": {
     "suppliers": [
