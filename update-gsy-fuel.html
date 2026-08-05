@@ -448,6 +448,40 @@ body {
     </div>
   </div>
 
+  <!-- Sponsors / paid ads -->
+  <div class="reports-card" id="sponsor-card" style="margin-bottom:16px">
+    <div class="reports-head">
+      <div class="reports-head-left">
+        <div class="step-num" style="background:#b8860b">💷</div>
+        <div>
+          <h2>Sponsors</h2>
+          <p>Paying advertisers shown in the banner slots</p>
+        </div>
+      </div>
+    </div>
+    <div style="padding:16px 20px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="sp-name" type="text" placeholder="Business name" style="flex:1;min-width:150px;padding:9px 12px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.9rem;font-family:inherit">
+        <input id="sp-tagline" type="text" placeholder="Tagline (optional)" style="flex:1;min-width:150px;padding:9px 12px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.9rem;font-family:inherit">
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input id="sp-url" type="text" placeholder="https://their-website.com" style="flex:1;min-width:180px;padding:9px 12px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.9rem;font-family:inherit">
+        <input id="sp-image" type="text" placeholder="Logo image URL (optional)" style="flex:1;min-width:180px;padding:9px 12px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.9rem;font-family:inherit">
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <select id="sp-slot" style="padding:9px 10px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.85rem;font-family:inherit">
+          <option value="top">Top banner</option>
+          <option value="bottom">Bottom banner</option>
+        </select>
+        <input id="sp-start" type="date" style="padding:9px 10px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.85rem">
+        <input id="sp-end"   type="date" style="padding:9px 10px;border:1px solid #d4dbd5;border-radius:8px;font-size:0.85rem">
+        <button onclick="addSponsor()" style="padding:9px 16px;background:#b8860b;color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem">+ Add</button>
+      </div>
+      <div style="font-size:0.75rem;color:#888">Set the end date to when their paid month runs out — the banner reverts to "Your ad here" automatically.</div>
+      <div id="sp-list" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+  </div>
+
   <!-- Price Reports Queue -->
   <div class="reports-card" id="reports-card">
     <div class="reports-head">
@@ -636,6 +670,41 @@ body {
 <script>
 let currentData = null;
 let currentAnnouncements = [];
+let currentSponsors = [];
+
+function renderSponsorList() {
+  const el = document.getElementById('sp-list');
+  if (!currentSponsors.length) { el.innerHTML = '<div style="color:#888;font-size:0.85rem">No sponsors yet.</div>'; return; }
+  el.innerHTML = currentSponsors.map((s, i) => `
+    <div style="display:flex;align-items:center;gap:10px;background:#fdf8ec;border-radius:8px;padding:10px 12px">
+      <span style="font-size:0.7rem;font-weight:700;color:#b8860b;text-transform:uppercase">${s.slot || 'top'}</span>
+      <span style="flex:1;font-size:0.88rem"><strong>${s.name}</strong>${s.tagline ? ' — ' + s.tagline : ''}</span>
+      <span style="font-size:0.75rem;color:#888;white-space:nowrap">${s.start || '—'} → ${s.end || '—'}</span>
+      <button onclick="removeSponsor(${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:1rem;line-height:1">✕</button>
+    </div>`).join('');
+}
+
+function addSponsor() {
+  const name = document.getElementById('sp-name').value.trim();
+  if (!name) { alert('Please enter a business name.'); return; }
+  currentSponsors.push({
+    id: Date.now(),
+    name,
+    tagline: document.getElementById('sp-tagline').value.trim(),
+    url:     document.getElementById('sp-url').value.trim(),
+    image:   document.getElementById('sp-image').value.trim(),
+    slot:    document.getElementById('sp-slot').value,
+    start:   document.getElementById('sp-start').value || null,
+    end:     document.getElementById('sp-end').value || null
+  });
+  ['sp-name','sp-tagline','sp-url','sp-image','sp-start','sp-end'].forEach(id => document.getElementById(id).value = '');
+  renderSponsorList();
+}
+
+function removeSponsor(i) {
+  currentSponsors.splice(i, 1);
+  renderSponsorList();
+}
 
 function renderAnnList() {
   const el = document.getElementById('ann-list');
@@ -687,6 +756,8 @@ async function init() {
   }
   currentAnnouncements = currentData.announcements || [];
   renderAnnList();
+  currentSponsors = currentData.sponsors || [];
+  renderSponsorList();
   populate();
 }
 
@@ -923,7 +994,8 @@ function collectData() {
     },
     bulk: currentData?.bulk || [],
     footer_notes: currentData?.footer_notes || [],
-    announcements: currentAnnouncements
+    announcements: currentAnnouncements,
+    sponsors: currentSponsors
   };
 }
 

@@ -371,10 +371,7 @@
 
   <div id="announcements"></div>
 
-  <div onclick="document.getElementById('advertise-modal').style.display='flex'" style="margin-bottom:12px;border:2px dashed var(--line);border-radius:10px;padding:12px 20px;text-align:center;cursor:pointer;background:var(--card);transition:border-color 0.2s;display:flex;align-items:center;justify-content:center;gap:12px" onmouseover="this.style.borderColor='#1a7a48'" onmouseout="this.style.borderColor='var(--line)'">
-    <span style="font-size:0.85rem;font-weight:700;color:var(--muted)">Your ad here</span>
-    <span style="font-size:0.78rem;color:#1a7a48;font-weight:600">Reach Guernsey drivers every week — enquire about advertising →</span>
-  </div>
+  <div id="ad-top"></div>
 
   <div class="duty-bar" id="duty-bar"></div>
 
@@ -469,11 +466,8 @@
 
   <div class="footer-notes" id="footer-notes"></div>
 
-  <!-- Advertise banner -->
-  <div onclick="document.getElementById('advertise-modal').style.display='flex'" style="margin-top:16px;border:2px dashed var(--line);border-radius:10px;padding:18px 24px;text-align:center;cursor:pointer;background:var(--card);transition:border-color 0.2s" onmouseover="this.style.borderColor='#1a7a48'" onmouseout="this.style.borderColor='var(--line)'">
-    <div style="font-size:0.95rem;font-weight:700;color:var(--muted)">Your ad here</div>
-    <div style="font-size:0.8rem;color:var(--muted);margin-top:4px">Reach Guernsey drivers every week · <span style="color:#1a7a48;font-weight:600">Enquire about advertising →</span></div>
-  </div>
+  <!-- Advertise banner / paid sponsor slot -->
+  <div id="ad-bottom"></div>
 
   <!-- Advertise modal -->
   <div id="advertise-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:2000;align-items:center;justify-content:center;padding:16px" onclick="if(event.target===this)this.style.display='none'">
@@ -591,6 +585,8 @@ async function load() {
     if (end) end.setHours(23,59,59,999);
     return (!start || today >= start) && (!end || today <= end);
   });
+  renderSponsors(data.sponsors);
+
   const dismissed = JSON.parse(sessionStorage.getItem('ann_dismissed') || '[]');
   const annEl = document.getElementById('announcements');
   allAnnouncements = (data.announcements || []).slice().sort((a, b) => (b.id || 0) - (a.id || 0));
@@ -906,6 +902,47 @@ function buildPopup(s, minU, minD) {
     ).join('')}</div>
     ${s.notes ? `<div class="popup-notes">${s.notes}</div>` : ''}
     ${s.date  ? `<div class="popup-date">Updated: ${s.date}</div>` : ''}`;
+}
+
+// Paid sponsor slots. A slot shows its sponsor while active, otherwise
+// falls back to the "Your ad here" placeholder so unsold space still sells itself.
+function renderSponsors(sponsors) {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const active = (sponsors || []).filter(s => {
+    const start = s.start ? new Date(s.start) : null;
+    const end   = s.end   ? new Date(s.end)   : null;
+    if (end) end.setHours(23,59,59,999);
+    return (!start || today >= start) && (!end || today <= end);
+  });
+
+  [['ad-top','top'], ['ad-bottom','bottom']].forEach(([elId, slot]) => {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const s = active.find(a => (a.slot || 'top') === slot);
+    const margin = slot === 'top' ? 'margin-bottom:12px' : 'margin-top:16px';
+
+    if (s) {
+      const logo = s.image ? `<img src="${s.image}" alt="${s.name}" style="max-height:44px;max-width:120px;object-fit:contain;flex-shrink:0">` : '';
+      el.innerHTML = `
+        <a href="${s.url || '#'}" target="_blank" rel="noopener sponsored"
+           style="${margin};border:1px solid var(--line);border-radius:10px;padding:14px 20px;background:var(--card);display:flex;align-items:center;justify-content:center;gap:14px;text-decoration:none;flex-wrap:wrap">
+          ${logo}
+          <span style="text-align:center">
+            <span style="display:block;font-size:0.95rem;font-weight:700;color:var(--ink)">${s.name}</span>
+            ${s.tagline ? `<span style="display:block;font-size:0.82rem;color:var(--muted);margin-top:2px">${s.tagline}</span>` : ''}
+          </span>
+          <span style="font-size:0.68rem;color:var(--muted);opacity:0.7;letter-spacing:0.04em">AD</span>
+        </a>`;
+    } else {
+      el.innerHTML = `
+        <div onclick="document.getElementById('advertise-modal').style.display='flex'"
+             style="${margin};border:2px dashed var(--line);border-radius:10px;padding:14px 20px;text-align:center;cursor:pointer;background:var(--card);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap"
+             onmouseover="this.style.borderColor='#1a7a48'" onmouseout="this.style.borderColor='var(--line)'">
+          <span style="font-size:0.88rem;font-weight:700;color:var(--muted)">Your ad here</span>
+          <span style="font-size:0.78rem;color:#1a7a48;font-weight:600">Reach Guernsey drivers every week — enquire about advertising →</span>
+        </div>`;
+    }
+  });
 }
 
 let allAnnouncements = [];
