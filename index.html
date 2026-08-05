@@ -361,6 +361,7 @@
     <a href="forecourts.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Forecourts</a>
     <a href="about.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">About</a>
     <a href="privacy.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Privacy</a>
+    <a href="advertise.html" style="font-size:0.82rem;font-weight:600;color:#1a7a48;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Advertise</a>
   </nav>
 
   <div class="page-header">
@@ -1001,6 +1002,13 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', load);
 } else {
   load();
+}
+
+// Arriving from the advertise page: open the enquiry form straight away
+if (sessionStorage.getItem('open_advertise') === '1') {
+  sessionStorage.removeItem('open_advertise');
+  const m = document.getElementById('advertise-modal');
+  if (m) m.style.display = 'flex';
 }
 
 // Service worker: required for install-to-homescreen / Play Store packaging
