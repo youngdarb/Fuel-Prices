@@ -1,5 +1,5 @@
 {
-  "updated": "31/Jul/2026",
+  "updated": "06/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -108,14 +108,14 @@
     },
     {
       "name": "Landes du Marché",
-      "unleaded": 171.9,
-      "diesel": 181.9,
+      "unleaded": 172.9,
+      "diesel": 188.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "01/Aug",
+      "date": "06/Aug",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -379,15 +379,15 @@
   ],
   "average": {
     "unleaded": 171.4,
-    "diesel": 182.6
+    "diesel": 182.9
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 88.36,
-    "today": 83.52
+    "last_week": 89.03,
+    "today": 79.92
   },
   "heating_oil": {
     "suppliers": [
@@ -490,5 +490,6 @@
       "start": "2026-07-25",
       "end": "2026-07-28"
     }
-  ]
+  ],
+  "sponsors": []
 }
