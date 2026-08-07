@@ -1,5 +1,5 @@
 {
-  "updated": "06/Aug/2026",
+  "updated": "07/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "27/July",
+      "date": "07/Aug",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -100,7 +100,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "25/July",
+      "date": "07/Aug",
       "group": "atf",
       "lat": 49.48621,
       "lng": -2.56486,
@@ -130,7 +130,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "01/Aug",
+      "date": "07/Aug",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -160,7 +160,7 @@
       "bio_diesel": null,
       "df_diesel": 91,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "01/Aug",
+      "date": "06/Aug",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -231,11 +231,11 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 154,
+      "marine": 157,
       "bio_diesel": null,
-      "df_diesel": 107,
+      "df_diesel": 114,
       "notes": "Bulk rates available",
-      "date": "27/July",
+      "date": "07/Aug",
       "group": null,
       "lat": 49.45398,
       "lng": -2.53,
@@ -246,11 +246,11 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 152,
+      "marine": 155,
       "bio_diesel": null,
-      "df_diesel": 105,
+      "df_diesel": 112,
       "notes": "",
-      "date": "27/July",
+      "date": "07/Aug",
       "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
@@ -375,19 +375,34 @@
       "lat": 49.43682,
       "lng": -2.55421,
       "facebook": ""
+    },
+    {
+      "name": "Perelle Garage",
+      "unleaded": 172.9,
+      "diesel": 188.9,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "06/Aug",
+      "group": "ldm",
+      "lat": 49.45871,
+      "lng": -2.63552,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 171.4,
-    "diesel": 182.9
+    "unleaded": 171.5,
+    "diesel": 183.2
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 89.03,
-    "today": 79.69
+    "last_week": 90.12,
+    "today": 83.39
   },
   "heating_oil": {
     "suppliers": [
