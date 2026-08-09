@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "08/Aug",
+      "date": "09/Aug",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -199,13 +199,13 @@
     {
       "name": "Cobo Service Station",
       "unleaded": 172.9,
-      "diesel": 185.9,
+      "diesel": 184.9,
       "super": null,
       "marine": null,
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "28/July",
+      "date": "09/Aug",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -214,13 +214,13 @@
     {
       "name": "Vale Garage SS",
       "unleaded": 172.9,
-      "diesel": 185.9,
+      "diesel": 184.9,
       "super": 210.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "07/Aug",
+      "date": "09/Aug",
       "group": "vc",
       "lat": 49.4863326,
       "lng": -2.520071,
@@ -394,7 +394,7 @@
   ],
   "average": {
     "unleaded": 171.7,
-    "diesel": 183.4
+    "diesel": 183.3
   },
   "brent_crude": {
     "high": 130.59,
