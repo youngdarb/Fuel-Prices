@@ -1,16 +1,16 @@
 {
-  "updated": "07/Aug/2026",
+  "updated": "12/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "06/Aug",
+      "date": "12/ug",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -18,8 +18,8 @@
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "06/Aug",
+      "date": "12/Aug",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -258,8 +258,8 @@
     },
     {
       "name": "Co-Op St Martin",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -273,8 +273,8 @@
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -288,8 +288,8 @@
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 169.9,
+      "diesel": 180.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -393,16 +393,16 @@
     }
   ],
   "average": {
-    "unleaded": 171.7,
-    "diesel": 183.3
+    "unleaded": 171.2,
+    "diesel": 182.9
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 90.12,
-    "today": 83.55
+    "last_week": 79.45,
+    "today": 89.24
   },
   "heating_oil": {
     "suppliers": [
