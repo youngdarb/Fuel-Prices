@@ -1,5 +1,5 @@
 {
-  "updated": "12/Aug/2026",
+  "updated": "13/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -402,15 +402,15 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 82.49,
-    "today": 87.28
+    "today": 87.05
   },
   "heating_oil": {
     "suppliers": [
       {
         "name": "ATF Fuels",
-        "price_500l": 115,
+        "price_500l": 117,
         "price_700l": 116,
-        "price_900l": 117,
+        "price_900l": 115,
         "tel": "",
         "notes": "ATF Smart 123.00, Premium Kero 125.00 (900L)"
       },
