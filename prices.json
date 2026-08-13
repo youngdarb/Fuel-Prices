@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "12/Aug",
+      "date": "13/Aug",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -124,13 +124,13 @@
     {
       "name": "Le Mont Saint",
       "unleaded": 172.9,
-      "diesel": 183.9,
+      "diesel": 189.9,
       "super": 184.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL *2x£500 monthly draw. Super is 97 RON",
-      "date": "07/Aug",
+      "date": "14/Aug",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -394,7 +394,7 @@
   ],
   "average": {
     "unleaded": 171.8,
-    "diesel": 183.1
+    "diesel": 183.4
   },
   "brent_crude": {
     "high": 130.59,
