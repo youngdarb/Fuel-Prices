@@ -3,14 +3,14 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 180.9,
-      "diesel": 189.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "17/Aug",
+      "date": "18/Aug",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -18,8 +18,8 @@
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 180.9,
-      "diesel": 189.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -258,8 +258,8 @@
     },
     {
       "name": "Co-Op St Martin",
-      "unleaded": 180.9,
-      "diesel": 189.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -273,8 +273,8 @@
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 180.9,
-      "diesel": 189.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -288,8 +288,8 @@
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 180.9,
-      "diesel": 189.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 174.6,
-    "diesel": 185.7
+    "unleaded": 172.6,
+    "diesel": 184.1
   },
   "brent_crude": {
     "high": 130.59,
