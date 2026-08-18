@@ -183,14 +183,14 @@
     },
     {
       "name": "Granada Motors",
-      "unleaded": 174.9,
-      "diesel": 181.9,
+      "unleaded": 176.9,
+      "diesel": 185.9,
       "super": null,
       "marine": 153.9,
       "bio_diesel": null,
       "df_diesel": 97.9,
       "notes": "4p off with Rubis Card",
-      "date": "12/Aug",
+      "date": "18/Aug",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 172.6,
-    "diesel": 184.1
+    "unleaded": 172.7,
+    "diesel": 184.3
   },
   "brent_crude": {
     "high": 130.59,
