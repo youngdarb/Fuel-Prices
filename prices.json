@@ -1,5 +1,5 @@
 {
-  "updated": "18/Aug/2026",
+  "updated": "20/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -390,6 +390,21 @@
       "lat": 49.45871,
       "lng": -2.63552,
       "facebook": ""
+    },
+    {
+      "name": "Beaucette Marina",
+      "unleaded": null,
+      "diesel": null,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": 106,
+      "notes": "",
+      "date": "30/Jul",
+      "group": null,
+      "lat": 49.50313,
+      "lng": -2.50471,
+      "facebook": ""
     }
   ],
   "average": {
@@ -402,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 87.07,
-    "today": 93.87
+    "today": 93.63
   },
   "heating_oil": {
     "suppliers": [
