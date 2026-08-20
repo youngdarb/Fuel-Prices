@@ -212,36 +212,6 @@
       "facebook": ""
     },
     {
-      "name": "Vale Garage SS",
-      "unleaded": 175.9,
-      "diesel": 187.9,
-      "super": 210.9,
-      "marine": null,
-      "bio_diesel": null,
-      "df_diesel": null,
-      "notes": "4p off with Rubis Card. SUPER-99 RON",
-      "date": "20/Aug",
-      "group": "vc",
-      "lat": 49.4863326,
-      "lng": -2.520071,
-      "facebook": ""
-    },
-    {
-      "name": "Boatworks+",
-      "unleaded": null,
-      "diesel": null,
-      "super": null,
-      "marine": 157,
-      "bio_diesel": null,
-      "df_diesel": 114,
-      "notes": "Bulk rates available",
-      "date": "20/Aug",
-      "group": null,
-      "lat": 49.45398,
-      "lng": -2.53,
-      "facebook": ""
-    },
-    {
       "name": "QEII Marina",
       "unleaded": null,
       "diesel": null,
@@ -325,7 +295,7 @@
       "bio_diesel": null,
       "df_diesel": 100,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "",
+      "date": "30/Jul",
       "group": null,
       "lat": 49.44145,
       "lng": -2.62988,
@@ -408,8 +378,8 @@
     }
   ],
   "average": {
-    "unleaded": 172.9,
-    "diesel": 184.8
+    "unleaded": 172.7,
+    "diesel": 184.6
   },
   "brent_crude": {
     "high": 130.59,
