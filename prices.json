@@ -1,5 +1,5 @@
 {
-  "updated": "20/Aug/2026",
+  "updated": "21/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -49,7 +49,7 @@
     {
       "name": "Camp du Roi Fuel Express",
       "unleaded": 170.9,
-      "diesel": 181.9,
+      "diesel": 180.9,
       "super": 183.9,
       "marine": null,
       "bio_diesel": 239.9,
@@ -63,14 +63,14 @@
     },
     {
       "name": "Braye Road Garage",
-      "unleaded": 170.9,
-      "diesel": 180.9,
+      "unleaded": 171.9,
+      "diesel": 182.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "20/Aug",
+      "date": "21/Aug",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -378,16 +378,16 @@
     }
   ],
   "average": {
-    "unleaded": 172.7,
-    "diesel": 184.6
+    "unleaded": 172.8,
+    "diesel": 184.7
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 87.07,
-    "today": 93.63
+    "last_week": 88.52,
+    "today": 94
   },
   "heating_oil": {
     "suppliers": [
