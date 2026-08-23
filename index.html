@@ -361,6 +361,7 @@
     <a href="forecourts.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Forecourts</a>
     <a href="about.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">About</a>
     <a href="privacy.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Privacy</a>
+    <a href="discounts.html" style="font-size:0.82rem;font-weight:600;color:#5d6b64;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Discounts</a>
     <a href="advertise.html" style="font-size:0.82rem;font-weight:600;color:#1a7a48;text-decoration:none;padding:5px 10px;background:#fff;border:1px solid #d8ded9;border-radius:6px">Advertise</a>
   </nav>
 
@@ -490,7 +491,7 @@
             <button type="submit" style="background:#1a7a48;color:#fff;border:none;border-radius:8px;padding:12px;font-size:0.95rem;font-weight:700;cursor:pointer">Send Enquiry</button>
           </div>
         </form>
-        <iframe name="advertise-submit-frame" style="display:none" onload="onAdvertFrameLoad()"></iframe>
+        <iframe name="advertise-submit-frame" style="display:none" onload="if(window.onAdvertFrameLoad)onAdvertFrameLoad()"></iframe>
       </div>
       <div id="advertise-success-view" style="display:none;text-align:center;padding:20px 0">
         <div style="font-size:2rem">✓</div>
@@ -516,7 +517,7 @@
 </div>
 
 <!-- Invisible iframe — form posts here so the page never reloads -->
-<iframe name="report-submit-frame" style="display:none" onload="onReportFrameLoad()"></iframe>
+<iframe name="report-submit-frame" style="display:none" onload="if(window.onReportFrameLoad)onReportFrameLoad()"></iframe>
 
 <!-- Report floating button -->
 <button class="report-fab" onclick="openReportModal()">📷 Report a price</button>
