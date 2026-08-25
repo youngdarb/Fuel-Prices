@@ -360,11 +360,26 @@
       "lat": 49.50313,
       "lng": -2.50471,
       "facebook": ""
+    },
+    {
+      "name": "Vale Service Station",
+      "unleaded": 176.9,
+      "diesel": 189.9,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "25/Aug",
+      "group": "vc",
+      "lat": 49.4931,
+      "lng": -2.52495,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 173,
-    "diesel": 184.9
+    "unleaded": 173.2,
+    "diesel": 185.1
   },
   "brent_crude": {
     "high": 130.59,
