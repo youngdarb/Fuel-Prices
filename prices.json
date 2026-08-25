@@ -173,9 +173,9 @@
       "super": null,
       "marine": 153.9,
       "bio_diesel": null,
-      "df_diesel": 97.9,
+      "df_diesel": 98.9,
       "notes": "4p off with Rubis Card",
-      "date": "20/Aug",
+      "date": "25/Aug",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -375,11 +375,26 @@
       "lat": 49.4931,
       "lng": -2.52495,
       "facebook": ""
+    },
+    {
+      "name": "Boatworks Plus",
+      "unleaded": 156,
+      "diesel": 114,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "25/Aug",
+      "group": null,
+      "lat": null,
+      "lng": null,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 173.2,
-    "diesel": 185.1
+    "unleaded": 172.4,
+    "diesel": 181.9
   },
   "brent_crude": {
     "high": 130.59,
@@ -387,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 91.02,
-    "today": 87.84
+    "today": 88.11
   },
   "heating_oil": {
     "suppliers": [
