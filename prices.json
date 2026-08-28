@@ -1,5 +1,5 @@
 {
-  "updated": "25/Aug/2026",
+  "updated": "28/Aug/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -50,12 +50,12 @@
       "name": "Camp du Roi Fuel Express",
       "unleaded": 170.9,
       "diesel": 181.9,
-      "super": 183.9,
+      "super": 185.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "24/Aug",
+      "date": "28/Aug",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -155,12 +155,12 @@
       "name": "Jeffrey's Service Station (CIFL)",
       "unleaded": 173.9,
       "diesel": 183.9,
-      "super": 183.9,
+      "super": 185.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "20/Aug",
+      "date": "28/Aug",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -320,12 +320,12 @@
       "name": "St Martins Garage (CIFL)",
       "unleaded": 171.9,
       "diesel": 182.9,
-      "super": 183.9,
+      "super": 185.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "18/Aug",
+      "date": "28/Aug",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -401,8 +401,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 91.62,
-    "today": 85.29
+    "last_week": 94.39,
+    "today": 87.45
   },
   "heating_oil": {
     "suppliers": [
