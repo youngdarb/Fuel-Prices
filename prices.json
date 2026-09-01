@@ -123,14 +123,14 @@
     },
     {
       "name": "Doyle Motors",
-      "unleaded": 174.9,
-      "diesel": 188.9,
+      "unleaded": 173.9,
+      "diesel": 185.9,
       "super": 184.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "19/Aug",
+      "date": "01/Sept",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -394,7 +394,7 @@
   ],
   "average": {
     "unleaded": 173.3,
-    "diesel": 182.8
+    "diesel": 182.6
   },
   "brent_crude": {
     "high": 130.59,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 88.58,
-    "today": 92.16
+    "today": 92.13
   },
   "heating_oil": {
     "suppliers": [
