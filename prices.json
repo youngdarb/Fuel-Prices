@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "25/Aug",
+      "date": "01/Sept",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 88.58,
-    "today": 92.13
+    "today": 92.16
   },
   "heating_oil": {
     "suppliers": [
