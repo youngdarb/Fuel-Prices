@@ -1,5 +1,5 @@
 {
-  "updated": "01/Sep/2026",
+  "updated": "03/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -258,14 +258,14 @@
     },
     {
       "name": "Forest Road Garage (no price displayed)",
-      "unleaded": 178.9,
-      "diesel": 188.9,
+      "unleaded": 180.9,
+      "diesel": 190.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "18/Aug",
+      "date": "03/Sept",
       "group": null,
       "lat": 49.43403,
       "lng": -2.57827,
@@ -394,15 +394,15 @@
   ],
   "average": {
     "unleaded": 173.3,
-    "diesel": 182.6
+    "diesel": 182.7
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 88.58,
-    "today": 92.13
+    "last_week": 89.7,
+    "today": 97.34
   },
   "heating_oil": {
     "suppliers": [
