@@ -183,7 +183,7 @@
     },
     {
       "name": "Cobo Service Station",
-      "unleaded": 176.9,
+      "unleaded": 177.9,
       "diesel": 189.9,
       "super": null,
       "marine": null,
@@ -363,14 +363,14 @@
     },
     {
       "name": "Vale Service Station",
-      "unleaded": 176.9,
+      "unleaded": 177.9,
       "diesel": 189.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "27/Aug",
+      "date": "03/Sept",
       "group": "vc",
       "lat": 49.4931,
       "lng": -2.52495,
@@ -393,7 +393,7 @@
     }
   ],
   "average": {
-    "unleaded": 173.5,
+    "unleaded": 173.6,
     "diesel": 182.9
   },
   "brent_crude": {
