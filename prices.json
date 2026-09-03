@@ -318,14 +318,14 @@
     },
     {
       "name": "St Martins Garage (CIFL)",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 173.9,
+      "diesel": 184.9,
       "super": 185.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "28/Aug",
+      "date": "03/Sept",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 173.3,
-    "diesel": 182.7
+    "unleaded": 173.4,
+    "diesel": 182.8
   },
   "brent_crude": {
     "high": 130.59,
