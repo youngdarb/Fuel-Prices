@@ -672,6 +672,27 @@ let currentData = null;
 let currentAnnouncements = [];
 let currentSponsors = [];
 
+// Deletions are easy to trigger by accident, especially on a phone, and a
+// published mistake means re-entering the data by hand. Every remove action
+// confirms first and names what is about to go.
+function confirmDelete(what, name) {
+  const label = (name && String(name).trim()) ? `"${String(name).trim()}"` : `this ${what}`;
+  return confirm(`Remove ${label}?\n\nIt will be gone from the site once you hit Publish Live.`);
+}
+
+function removeStationRow(btn) {
+  const row = btn.closest('.station-row');
+  if (!confirmDelete('forecourt', row.querySelector('.s-name') && row.querySelector('.s-name').value)) return;
+  row.remove();
+  updateAverages();
+}
+
+function removeHeatRow(btn) {
+  const row = btn.closest('.heat-row');
+  if (!confirmDelete('supplier', row.querySelector('.h-name') && row.querySelector('.h-name').value)) return;
+  row.remove();
+}
+
 function renderSponsorList() {
   const el = document.getElementById('sp-list');
   if (!currentSponsors.length) { el.innerHTML = '<div style="color:#888;font-size:0.85rem">No sponsors yet.</div>'; return; }
@@ -702,6 +723,8 @@ function addSponsor() {
 }
 
 function removeSponsor(i) {
+  const s = currentSponsors[i];
+  if (!confirmDelete('sponsor', s && s.name)) return;
   currentSponsors.splice(i, 1);
   renderSponsorList();
 }
@@ -730,6 +753,8 @@ function addAnnouncement() {
 }
 
 function removeAnn(i) {
+  const a = currentAnnouncements[i];
+  if (!confirmDelete('announcement', a && a.message)) return;
   currentAnnouncements.splice(i, 1);
   renderAnnList();
 }
@@ -811,7 +836,7 @@ function addStation(s = {}) {
       </div>
       <div class="station-actions">
         <button class="icon-btn" title="More options" onclick="toggleExtra(this)">⋯</button>
-        <button class="icon-btn danger" title="Remove station" onclick="this.closest('.station-row').remove()">🗑</button>
+        <button class="icon-btn danger" title="Remove station" onclick="removeStationRow(this)">🗑</button>
       </div>
     </div>
     <div class="station-extra">
@@ -926,7 +951,7 @@ function addHeatRow(h = {}) {
         <input type="text" class="h-notes" value="${esc(h.notes||'')}" placeholder="Notes / offers">
       </div>
       <div class="heat-actions">
-        <button class="icon-btn danger" onclick="this.closest('.heat-row').remove()">🗑</button>
+        <button class="icon-btn danger" onclick="removeHeatRow(this)">🗑</button>
       </div>
     </div>
   `;
