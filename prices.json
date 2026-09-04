@@ -33,14 +33,14 @@
     },
     {
       "name": "Northern Motor Works",
-      "unleaded": 171.9,
-      "diesel": 182.9,
+      "unleaded": 172.9,
+      "diesel": 183.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "01/Sept",
+      "date": "04/Sept",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -201,11 +201,11 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 156,
+      "marine": 158,
       "bio_diesel": null,
-      "df_diesel": 112,
+      "df_diesel": 114,
       "notes": "",
-      "date": "25/Aug",
+      "date": "04/Sept",
       "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
@@ -378,14 +378,14 @@
     },
     {
       "name": "Boatworks Plus",
-      "unleaded": 158,
-      "diesel": 114,
+      "unleaded": 160,
+      "diesel": 116,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "25/Aug",
+      "date": "04/Sept",
       "group": null,
       "lat": 49.45392,
       "lng": -2.53032,
@@ -393,16 +393,16 @@
     }
   ],
   "average": {
-    "unleaded": 173.6,
-    "diesel": 182.9
+    "unleaded": 173.7,
+    "diesel": 183
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 89.7,
-    "today": 95.18
+    "last_week": 89.31,
+    "today": 94.74
   },
   "heating_oil": {
     "suppliers": [
