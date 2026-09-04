@@ -173,9 +173,9 @@
       "super": null,
       "marine": 155.9,
       "bio_diesel": null,
-      "df_diesel": 98.9,
+      "df_diesel": 101.9,
       "notes": "4p off with Rubis Card",
-      "date": "01/Sept",
+      "date": "04/Sept",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 89.7,
-    "today": 96.32
+    "today": 95.18
   },
   "heating_oil": {
     "suppliers": [
