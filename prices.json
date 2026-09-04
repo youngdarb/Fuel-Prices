@@ -138,14 +138,14 @@
     },
     {
       "name": "Whiteway Motors",
-      "unleaded": 169.5,
-      "diesel": 180,
+      "unleaded": 170.9,
+      "diesel": 185,
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": 91,
+      "df_diesel": 96,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "20/Aug",
+      "date": "04/Sept",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 173.9,
-    "diesel": 183.2
+    "unleaded": 174,
+    "diesel": 183.5
   },
   "brent_crude": {
     "high": 130.59,
