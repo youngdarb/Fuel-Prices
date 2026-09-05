@@ -1,5 +1,5 @@
 {
-  "updated": "04/Sep/2026",
+  "updated": "05/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "04/Sept",
+      "date": "05/Sept",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -25,7 +25,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "04/Sept",
+      "date": "05/Sept",
       "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
@@ -220,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "04/Sept",
+      "date": "05/Sept",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -250,7 +250,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "04/Sept",
+      "date": "05/Sept",
       "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
@@ -325,7 +325,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "03/Sept",
+      "date": "05/Sept",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -402,7 +402,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 89.31,
-    "today": 94.74
+    "today": 96.28
   },
   "heating_oil": {
     "suppliers": [
