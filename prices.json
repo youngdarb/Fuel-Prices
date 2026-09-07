@@ -378,12 +378,12 @@
     },
     {
       "name": "Boatworks Plus",
-      "unleaded": 160,
-      "diesel": 116,
+      "unleaded": null,
+      "diesel": null,
       "super": null,
-      "marine": null,
+      "marine": 160,
       "bio_diesel": null,
-      "df_diesel": null,
+      "df_diesel": 116,
       "notes": "",
       "date": "04/Sept",
       "group": null,
@@ -393,8 +393,8 @@
     }
   ],
   "average": {
-    "unleaded": 175.3,
-    "diesel": 184.4
+    "unleaded": 176,
+    "diesel": 187.7
   },
   "brent_crude": {
     "high": 130.59,
