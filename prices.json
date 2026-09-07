@@ -1,5 +1,5 @@
 {
-  "updated": "05/Sep/2026",
+  "updated": "07/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -123,14 +123,14 @@
     },
     {
       "name": "Doyle Motors",
-      "unleaded": 173.9,
-      "diesel": 185.9,
-      "super": 184.9,
+      "unleaded": 176.9,
+      "diesel": 186.9,
+      "super": 186.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "01/Sept",
+      "date": "07/Sept",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -393,7 +393,7 @@
     }
   ],
   "average": {
-    "unleaded": 174,
+    "unleaded": 174.1,
     "diesel": 183.5
   },
   "brent_crude": {
@@ -401,7 +401,7 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 89.31,
+    "last_week": 90.49,
     "today": 96.28
   },
   "heating_oil": {
