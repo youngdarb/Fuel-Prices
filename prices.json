@@ -390,11 +390,26 @@
       "lat": 49.45392,
       "lng": -2.53032,
       "facebook": ""
+    },
+    {
+      "name": "ATF Barras",
+      "unleaded": 172.9,
+      "diesel": 185.9,
+      "super": null,
+      "marine": null,
+      "bio_diesel": null,
+      "df_diesel": null,
+      "notes": "",
+      "date": "07/Sept",
+      "group": null,
+      "lat": 49.48624,
+      "lng": -2.56488,
+      "facebook": ""
     }
   ],
   "average": {
-    "unleaded": 176,
-    "diesel": 187.7
+    "unleaded": 175.9,
+    "diesel": 187.6
   },
   "brent_crude": {
     "high": 130.59,
