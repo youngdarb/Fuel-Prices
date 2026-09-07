@@ -183,14 +183,14 @@
     },
     {
       "name": "Cobo Service Station",
-      "unleaded": 177.9,
-      "diesel": 189.9,
+      "unleaded": 178.9,
+      "diesel": 190.9,
       "super": null,
       "marine": null,
       "bio_diesel": 233.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "07/Sept",
+      "date": "08/Sept",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -363,14 +363,14 @@
     },
     {
       "name": "Vale Service Station",
-      "unleaded": 177.9,
-      "diesel": 189.9,
+      "unleaded": 178.9,
+      "diesel": 190.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "07/Sept",
+      "date": "08/Sept",
       "group": "vc",
       "lat": 49.4931,
       "lng": -2.52495,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 176.2,
-    "diesel": 187.9
+    "unleaded": 176.3,
+    "diesel": 188
   },
   "brent_crude": {
     "high": 130.59,
