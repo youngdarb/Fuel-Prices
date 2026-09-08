@@ -1,5 +1,5 @@
 {
-  "updated": "07/Sep/2026",
+  "updated": "08/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -365,9 +365,9 @@
       "name": "Vale Service Station",
       "unleaded": 178.9,
       "diesel": 190.9,
-      "super": null,
+      "super": 210.9,
       "marine": null,
-      "bio_diesel": null,
+      "bio_diesel": 234.9,
       "df_diesel": null,
       "notes": "",
       "date": "08/Sept",
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 90.49,
-    "today": 96.28
+    "today": 98.6
   },
   "heating_oil": {
     "suppliers": [
