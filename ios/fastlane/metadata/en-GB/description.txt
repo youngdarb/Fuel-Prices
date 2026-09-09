@@ -1,0 +1,16 @@
+Find the cheapest fuel in Guernsey before you fill up.
+
+GSY Fuel Prices lists petrol and diesel prices at every forecourt across the island, checked by hand each week from forecourt price boards and reports from drivers.
+
+FEATURES
+
+- Compare prices at every Guernsey forecourt, cheapest first
+- Interactive map showing prices for unleaded, diesel and other fuels
+- Price history charts so you can see how prices have moved
+- A guide to every discount card and loyalty scheme on the island
+- Heating oil and marine fuel rates
+- Report a wrong price straight from the app
+
+The site behind this app is run by the same person behind the Guernsey Fuel and Oil Watch Facebook page. It is free to use and independent, with no connection to any fuel supplier or retailer.
+
+Prices are indicative and can change between updates. Always check the board at the pump before filling up.
