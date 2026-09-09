@@ -35,3 +35,11 @@ Live Guernsey fuel price tracker. **Production site, ~5k pageviews/month — do 
 - Google Play app: PWA is ready (manifest/sw/icons); TWA packaging via pwabuilder.com pending Brad's Play Console verification (12 testers × 14 days closed test required before production)
 - Apple App Store: planned; needs Apple Developer enrolment ($99/yr) + GitHub Actions macOS build pipeline (no Mac available)
 - First advertiser lead: The Pest Detective (reply pending)
+
+## Netlify Free plan (from ~Sept 2026)
+The team downgrades to the credit-based Free plan: **300 credits/month, hard cap — exceeding it pauses the site.**
+- A production deploy costs ~15 credits, so the practical budget is **~20 deploys/month**
+- Bandwidth is negligible here (~150MB/month, ~3 credits)
+- Price publishes cost nothing: `netlify.toml` skips builds for prices.json/price-history.json commits
+- `refresh-static-prices.yml` runs **weekly** (not daily) for this reason — it was 15 deploys/month, 75% of the budget
+- **Batch code changes and deploy once per session.** Eight deploys in one session is a fifth of the month's budget.

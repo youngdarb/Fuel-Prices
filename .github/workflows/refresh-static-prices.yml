@@ -10,7 +10,7 @@ name: Refresh static price table
 
 on:
   schedule:
-    - cron: '20 6 * * *'   # daily, 06:20 UTC
+    - cron: '20 6 * * 3'   # weekly, Wednesday 06:20 UTC (Netlify Free bills ~15 credits per deploy)
   workflow_dispatch:
     inputs:
       dry_run:
