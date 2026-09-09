@@ -1186,21 +1186,37 @@ async function dismissReport(id, btn) {
 
 <!-- Password -->
 <script>
-const PASSWORD_HASH = '5f6528370182fce91879fbc1d1f8b82ce455a7fc6d81e74adb486f133bbd34ea';
-
+// The password is verified server-side by the publish function, which
+// returns a session token. Nothing that can publish is present in this
+// page's source, so viewing source gives an attacker nothing.
 async function checkPassword() {
   const input = document.getElementById('lock-input').value;
-  const hash  = await sha256(input);
-  if (hash === PASSWORD_HASH) {
+  const errEl = document.getElementById('lock-error');
+  const btn   = document.querySelector('.lock-box button');
+  errEl.textContent = '';
+  if (btn) { btn.disabled = true; btn.textContent = 'Checking…'; }
+  try {
+    const res  = await fetch('/.netlify/functions/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'login', password: input })
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.token) throw new Error(json.error || 'Incorrect password');
+
     sessionStorage.setItem('fuel_admin_auth', '1');
-    sessionStorage.setItem('fuel_admin_hash', hash);
+    sessionStorage.setItem('fuel_admin_hash', json.token);
     document.getElementById('lock-screen').classList.add('hidden');
     init();
     loadReports();
-  } else {
-    document.getElementById('lock-error').textContent = 'Incorrect password — please try again.';
+  } catch (e) {
+    errEl.textContent = (e && e.message === 'Failed to fetch')
+      ? 'Could not reach the server. Check your connection and try again.'
+      : 'Incorrect password — please try again.';
     document.getElementById('lock-input').value = '';
     document.getElementById('lock-input').focus();
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Sign In'; }
   }
 }
 

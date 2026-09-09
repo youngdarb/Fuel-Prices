@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const REPO   = 'youngdarb/Fuel-Prices';
 const BRANCH = 'main';
 
@@ -39,7 +40,18 @@ exports.handler = async function (event) {
   }
 
   try {
-    const { secret, data, action } = JSON.parse(event.body);
+    const { secret, data, action, password } = JSON.parse(event.body);
+
+    // Login: exchange the typed password for a session token.
+    // The hash is never shipped to the browser, so viewing the admin
+    // page source no longer reveals anything that can publish.
+    if (action === 'login') {
+      const hashed = crypto.createHash('sha256').update(String(password || ''), 'utf8').digest('hex');
+      if (!process.env.ADMIN_HASH || hashed !== process.env.ADMIN_HASH) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Incorrect password' }) };
+      }
+      return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ ok: true, token: hashed }) };
+    }
 
     // Verify against the admin password hash stored in env
     if (!secret || secret !== process.env.ADMIN_HASH) {
