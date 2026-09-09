@@ -870,7 +870,7 @@ function addStation(s = {}) {
       </div>
       <div class="extra-field wide" style="align-items:center;gap:8px">
         <button type="button" onclick="applyGroupPrice(this)" style="background:var(--green);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:0.82rem;font-weight:700;cursor:pointer">Apply prices to whole group</button>
-        <span style="font-size:0.78rem;color:#999">Sets unleaded &amp; diesel on all stations with the same group name</span>
+        <span style="font-size:0.78rem;color:#999">Sets unleaded, diesel and the date on all stations with the same group name</span>
       </div>
     </div>
     <span class="adv-toggle" onclick="toggleAdv(this)">▸ Map pin coordinates (advanced)</span>
@@ -899,22 +899,37 @@ function toggleExtra(btn) {
   btn.classList.toggle('active');
 }
 
+// Date stamp used when applying a group. Takes the date label at the top of
+// the page (e.g. "03/Sep/2026" becomes "03/Sep") so the whole group matches
+// the update being published, and falls back to today if that box is empty.
+function groupDateStamp() {
+  const label = (document.getElementById('updated').value || '').trim();
+  const m = label.match(/^(\d{1,2})\s*\/\s*([A-Za-z]+)/);
+  if (m) return `${m[1]}/${m[2]}`;
+  const d = new Date();
+  const mon = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  return `${String(d.getDate()).padStart(2,'0')}/${mon}`;
+}
+
 function applyGroupPrice(btn) {
   const row = btn.closest('.station-row');
   const group = row.querySelector('.s-group').value.trim().toLowerCase();
   if (!group) { alert('Set a group name on this station first.'); return; }
   const ul = row.querySelector('.s-unleaded').value;
   const ds = row.querySelector('.s-diesel').value;
+  const stamp = groupDateStamp();
   let count = 0;
   document.querySelectorAll('.station-row').forEach(r => {
     if (r.querySelector('.s-group').value.trim().toLowerCase() === group) {
       r.querySelector('.s-unleaded').value = ul;
       r.querySelector('.s-diesel').value = ds;
+      const dateEl = r.querySelector('.s-date');
+      if (dateEl) dateEl.value = stamp;
       count++;
     }
   });
   updateAverages();
-  showToast(`Applied to ${count} station${count !== 1 ? 's' : ''} in group "${group}"`, '#27ae60');
+  showToast(`Applied prices and date ${stamp} to ${count} station${count !== 1 ? 's' : ''} in "${group}"`, '#27ae60');
 }
 
 function toggleAdv(span) {
