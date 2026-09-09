@@ -656,7 +656,7 @@ body {
 <div class="save-bar">
   <div class="save-hint">
     <strong>All done? Hit Publish.</strong><br>
-    <span id="save-sub">Changes go live on the website in about 30 seconds.</span>
+    <span id="save-sub">Changes appear on the website within about 5 minutes.</span>
   </div>
   <div class="save-bar-right">
     <button class="save-btn" id="publish-btn" onclick="publishLive()">
@@ -1105,7 +1105,7 @@ async function publishLive() {
 
     const now = new Date();
     snapshotPrices();
-    showToast("✓ Published! Site updates in ~30 seconds.", "#27ae60");
+    showToast("✓ Published! Give the site up to 5 minutes to catch up.", "#27ae60");
     sub.textContent = `Last published: ${json.label} at ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
   } catch(e) {
     showToast('✗ ' + e.message, '#c0392b');
