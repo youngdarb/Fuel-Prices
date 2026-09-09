@@ -786,11 +786,37 @@ async function init() {
   populate();
 }
 
+// Remember prices as they were loaded, so at publish time we can tell which
+// stations actually changed and offer to date-stamp only those.
+let priceSnapshot = {};
+
+function rowKey(r)    { return (r.querySelector('.s-name').value || '').trim(); }
+function rowPrices(r) { return r.querySelector('.s-unleaded').value + '|' + r.querySelector('.s-diesel').value; }
+
+function snapshotPrices() {
+  priceSnapshot = {};
+  document.querySelectorAll('.station-row').forEach(r => {
+    const k = rowKey(r);
+    if (k) priceSnapshot[k] = rowPrices(r);
+  });
+}
+
+function stationsWithChangedPrices() {
+  const changed = [];
+  document.querySelectorAll('.station-row').forEach(r => {
+    const k = rowKey(r);
+    if (!k) return;
+    if (priceSnapshot[k] === undefined || priceSnapshot[k] !== rowPrices(r)) changed.push(r);
+  });
+  return changed;
+}
+
 function populate() {
   const d = currentData;
   document.getElementById('updated').value = d.updated || '';
   (d.stations || []).forEach(s => addStation(s));
   updateAverages();
+  snapshotPrices();
   const b = d.brent_crude || {};
   document.getElementById('bc-today').value     = b.today     ?? '';
   document.getElementById('bc-lastweek').value  = b.last_week ?? '';
@@ -1049,6 +1075,19 @@ async function publishLive() {
   if (!secret) { showToast('Session expired — please log in again.', '#e67e22'); return; }
   if (!loadedOk) { showToast('✗ Current prices never loaded — publishing blocked to avoid wiping data. Refresh the page.', '#c0392b'); return; }
 
+  // Offer to stamp the modified date on stations whose price actually changed.
+  const changed = stationsWithChangedPrices();
+  if (changed.length) {
+    const stamp = groupDateStamp();
+    const many  = changed.length !== 1;
+    if (confirm(`${changed.length} forecourt${many ? 's have' : ' has'} a new price.\n\nUpdate ${many ? 'their dates' : 'its date'} to ${stamp}?`)) {
+      changed.forEach(r => {
+        const d = r.querySelector('.s-date');
+        if (d) d.value = stamp;
+      });
+    }
+  }
+
   const btn = document.getElementById('publish-btn');
   const sub = document.getElementById('save-sub');
   btn.disabled = true;
@@ -1065,7 +1104,8 @@ async function publishLive() {
     if (!res.ok) throw new Error(json.error || 'Publish failed');
 
     const now = new Date();
-    showToast('✓ Published! Site updates in ~30 seconds.', '#27ae60');
+    snapshotPrices();
+    showToast("✓ Published! Site updates in ~30 seconds.", "#27ae60");
     sub.textContent = `Last published: ${json.label} at ${now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}`;
   } catch(e) {
     showToast('✗ ' + e.message, '#c0392b');
