@@ -168,14 +168,14 @@
     },
     {
       "name": "Granada Motors",
-      "unleaded": 177.9,
-      "diesel": 189.9,
+      "unleaded": 178.9,
+      "diesel": 190.9,
       "super": null,
-      "marine": 155.9,
+      "marine": 156.9,
       "bio_diesel": null,
       "df_diesel": 101.9,
       "notes": "4p off with Rubis Card",
-      "date": "07/Sept",
+      "date": "11/Sep",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 95.63,
-    "today": 106.94
+    "last_week": 95.52,
+    "today": 104.73
   },
   "heating_oil": {
     "suppliers": [
