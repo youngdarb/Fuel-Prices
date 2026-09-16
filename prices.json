@@ -1,5 +1,5 @@
 {
-  "updated": "15/Sep/2026",
+  "updated": "16/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "11/Sep",
+      "date": "16/Sep",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "15/Sep",
+      "date": "16/Sep",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": 97,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "15/Sep",
+      "date": "16/Sep",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -205,7 +205,7 @@
       "bio_diesel": null,
       "df_diesel": 122,
       "notes": "",
-      "date": "15/Sep",
+      "date": "16/Sep",
       "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "11/Sep",
+      "date": "16/Sep",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 97.92,
-    "today": 108.07
+    "last_week": 101.21,
+    "today": 107.21
   },
   "heating_oil": {
     "suppliers": [
