@@ -38,6 +38,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSplash()
         initWebView()
         initToolbarView()
         loadRootUrl()
@@ -153,9 +154,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
         self.setProgress(1.0, true)
         self.animateConnectionProblem(false)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             PWAShell.webView.isHidden = false
-            self.loadingView.isHidden = true
+            self.hideSplash()
            
             self.setProgress(0.0, false)
             
@@ -170,7 +171,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
         
         self.overrideUIStyle(toDefault: true);
         webView.isHidden = true;
-        loadingView.isHidden = false;
+        loadingView.isHidden = false; loadingView.alpha = 1;
 
         if loadingMode == LoadingMode.defaultCachePolicy {
             DispatchQueue.main.async {
@@ -205,6 +206,66 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
     }
     
     func setProgress(_ progress: Float, _ animated: Bool) {
+    // Splash: indeterminate spinner over the brand background, no progress bar.
+    // A message appears only if loading drags on, so slow connections do not
+    // look like a broken app.
+    private var splashSpinner: UIActivityIndicatorView?
+    private var splashSlowLabel: UILabel?
+    private var splashSlowTimer: Timer?
+
+    func setupSplash() {
+        progressView.isHidden = true
+        progressView.alpha = 0
+
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.color = UIColor.white
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.addSubview(spinner)
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: loadingView.centerYAnchor, constant: 90)
+        ])
+        spinner.startAnimating()
+        splashSpinner = spinner
+
+        let label = UILabel()
+        label.text = "Taking longer than usual.\nPlease check your connection."
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = UIColor.white.withAlphaComponent(0.85)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.alpha = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        loadingView.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: loadingView.centerXAnchor),
+            label.topAnchor.constraint(equalTo: spinner.bottomAnchor, constant: 28),
+            label.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor, constant: 32),
+            label.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor, constant: -32)
+        ])
+        splashSlowLabel = label
+
+        splashSlowTimer?.invalidate()
+        splashSlowTimer = Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false) { [weak self] _ in
+            guard let self = self, !self.htmlIsLoaded else { return }
+            UIView.animate(withDuration: 0.35) { self.splashSlowLabel?.alpha = 1 }
+        }
+    }
+
+    func hideSplash() {
+        splashSlowTimer?.invalidate()
+        splashSlowTimer = nil
+        guard !loadingView.isHidden else { return }
+        UIView.animate(withDuration: 0.35, animations: {
+            self.loadingView.alpha = 0
+        }, completion: { _ in
+            self.loadingView.isHidden = true
+            self.loadingView.alpha = 1
+            self.splashSpinner?.stopAnimating()
+            self.splashSlowLabel?.alpha = 0
+        })
+    }
+
         self.progressView.setProgress(progress, animated: animated);
     }
     
