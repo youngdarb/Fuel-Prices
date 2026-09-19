@@ -78,14 +78,14 @@
     },
     {
       "name": "ATF Castel (Thompsons)",
-      "unleaded": 175.9,
+      "unleaded": 179.9,
       "diesel": 189.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "16/Sep",
+      "date": "19/Sep",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -143,7 +143,7 @@
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": 97,
+      "df_diesel": 104,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
       "date": "19/Sep",
       "group": null,
@@ -393,14 +393,14 @@
     },
     {
       "name": "ATF Barras",
-      "unleaded": 175.9,
+      "unleaded": 179.9,
       "diesel": 189.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "16/Sep",
+      "date": "19/Sep",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 178.7,
+    "unleaded": 179.1,
     "diesel": 190.4
   },
   "brent_crude": {
