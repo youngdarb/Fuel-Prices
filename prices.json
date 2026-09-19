@@ -1,5 +1,5 @@
 {
-  "updated": "16/Sep/2026",
+  "updated": "19/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -138,14 +138,14 @@
     },
     {
       "name": "Whiteway Motors",
-      "unleaded": 172.9,
-      "diesel": 186,
+      "unleaded": 175.9,
+      "diesel": 194.5,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": 97,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "16/Sep",
+      "date": "19/Sep",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 178.6,
-    "diesel": 190
+    "unleaded": 178.7,
+    "diesel": 190.4
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 101.21,
-    "today": 107.21
+    "last_week": 104.61,
+    "today": 103.87
   },
   "heating_oil": {
     "suppliers": [
