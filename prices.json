@@ -93,14 +93,14 @@
     },
     {
       "name": "Landes du Marché",
-      "unleaded": 178.9,
-      "diesel": 190.9,
+      "unleaded": 179.9,
+      "diesel": 194.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "11/Sep",
+      "date": "19/Sep",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -333,14 +333,14 @@
     },
     {
       "name": "Perelle Garage",
-      "unleaded": 178.9,
-      "diesel": 190.9,
+      "unleaded": 179.9,
+      "diesel": 194.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "11/Sep",
+      "date": "19/Sep",
       "group": "ldm",
       "lat": 49.45871,
       "lng": -2.63552,
@@ -409,7 +409,7 @@
   ],
   "average": {
     "unleaded": 179.4,
-    "diesel": 191.4
+    "diesel": 191.7
   },
   "brent_crude": {
     "high": 130.59,
