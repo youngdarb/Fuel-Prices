@@ -205,7 +205,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
         }
     }
     
-    func setProgress(_ progress: Float, _ animated: Bool) {
     // Splash: indeterminate spinner over the brand background, no progress bar.
     // A message appears only if loading drags on, so slow connections do not
     // look like a broken app.
@@ -266,8 +265,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIDocumentInteract
         })
     }
 
+    func setProgress(_ progress: Float, _ animated: Bool) {
+
         self.progressView.setProgress(progress, animated: animated);
     }
+
     
     
     func animateConnectionProblem(_ show: Bool) {
