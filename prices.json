@@ -503,22 +503,10 @@
   ],
   "announcements": [
     {
-      "id": 1784813963754,
-      "message": "Huge jump in Oil prices this week, thanks to the Great Orange one, nearly back at $100 a barrel. Look out for Co-Op & ATF price increases!",
-      "start": "2026-07-23",
-      "end": "2026-07-26"
-    },
-    {
       "id": 1784958369011,
       "message": "Co-Op have announced much higher fuel prices from Mon 27 July",
       "start": "2026-07-25",
       "end": "2026-07-27"
-    },
-    {
-      "id": 1784979673468,
-      "message": "Rubis down 2ppl unleaded from next week (Tues 28th)",
-      "start": "2026-07-25",
-      "end": "2026-07-28"
     },
     {
       "id": 1788776818034,
@@ -535,12 +523,6 @@
     {
       "id": 1789193349040,
       "message": "A 4ppl rise on both marine petrol & diesel from Boatworks +",
-      "start": "2026-09-12",
-      "end": "2026-09-19"
-    },
-    {
-      "id": 1789193460918,
-      "message": "Hi All, I will be away for the next week, so won’t be passing any forecourts locally, so any photo updates via the reporting function, would be very much appreciated, thx 🙏",
       "start": "2026-09-12",
       "end": "2026-09-19"
     }
