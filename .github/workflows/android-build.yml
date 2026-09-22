@@ -1,0 +1,67 @@
+name: Android build (TWA)
+
+# Builds the Google Play app bundle with Bubblewrap, signed with the
+# existing upload key, targeting the current API level Google requires.
+on:
+  workflow_dispatch:
+    inputs:
+      versionCode:
+        description: "Play version code (must increase each upload)"
+        default: "2"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Restore signing key
+        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > $HOME/signing.keystore
+
+      - name: Init TWA project
+        run: |
+          mkdir -p twa && cd twa
+          bubblewrap init \
+            --manifest=https://gsyfuel.co.uk/manifest.json \
+            --directory=. \
+            --packageId=com.gsyfuelprices \
+            --appVersionCode=${{ inputs.versionCode }} \
+            --appVersionName=${{ inputs.versionCode }}.0.0 \
+            --signingKeyPath=$HOME/signing.keystore \
+            --signingKeyAlias=${{ secrets.ANDROID_KEY_ALIAS }} \
+            --skipPwaValidation \
+            --yes || true
+          cat twa-manifest.json | head -30
+
+      - name: Build signed bundle
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          cd twa
+          bubblewrap build --skipPwaValidation
+          ls -la *.aab *.apk 2>/dev/null || true
+
+      - name: Report target SDK
+        run: |
+          cd twa
+          grep -n "targetSdk\|compileSdk" android/app/build.gradle 2>/dev/null | head -5 || true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gsyfuel-android-aab
+          path: twa/*.aab
+          retention-days: 14
