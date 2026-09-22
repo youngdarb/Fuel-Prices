@@ -21,8 +21,6 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - uses: android-actions/setup-android@v3
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -34,7 +32,7 @@ jobs:
         run: |
           mkdir -p "$HOME/.bubblewrap"
           cat > "$HOME/.bubblewrap/config.json" <<CFG
-          {"jdkPath":"$JAVA_HOME","androidSdkPath":"$ANDROID_SDK_ROOT"}
+          {"jdkPath":"$JAVA_HOME","androidSdkPath":"$HOME/.bubblewrap/android_sdk"}
           CFG
           cat "$HOME/.bubblewrap/config.json"
 
@@ -44,7 +42,7 @@ jobs:
       - name: Init TWA project
         run: |
           mkdir -p twa && cd twa
-          bubblewrap init \
+          yes y | bubblewrap init \
             --manifest=https://gsyfuel.co.uk/manifest.json \
             --directory=. \
             --packageId=com.gsyfuelprices \
@@ -60,7 +58,7 @@ jobs:
           BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
         run: |
           cd twa
-          bubblewrap build --skipPwaValidation
+          yes y | bubblewrap build --skipPwaValidation
           echo "--- target sdk ---"
           grep -rn "targetSdkVersion\|targetSdk" app/build.gradle 2>/dev/null | head -3 || true
           ls -la *.aab
