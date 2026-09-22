@@ -48,3 +48,17 @@ The team downgrades to the credit-based Free plan: **300 credits/month, hard cap
 - Price publishes cost nothing: `netlify.toml` skips builds for prices.json/price-history.json commits
 - `refresh-static-prices.yml` runs **weekly** (not daily) for this reason — it was 15 deploys/month, 75% of the budget
 - **Batch code changes and deploy once per session.** Eight deploys in one session is a fifth of the month's budget.
+
+## Hard rules — read before touching anything
+Brad is the only stakeholder. These are not suggestions.
+
+1. **Never rewrite or restructure working code.** This is a live site. Make the smallest change that does the job. No refactors, no "tidying", no reformatting files you were not asked to change.
+2. **Ask before adding any text to the site.** No new pages, guides, explainers or marketing copy without Brad saying yes first. He has had to remove AI-written content before.
+3. **Never publish commercial terms.** Advertising rates and prices are negotiated privately and must not appear on the site.
+4. **Only do what was asked.** If you spot something else wrong, mention it, do not fix it unprompted.
+5. **Test before deploying.** Serve locally and exercise the page. Do not ship and hope.
+6. **Deploys are rationed.** Netlify Free is ~20 deploys/month and the site *pauses* if the cap is hit. Batch changes into one deploy per session.
+7. **Do not touch** `prices.json`, `price-history.json`, the publish/reports functions, or the admin auth flow unless explicitly asked. Dad depends on these weekly.
+8. **Answer short.** Decision first. No tables, no walls of text, no restating what Brad just said.
+9. **Do not guess at fixes.** If you cannot verify the cause, say so and check, rather than shipping a plausible-looking change. This has wasted his time repeatedly.
+10. **Never claim something is fixed without verifying it** against the live site or a real build log.
