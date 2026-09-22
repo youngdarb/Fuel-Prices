@@ -1,7 +1,7 @@
 name: Android build (TWA)
 
 # Builds the Google Play app bundle with Bubblewrap, signed with the
-# existing upload key, targeting the current API level Google requires.
+# existing upload key, targeting the API level Google currently requires.
 on:
   workflow_dispatch:
     inputs:
@@ -21,6 +21,8 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      - uses: android-actions/setup-android@v3
+
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -28,8 +30,16 @@ jobs:
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
+      - name: Pre-seed Bubblewrap config so it never prompts
+        run: |
+          mkdir -p "$HOME/.bubblewrap"
+          cat > "$HOME/.bubblewrap/config.json" <<CFG
+          {"jdkPath":"$JAVA_HOME","androidSdkPath":"$ANDROID_SDK_ROOT"}
+          CFG
+          cat "$HOME/.bubblewrap/config.json"
+
       - name: Restore signing key
-        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > $HOME/signing.keystore
+        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > "$HOME/signing.keystore"
 
       - name: Init TWA project
         run: |
@@ -40,11 +50,9 @@ jobs:
             --packageId=com.gsyfuelprices \
             --appVersionCode=${{ inputs.versionCode }} \
             --appVersionName=${{ inputs.versionCode }}.0.0 \
-            --signingKeyPath=$HOME/signing.keystore \
+            --signingKeyPath="$HOME/signing.keystore" \
             --signingKeyAlias=${{ secrets.ANDROID_KEY_ALIAS }} \
-            --skipPwaValidation \
-            --yes || true
-          cat twa-manifest.json | head -30
+            --skipPwaValidation --yes
 
       - name: Build signed bundle
         env:
@@ -53,12 +61,9 @@ jobs:
         run: |
           cd twa
           bubblewrap build --skipPwaValidation
-          ls -la *.aab *.apk 2>/dev/null || true
-
-      - name: Report target SDK
-        run: |
-          cd twa
-          grep -n "targetSdk\|compileSdk" android/app/build.gradle 2>/dev/null | head -5 || true
+          echo "--- target sdk ---"
+          grep -rn "targetSdkVersion\|targetSdk" app/build.gradle 2>/dev/null | head -3 || true
+          ls -la *.aab
 
       - uses: actions/upload-artifact@v4
         with:
