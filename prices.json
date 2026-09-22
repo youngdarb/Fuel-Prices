@@ -1,5 +1,5 @@
 {
-  "updated": "21/Sep/2026",
+  "updated": "22/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "2ppl off Wednesday & Sunday. ATF *E10/B7 fuels see note",
-      "date": "19/Sep",
+      "date": "22/Sep",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -201,11 +201,11 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 163,
+      "marine": 165,
       "bio_diesel": null,
-      "df_diesel": 122,
+      "df_diesel": 124,
       "notes": "",
-      "date": "16/Sep",
+      "date": "22/Sep",
       "group": null,
       "lat": 49.4613,
       "lng": -2.53055,
@@ -381,11 +381,11 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 165,
+      "marine": 167,
       "bio_diesel": null,
-      "df_diesel": 124,
+      "df_diesel": 126,
       "notes": "",
-      "date": "15/Sep",
+      "date": "22/Sep",
       "group": null,
       "lat": 49.45392,
       "lng": -2.53032,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "19/Sep",
+      "date": "22/Sep",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 105.68,
-    "today": 96.06
+    "last_week": 108.75,
+    "today": 97.82
   },
   "heating_oil": {
     "suppliers": [
