@@ -301,7 +301,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
@@ -357,7 +357,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
@@ -372,7 +372,7 @@
 				CODE_SIGN_ENTITLEMENTS = "pwa-shell/Entitlements/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = THXX22UG9F;
 				INFOPLIST_FILE = "pwa-shell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -380,15 +380,15 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				CURRENT_PROJECT_VERSION = 6;
+				MARKETING_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gsyfuelprices.ios";
 				PRODUCT_NAME = "PWAShell";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -401,7 +401,7 @@
 				CODE_SIGN_ENTITLEMENTS = "pwa-shell/Entitlements/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = THXX22UG9F;
 				INFOPLIST_FILE = "pwa-shell/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -409,14 +409,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				CURRENT_PROJECT_VERSION = 6;
+				MARKETING_VERSION = 1.2;
+				CURRENT_PROJECT_VERSION = 7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gsyfuelprices.ios";
 				PRODUCT_NAME = "PWAShell";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Osize";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

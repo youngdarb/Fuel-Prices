@@ -1,0 +1,39 @@
+name: iPad screenshots
+
+on:
+  workflow_dispatch:
+
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm init -y && npm i puppeteer
+      - name: Capture
+        run: |
+          cat > shot.js <<'JS'
+          const puppeteer = require('puppeteer');
+          (async () => {
+            const b = await puppeteer.launch({args:['--no-sandbox']});
+            const p = await b.newPage();
+            await p.setViewport({width:1024,height:1366,deviceScaleFactor:2,isMobile:false,hasTouch:true});
+            await p.goto('https://gsyfuel.co.uk/',{waitUntil:'networkidle2',timeout:60000});
+            await new Promise(r=>setTimeout(r,4000));
+            await p.screenshot({path:'ipad-1.png'});
+            await p.evaluate(()=>window.scrollBy(0,900));
+            await new Promise(r=>setTimeout(r,1500));
+            await p.screenshot({path:'ipad-2.png'});
+            await p.goto('https://gsyfuel.co.uk/forecourts.html',{waitUntil:'networkidle2',timeout:60000});
+            await new Promise(r=>setTimeout(r,2000));
+            await p.screenshot({path:'ipad-3.png'});
+            await b.close();
+          })();
+          JS
+          node shot.js
+          ls -la ipad-*.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ipad-screenshots
+          path: ipad-*.png
