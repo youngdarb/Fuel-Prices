@@ -31,10 +31,15 @@ Live Guernsey fuel price tracker. **Production site, ~5k pageviews/month — do 
 - AdSense pub ID: ca-pub-5807886553089046 (ads.txt). Vignettes/ad-intents deliberately disabled — don't enable
 - Forms: `advertise-enquiry` and `price-report` (Netlify Forms, honeypot-protected). Ad enquiries answered by Brad, ~£30/month banner rate
 
-## In progress (July 2026)
-- Google Play app: PWA is ready (manifest/sw/icons); TWA packaging via pwabuilder.com pending Brad's Play Console verification (12 testers × 14 days closed test required before production)
-- Apple App Store: planned; needs Apple Developer enrolment ($99/yr) + GitHub Actions macOS build pipeline (no Mac available)
-- First advertiser lead: The Pest Detective (reply pending)
+## Status (September 2026)
+- **iOS: LIVE on the App Store.** Version 1.0 (build 3) released. Version 1.1 (build 6) with the splash screen is uploaded to App Store Connect but NOT yet submitted: create version 1.1 there, attach build 6, submit.
+- iOS builds: `.github/workflows/ios-release.yml`, lane `release` (fastlane + match). Lane `status` reports App Store state. Apple API key + signing are GitHub secrets.
+- **Android: not released.** App record `com.gsyfuelprices` exists, listing and graphics done. Upload key was reset (valid since 16 Jul); the keystore in Brad's local "GSY Fuel - Google Play package" folder is the valid upload key and is also in GitHub secrets (ANDROID_*).
+- Android blocker: Google requires **12 testers opted in for 14 continuous days** on a CLOSED test before production access. Open testing is locked until production access exists, so closed testing with an email list is the only route. Brad must collect 12 Gmail addresses.
+- Android bundles must target the current API level (35 was rejected, needs 36+). Build via pwabuilder.com with the existing signing key, or `.github/workflows/android-build.yml` (bubblewrap, still unproven).
+- Netlify Forms on the Free plan keeps text submissions but DROPS uploaded photos (dead CloudFront links). Price-report photos are effectively broken; not yet fixed.
+- AdSense still rejected ("low value content"). Direct local sponsors are the better revenue route; sponsor slots are manageable from the admin panel.
+
 
 ## Netlify Free plan (from ~Sept 2026)
 The team downgrades to the credit-based Free plan: **300 credits/month, hard cap — exceeding it pauses the site.**
