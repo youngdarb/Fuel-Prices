@@ -1,5 +1,9 @@
 [build]
-  ignore = "git diff --quiet HEAD^ HEAD -- . ':(exclude)prices.json' ':(exclude)price-history.json'"
+  # Only rebuild when files that are actually served change.
+  # Price data is fetched at runtime from GitHub, and the ios/, .github/,
+  # scripts/, store-assets/ and docs paths are not part of the site, so
+  # commits touching only those must not burn a deploy (15 credits each).
+  ignore = "git diff --quiet HEAD^ HEAD -- . ':(exclude)prices.json' ':(exclude)price-history.json' ':(exclude).github/**' ':(exclude)ios/**' ':(exclude)scripts/**' ':(exclude)store-assets/**' ':(exclude)mobile-app/**' ':(exclude)CLAUDE.md' ':(exclude)README.md' ':(exclude).gitignore'"
 
 [build.environment]
   SECRETS_SCAN_OMIT_PATHS = "update-gsy-fuel.html"
