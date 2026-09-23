@@ -189,7 +189,7 @@
       "marine": null,
       "bio_diesel": 234.9,
       "df_diesel": null,
-      "notes": "4p off with Rubis Card",
+      "notes": "4p off with Rubis Card. Super is 99Ron",
       "date": "22/Sep",
       "group": "vc",
       "lat": 49.4726415,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 108.75,
-    "today": 98.41
+    "last_week": 105.83,
+    "today": 96.27
   },
   "heating_oil": {
     "suppliers": [
