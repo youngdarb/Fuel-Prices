@@ -153,14 +153,14 @@
     },
     {
       "name": "Jeffrey's Service Station (CIFL)",
-      "unleaded": 178.9,
-      "diesel": 189.9,
+      "unleaded": 182.9,
+      "diesel": 192.9,
       "super": 194.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "22/Sep",
+      "date": "23/Sep",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -318,14 +318,14 @@
     },
     {
       "name": "St Martins Garage (CIFL)",
-      "unleaded": 177.9,
-      "diesel": 188.9,
+      "unleaded": 180.9,
+      "diesel": 191.9,
       "super": 194.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "21/Sep",
+      "date": "23/Sep",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 181,
-    "diesel": 194.3
+    "unleaded": 181.4,
+    "diesel": 194.6
   },
   "brent_crude": {
     "high": 130.59,
