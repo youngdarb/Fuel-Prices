@@ -138,14 +138,14 @@
     },
     {
       "name": "Whiteway Motors",
-      "unleaded": 175.9,
+      "unleaded": 178,
       "diesel": 194.5,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": 104,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "21/Sep",
+      "date": "24/Sep",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 181.6,
+    "unleaded": 181.7,
     "diesel": 195
   },
   "brent_crude": {
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 104.82,
-    "today": 105.55
+    "today": 104.96
   },
   "heating_oil": {
     "suppliers": [
