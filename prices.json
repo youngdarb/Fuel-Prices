@@ -108,14 +108,14 @@
     },
     {
       "name": "Le Mont Saint",
-      "unleaded": 179.9,
+      "unleaded": 182.9,
       "diesel": 193.9,
       "super": 190.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "21/Sep",
+      "date": "26/Sep",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 182,
+    "unleaded": 182.1,
     "diesel": 196.3
   },
   "brent_crude": {
