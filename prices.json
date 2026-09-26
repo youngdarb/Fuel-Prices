@@ -78,14 +78,14 @@
     },
     {
       "name": "ATF Castel (Thompsons)",
-      "unleaded": 179.9,
-      "diesel": 189.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "23/Sep",
+      "date": "26/Sep",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -393,14 +393,14 @@
     },
     {
       "name": "ATF Barras",
-      "unleaded": 179.9,
-      "diesel": 189.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "23/Sep",
+      "date": "26/Sep",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 181.7,
-    "diesel": 195.5
+    "unleaded": 182,
+    "diesel": 196.3
   },
   "brent_crude": {
     "high": 130.59,
