@@ -423,11 +423,11 @@
     "suppliers": [
       {
         "name": "ATF Fuels",
-        "price_500l": 117,
-        "price_700l": 116,
-        "price_900l": 115,
+        "price_500l": 127,
+        "price_700l": 126,
+        "price_900l": 125,
         "tel": "",
-        "notes": "ATF Smart 115.0 Premium 117.00 (900L)"
+        "notes": "ATF Smart 125.0 Premium 127.00 (900L)"
       },
       {
         "name": "CIFL (Planned del.)",
