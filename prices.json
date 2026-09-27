@@ -1,5 +1,5 @@
 {
-  "updated": "26/Sep/2026",
+  "updated": "27/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 103.87,
-    "today": 104.32
+    "today": 97.44
   },
   "heating_oil": {
     "suppliers": [
@@ -531,6 +531,12 @@
       "message": "Wow, huge rises from CI Co-Op this week, now 184.9ppl petrol, 199.9ppl diesel ⛽️",
       "start": "2026-09-22",
       "end": "2026-09-30"
+    },
+    {
+      "id": 1790523036420,
+      "message": "*A HEADS UP FOR NEXT WEEK* I’m being reliably informed of a HUGE price rise next week from Rubis, in the region of 7-8ppl on petrol and diesel This will push diesel past £2 a litre for many Rubis forecourts, from around Tuesday So fill up whilst you can! #howmuch‼️‼️‼️",
+      "start": "2026-09-27",
+      "end": "2026-09-29"
     }
   ],
   "sponsors": []
