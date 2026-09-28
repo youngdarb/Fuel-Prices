@@ -33,14 +33,14 @@
     },
     {
       "name": "Northern Motor Works",
-      "unleaded": 179.9,
-      "diesel": 191.9,
+      "unleaded": 181.9,
+      "diesel": 193.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "26/Sep",
+      "date": "28/Sep",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 182.3,
-    "diesel": 196.5
+    "unleaded": 182.4,
+    "diesel": 196.6
   },
   "brent_crude": {
     "high": 130.59,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 100.34,
-    "today": 98.87
+    "today": 99.98
   },
   "heating_oil": {
     "suppliers": [
