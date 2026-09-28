@@ -1,5 +1,5 @@
 {
-  "updated": "27/Sep/2026",
+  "updated": "28/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -130,7 +130,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "24/Sep",
+      "date": "28/Sep",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 103.87,
-    "today": 97.44
+    "last_week": 100.34,
+    "today": 100.78
   },
   "heating_oil": {
     "suppliers": [
