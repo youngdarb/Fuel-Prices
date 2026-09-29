@@ -110,7 +110,7 @@
       "name": "Le Mont Saint",
       "unleaded": 182.9,
       "diesel": 193.9,
-      "super": 190.9,
+      "super": 194.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 99.25,
-    "today": 99.78
+    "today": 99.35
   },
   "heating_oil": {
     "suppliers": [
