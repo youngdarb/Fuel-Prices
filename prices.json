@@ -1,5 +1,5 @@
 {
-  "updated": "29/Sep/2026",
+  "updated": "30/Sep/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "28/Sep",
+      "date": "29/Sep",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "28/Sep",
+      "date": "29/Sep",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -70,7 +70,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "28/Sep",
+      "date": "29/Sep",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -100,7 +100,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "26/Sep",
+      "date": "29/Sep",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -108,14 +108,14 @@
     },
     {
       "name": "Le Mont Saint",
-      "unleaded": 182.9,
-      "diesel": 193.9,
+      "unleaded": 186.9,
+      "diesel": 199.9,
       "super": 194.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "26/Sep",
+      "date": "30/Sep",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": 104,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "24/Sep",
+      "date": "30/Sep",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -160,7 +160,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "28/Sep",
+      "date": "29/Sep",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -201,9 +201,9 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 165,
+      "marine": 167,
       "bio_diesel": null,
-      "df_diesel": 124,
+      "df_diesel": 126,
       "notes": "",
       "date": "22/Sep",
       "group": null,
@@ -381,9 +381,9 @@
       "unleaded": null,
       "diesel": null,
       "super": null,
-      "marine": 167,
+      "marine": 169,
       "bio_diesel": null,
-      "df_diesel": 126,
+      "df_diesel": 128,
       "notes": "",
       "date": "23/Sep",
       "group": null,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 183.4,
-    "diesel": 197.4
+    "unleaded": 183.5,
+    "diesel": 197.7
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 99.25,
-    "today": 97.15
+    "last_week": 103.08,
+    "today": 96.19
   },
   "heating_oil": {
     "suppliers": [
