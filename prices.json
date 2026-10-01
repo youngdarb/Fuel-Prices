@@ -155,7 +155,7 @@
       "name": "Jeffrey's Service Station (CIFL)",
       "unleaded": 183.9,
       "diesel": 194.9,
-      "super": 194.9,
+      "super": 195.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 106.6,
-    "today": 100.1
+    "today": 100.44
   },
   "heating_oil": {
     "suppliers": [
