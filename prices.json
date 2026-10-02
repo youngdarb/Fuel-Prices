@@ -333,14 +333,14 @@
     },
     {
       "name": "Perelle Garage",
-      "unleaded": 179.9,
+      "unleaded": 184.9,
       "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "01/Oct",
+      "date": "02/Oct",
       "group": "ldm",
       "lat": 49.45871,
       "lng": -2.63552,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 184.3,
+    "unleaded": 184.5,
     "diesel": 198.2
   },
   "brent_crude": {
