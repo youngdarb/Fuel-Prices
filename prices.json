@@ -49,7 +49,7 @@
     {
       "name": "Camp du Roi Fuel Express (CIFL)",
       "unleaded": 183.9,
-      "diesel": 194.9,
+      "diesel": 196.9,
       "super": 195.9,
       "marine": null,
       "bio_diesel": 239.9,
@@ -64,7 +64,7 @@
     {
       "name": "Braye Road Garage (CIFL)",
       "unleaded": 183.9,
-      "diesel": 194.9,
+      "diesel": 196.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -100,7 +100,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "03/Oct",
+      "date": "05/Oct",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -409,7 +409,7 @@
   ],
   "average": {
     "unleaded": 185,
-    "diesel": 198.5
+    "diesel": 198.7
   },
   "brent_crude": {
     "high": 130.59,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 105.28,
-    "today": 102.25
+    "today": 102.53
   },
   "heating_oil": {
     "suppliers": [
