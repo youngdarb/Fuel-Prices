@@ -168,7 +168,7 @@
     },
     {
       "name": "Granada Motors",
-      "unleaded": 186.9,
+      "unleaded": 187.9,
       "diesel": 199.9,
       "super": null,
       "marine": 164.9,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 102.59,
-    "today": 99.79
+    "today": 98.61
   },
   "heating_oil": {
     "suppliers": [
