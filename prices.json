@@ -1,5 +1,5 @@
 {
-  "updated": "05/Oct/2026",
+  "updated": "06/Oct/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "04/Oct",
+      "date": "06/Oct",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -70,7 +70,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "03/Oct",
+      "date": "06/Oct",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "05/Oct",
+      "date": "06/Oct",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "05/Oct",
+      "date": "06/Oct",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "03/Oct",
+      "date": "06/Oct",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 105.28,
-    "today": 102.53
+    "last_week": 102.59,
+    "today": 99.79
   },
   "heating_oil": {
     "suppliers": [
