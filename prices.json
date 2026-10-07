@@ -108,8 +108,8 @@
     },
     {
       "name": "Le Mont Saint",
-      "unleaded": 182.9,
-      "diesel": 198.9,
+      "unleaded": 184.9,
+      "diesel": 199.9,
       "super": 194.9,
       "marine": null,
       "bio_diesel": null,
@@ -409,7 +409,7 @@
   ],
   "average": {
     "unleaded": 185,
-    "diesel": 198.6
+    "diesel": 198.7
   },
   "brent_crude": {
     "high": 130.59,
