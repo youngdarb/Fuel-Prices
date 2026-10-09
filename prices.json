@@ -258,14 +258,14 @@
     },
     {
       "name": "Forest Road Garage (no price displayed)",
-      "unleaded": 189.9,
+      "unleaded": 190.9,
       "diesel": 200.9,
       "super": 211.6,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "03/Oct",
+      "date": "09/Oct",
       "group": null,
       "lat": 49.43403,
       "lng": -2.57827,
@@ -273,14 +273,14 @@
     },
     {
       "name": "Venture Garage (No price displayed)",
-      "unleaded": 189.9,
+      "unleaded": 190.9,
       "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": 100,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "02/Oct",
+      "date": "08/Oct",
       "group": null,
       "lat": 49.44145,
       "lng": -2.62988,
@@ -319,13 +319,13 @@
     {
       "name": "St Martins Garage (CIFL)",
       "unleaded": 183.9,
-      "diesel": 194.9,
+      "diesel": 196.9,
       "super": 195.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "30/Sep",
+      "date": "09/Oct",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 185,
-    "diesel": 198.7
+    "unleaded": 185.1,
+    "diesel": 198.8
   },
   "brent_crude": {
     "high": 130.59,
