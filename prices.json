@@ -1,5 +1,5 @@
 {
-  "updated": "07/Oct/2026",
+  "updated": "09/Oct/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -154,7 +154,7 @@
     {
       "name": "Jeffrey's Service Station (CIFL)",
       "unleaded": 183.9,
-      "diesel": 194.9,
+      "diesel": 196.9,
       "super": 195.9,
       "marine": null,
       "bio_diesel": 239.9,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 103.53,
-    "today": 101.13
+    "last_week": 102.25,
+    "today": 103.02
   },
   "heating_oil": {
     "suppliers": [
