@@ -63,14 +63,14 @@
     },
     {
       "name": "Braye Road Garage (CIFL)",
-      "unleaded": 184.9,
-      "diesel": 197.9,
+      "unleaded": 185.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "14/Oct",
+      "date": "19/Oct",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "11/Oct",
+      "date": "19/Oct",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "11/Oct",
+      "date": "19/Oct",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 186.5,
+    "unleaded": 186.6,
     "diesel": 200.1
   },
   "brent_crude": {
