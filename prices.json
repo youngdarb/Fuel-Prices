@@ -50,7 +50,7 @@
       "name": "Camp du Roi Fuel Express (CIFL)",
       "unleaded": 185.9,
       "diesel": 199.9,
-      "super": 195.9,
+      "super": 197.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
@@ -153,14 +153,14 @@
     },
     {
       "name": "Jeffrey's Service Station (CIFL)",
-      "unleaded": 184.9,
-      "diesel": 198.9,
-      "super": 195.9,
+      "unleaded": 185.9,
+      "diesel": 199.9,
+      "super": 197.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "14/Oct",
+      "date": "19/Oct",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 106.65,
-    "today": 108.46
+    "last_week": 105.69,
+    "today": 111.25
   },
   "heating_oil": {
     "suppliers": [
