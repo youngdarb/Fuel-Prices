@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 105.92,
-    "today": 111.85
+    "last_week": 108.79,
+    "today": 111.11
   },
   "heating_oil": {
     "suppliers": [
@@ -431,9 +431,9 @@
       },
       {
         "name": "CIFL (Planned del.)",
-        "price_500l": 123,
+        "price_500l": 120.67,
         "price_700l": null,
-        "price_900l": 121,
+        "price_900l": 119,
         "tel": "",
         "notes": "Special pricing for regular top-up customers"
       },
