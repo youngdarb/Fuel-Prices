@@ -1,5 +1,5 @@
 {
-  "updated": "27/Oct/2026",
+  "updated": "28/Oct/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -25,7 +25,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -130,7 +130,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL 2p off with Loyalty Card. Super is 97 RON",
-      "date": "27/Oct",
+      "date": "28/Oct",
       "group": null,
       "lat": 49.4582297,
       "lng": -2.5456378,
@@ -145,7 +145,7 @@
       "bio_diesel": null,
       "df_diesel": 104,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -220,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -235,7 +235,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "coop",
       "lat": 49.42976,
       "lng": -2.60102,
@@ -250,7 +250,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "22/Oct",
+      "date": "28/Oct",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 108.79,
-    "today": 109.94
+    "last_week": 108.82,
+    "today": 110.94
   },
   "heating_oil": {
     "suppliers": [
@@ -502,12 +502,6 @@
     "Forest Road & Venture Garage not shown, as they don't display prices. Trev's removed at his request"
   ],
   "announcements": [
-    {
-      "id": 1790080018893,
-      "message": "Wow, huge rises from CI Co-Op this week, now 184.9ppl petrol, 199.9ppl diesel ⛽️",
-      "start": "2026-09-22",
-      "end": "2026-09-30"
-    },
     {
       "id": 1790523036420,
       "message": "*A HEADS UP FOR NEXT WEEK* I’m being reliably informed of a HUGE price rise next week from Rubis, in the region of 7-8ppl on petrol and diesel This will push diesel past £2 a litre for many Rubis forecourts, from around Tuesday So fill up whilst you can! #howmuch‼️‼️‼️",
