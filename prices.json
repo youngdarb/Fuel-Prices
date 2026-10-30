@@ -153,14 +153,14 @@
     },
     {
       "name": "Jeffrey's Service Station (CIFL)",
-      "unleaded": 185.9,
-      "diesel": 199.9,
-      "super": 197.9,
+      "unleaded": 187.9,
+      "diesel": 201.9,
+      "super": 199.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "22/Oct",
+      "date": "30/Oct",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 187.4,
-    "diesel": 200.2
+    "unleaded": 187.5,
+    "diesel": 200.3
   },
   "brent_crude": {
     "high": 130.59,
