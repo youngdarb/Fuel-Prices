@@ -1,5 +1,5 @@
 {
-  "updated": "28/Oct/2026",
+  "updated": "30/Oct/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "28/Oct",
+      "date": "30/Oct",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -25,7 +25,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "28/Oct",
+      "date": "30/Oct",
       "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
@@ -220,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "28/Oct",
+      "date": "30/Oct",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -235,7 +235,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "28/Oct",
+      "date": "30/Oct",
       "group": "coop",
       "lat": 49.42976,
       "lng": -2.60102,
@@ -250,7 +250,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "28/Oct",
+      "date": "30/Oct",
       "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
@@ -318,14 +318,14 @@
     },
     {
       "name": "St Martins Garage (CIFL)",
-      "unleaded": 185.9,
-      "diesel": 198.9,
-      "super": 197.9,
+      "unleaded": 186.9,
+      "diesel": 199.9,
+      "super": 199.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "19/Oct",
+      "date": "30/Oct",
       "group": null,
       "lat": 49.43682,
       "lng": -2.55421,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 187.3,
+    "unleaded": 187.4,
     "diesel": 200.2
   },
   "brent_crude": {
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 108.82,
-    "today": 110.94
+    "last_week": 116.72,
+    "today": 113.42
   },
   "heating_oil": {
     "suppliers": [
