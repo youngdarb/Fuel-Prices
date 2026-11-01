@@ -1,5 +1,5 @@
 {
-  "updated": "31/Oct/2026",
+  "updated": "01/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -93,14 +93,14 @@
     },
     {
       "name": "Landes du Marché",
-      "unleaded": 184.9,
+      "unleaded": 187.9,
       "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "31/Oct",
+      "date": "01/Nov",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -333,14 +333,14 @@
     },
     {
       "name": "Perelle Garage",
-      "unleaded": 184.9,
+      "unleaded": 187.9,
       "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "31/Oct",
+      "date": "01/Nov",
       "group": "ldm",
       "lat": 49.45871,
       "lng": -2.63552,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 187.5,
+    "unleaded": 187.7,
     "diesel": 200.3
   },
   "brent_crude": {
