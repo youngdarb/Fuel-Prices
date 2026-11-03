@@ -1,5 +1,5 @@
 {
-  "updated": "01/Nov/2026",
+  "updated": "03/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -49,13 +49,13 @@
     {
       "name": "Camp du Roi Fuel Express (CIFL)",
       "unleaded": 187.9,
-      "diesel": 199.9,
+      "diesel": 201.9,
       "super": 197.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "01/Nov",
+      "date": "03/Nov",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -138,14 +138,14 @@
     },
     {
       "name": "Whiteway Motors",
-      "unleaded": 179,
-      "diesel": 194.5,
+      "unleaded": 180.5,
+      "diesel": 201,
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": 104,
+      "df_diesel": 107.5,
       "notes": "GPD, Prize draw entry 2x£50 fuel",
-      "date": "01/Nov",
+      "date": "03/Nov",
       "group": null,
       "lat": 49.4964766,
       "lng": -2.5163108,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 187.7,
-    "diesel": 200.3
+    "unleaded": 187.8,
+    "diesel": 200.7
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 116.72,
-    "today": 113.43
+    "last_week": 113.88,
+    "today": 106.47
   },
   "heating_oil": {
     "suppliers": [
