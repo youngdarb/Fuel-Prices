@@ -258,14 +258,14 @@
     },
     {
       "name": "Forest Road Garage (no price displayed)",
-      "unleaded": 192.9,
-      "diesel": 200.9,
-      "super": 216.6,
+      "unleaded": 194.9,
+      "diesel": 202.9,
+      "super": 238.7,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "22/Oct",
+      "date": "03/Nov",
       "group": null,
       "lat": 49.43403,
       "lng": -2.57827,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 187.8,
-    "diesel": 200.9
+    "unleaded": 187.9,
+    "diesel": 201
   },
   "brent_crude": {
     "high": 130.59,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 113.88,
-    "today": 106.47
+    "today": 105.91
   },
   "heating_oil": {
     "suppliers": [
