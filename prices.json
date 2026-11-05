@@ -63,14 +63,14 @@
     },
     {
       "name": "Braye Road Garage (CIFL)",
-      "unleaded": 187.9,
-      "diesel": 199.9,
+      "unleaded": 188.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "01/Nov",
+      "date": "03/Nov",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 188.2,
-    "diesel": 202.3
+    "unleaded": 188.3,
+    "diesel": 202.4
   },
   "brent_crude": {
     "high": 130.59,
