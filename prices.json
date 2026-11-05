@@ -78,8 +78,8 @@
     },
     {
       "name": "ATF Castel (Thompsons)",
-      "unleaded": 180.9,
-      "diesel": 196.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -393,8 +393,8 @@
     },
     {
       "name": "ATF Barras",
-      "unleaded": 180.9,
-      "diesel": 196.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 188,
-    "diesel": 202
+    "unleaded": 188.2,
+    "diesel": 202.2
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 115.32,
-    "today": 102.16
+    "last_week": 114.88,
+    "today": 96.11
   },
   "heating_oil": {
     "suppliers": [
