@@ -48,9 +48,9 @@
     },
     {
       "name": "Camp du Roi Fuel Express (CIFL)",
-      "unleaded": 187.9,
+      "unleaded": 188.9,
       "diesel": 201.9,
-      "super": 197.9,
+      "super": 199.9,
       "marine": null,
       "bio_diesel": 239.9,
       "df_diesel": null,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 117.64,
-    "today": 97.7
+    "today": 98.18
   },
   "heating_oil": {
     "suppliers": [
