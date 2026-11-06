@@ -278,7 +278,7 @@
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": 100,
+      "df_diesel": null,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
       "date": "03/Nov",
       "group": null,
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 114.88,
-    "today": 96.52
+    "last_week": 117.64,
+    "today": 97.7
   },
   "heating_oil": {
     "suppliers": [
