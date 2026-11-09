@@ -1,5 +1,5 @@
 {
-  "updated": "08/Nov/2026",
+  "updated": "09/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -33,14 +33,14 @@
     },
     {
       "name": "Northern Motor Works",
-      "unleaded": 188.9,
+      "unleaded": 187.9,
       "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "08/Nov",
+      "date": "09/Nov",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -408,7 +408,7 @@
     }
   ],
   "average": {
-    "unleaded": 188.2,
+    "unleaded": 188.1,
     "diesel": 202.2
   },
   "brent_crude": {
@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 117.64,
-    "today": 98.32
+    "last_week": 104.77,
+    "today": 93.79
   },
   "heating_oil": {
     "suppliers": [
