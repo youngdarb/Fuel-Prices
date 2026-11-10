@@ -1,5 +1,5 @@
 {
-  "updated": "09/Nov/2026",
+  "updated": "10/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -63,14 +63,14 @@
     },
     {
       "name": "Braye Road Garage (CIFL)",
-      "unleaded": 188.9,
+      "unleaded": 187.9,
       "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "03/Nov",
+      "date": "10/Nov",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -175,7 +175,7 @@
       "bio_diesel": null,
       "df_diesel": 114.9,
       "notes": "4p off with Rubis Card",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -184,13 +184,13 @@
     {
       "name": "Cobo Service Station",
       "unleaded": 191.9,
-      "diesel": 201.9,
+      "diesel": 203.9,
       "super": null,
       "marine": null,
       "bio_diesel": 234.9,
       "df_diesel": null,
       "notes": "4p off with Rubis Card",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "vc",
       "lat": 49.4726415,
       "lng": -2.5841675,
@@ -364,13 +364,13 @@
     {
       "name": "Vale Service Station",
       "unleaded": 191.9,
-      "diesel": 201.9,
+      "diesel": 203.9,
       "super": 215.9,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "4ppl off with Rubis Card. Super is 99Ron",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "vc",
       "lat": 49.4931,
       "lng": -2.52495,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 188.3,
-    "diesel": 202.4
+    "unleaded": 188.2,
+    "diesel": 202.5
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 104.77,
-    "today": 94.21
+    "last_week": 103.6,
+    "today": 90.28
   },
   "heating_oil": {
     "suppliers": [
