@@ -3,14 +3,14 @@
   "stations": [
     {
       "name": "Co-Op L'Aumone",
-      "unleaded": 187.9,
-      "diesel": 203.9,
+      "unleaded": 186.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -18,14 +18,14 @@
     },
     {
       "name": "Co-Op En Route St Sampson",
-      "unleaded": 187.9,
-      "diesel": 203.9,
+      "unleaded": 186.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
@@ -213,14 +213,14 @@
     },
     {
       "name": "Co-Op St Martin",
-      "unleaded": 187.9,
-      "diesel": 203.9,
+      "unleaded": 186.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -228,14 +228,14 @@
     },
     {
       "name": "Co-Op Forest",
-      "unleaded": 187.9,
-      "diesel": 203.9,
+      "unleaded": 186.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "coop",
       "lat": 49.42976,
       "lng": -2.60102,
@@ -243,14 +243,14 @@
     },
     {
       "name": "Co-Op St Andrew",
-      "unleaded": 187.9,
-      "diesel": 203.9,
+      "unleaded": 186.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "08/Nov",
+      "date": "10/Nov",
       "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 188.2,
-    "diesel": 202.5
+    "unleaded": 188,
+    "diesel": 202.1
   },
   "brent_crude": {
     "high": 130.59,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 103.6,
-    "today": 90.28
+    "today": 90.17
   },
   "heating_oil": {
     "suppliers": [
