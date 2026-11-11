@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "09/Nov",
+      "date": "11/Nov",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -175,7 +175,7 @@
       "bio_diesel": null,
       "df_diesel": 114.9,
       "notes": "4p off with Rubis Card",
-      "date": "10/Nov",
+      "date": "11/Nov",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -288,14 +288,14 @@
     },
     {
       "name": "Trev’s (no price)",
-      "unleaded": null,
-      "diesel": null,
+      "unleaded": 192.9,
+      "diesel": 201.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "",
+      "date": "11/Nov",
       "group": null,
       "lat": 49.49716,
       "lng": -2.52048,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 188,
-    "diesel": 202.5
+    "unleaded": 188.2,
+    "diesel": 202.4
   },
   "brent_crude": {
     "high": 130.59,
