@@ -1,5 +1,5 @@
 {
-  "updated": "10/Nov/2026",
+  "updated": "11/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -274,13 +274,13 @@
     {
       "name": "Venture Garage (No price displayed)",
       "unleaded": 194.9,
-      "diesel": 202.9,
+      "diesel": 208.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
-      "df_diesel": null,
+      "df_diesel": 122.9,
       "notes": "PRICES NOT DISPLAYED, PLEASE CHECK",
-      "date": "03/Nov",
+      "date": "11/Nov",
       "group": null,
       "lat": 49.44145,
       "lng": -2.62988,
@@ -409,15 +409,15 @@
   ],
   "average": {
     "unleaded": 188,
-    "diesel": 202.1
+    "diesel": 202.4
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 103.6,
-    "today": 91.83
+    "last_week": 94.62,
+    "today": 93.2
   },
   "heating_oil": {
     "suppliers": [
