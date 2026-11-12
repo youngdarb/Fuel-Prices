@@ -1,5 +1,5 @@
 {
-  "updated": "11/Nov/2026",
+  "updated": "12/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -10,7 +10,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "10/Nov",
+      "date": "12/Nov",
       "group": "coop",
       "lat": 49.4652794,
       "lng": -2.5729759,
@@ -25,7 +25,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Rubis supplied",
-      "date": "10/Nov",
+      "date": "12/Nov",
       "group": "coop",
       "lat": 49.4745171,
       "lng": -2.5296965,
@@ -169,13 +169,13 @@
     {
       "name": "Granada Motors",
       "unleaded": 191.9,
-      "diesel": 201.9,
+      "diesel": 203.9,
       "super": null,
       "marine": 168.9,
       "bio_diesel": null,
       "df_diesel": 114.9,
       "notes": "4p off with Rubis Card",
-      "date": "11/Nov",
+      "date": "12/Nov",
       "group": null,
       "lat": 49.4867,
       "lng": -2.51968,
@@ -220,7 +220,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "10/Nov",
+      "date": "12/Nov",
       "group": "coop",
       "lat": 49.4344,
       "lng": -2.55185,
@@ -235,7 +235,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "10/Nov",
+      "date": "12/Nov",
       "group": "coop",
       "lat": 49.42976,
       "lng": -2.60102,
@@ -250,7 +250,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "10/Nov",
+      "date": "12/Nov",
       "group": "coop",
       "lat": 49.44831,
       "lng": -2.56425,
@@ -409,15 +409,15 @@
   ],
   "average": {
     "unleaded": 188.2,
-    "diesel": 202.4
+    "diesel": 202.5
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 94.62,
-    "today": 93.2
+    "last_week": 98.29,
+    "today": 92.13
   },
   "heating_oil": {
     "suppliers": [
