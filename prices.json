@@ -40,7 +40,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL",
-      "date": "12/Nov",
+      "date": "13/Nov",
       "group": null,
       "lat": 49.47907,
       "lng": -2.52142,
@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "12/Nov",
+      "date": "13/Nov",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -70,7 +70,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL OWNED",
-      "date": "12/Nov",
+      "date": "13/Nov",
       "group": "cifl",
       "lat": 49.48753,
       "lng": -2.52956,
@@ -160,7 +160,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL OWNED. Super is 97 RON",
-      "date": "12/Nov",
+      "date": "13/Nov",
       "group": null,
       "lat": 49.4462445,
       "lng": -2.55357,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 98.32,
-    "today": 95.72
+    "today": 96.71
   },
   "heating_oil": {
     "suppliers": [
