@@ -416,8 +416,8 @@
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 91.49,
-    "today": 93.68
+    "last_week": 95.82,
+    "today": 90.05
   },
   "heating_oil": {
     "suppliers": [
@@ -515,5 +515,16 @@
       "end": "2026-11-15"
     }
   ],
-  "sponsors": []
+  "sponsors": [
+    {
+      "id": 1795129989301,
+      "name": "Guernsey Man & Van",
+      "tagline": "For all your collection & delivery requirements, including local docks deliveries, from UK, Sark & Jersey. Tel: 07911 715888",
+      "url": "",
+      "image": "Image_529",
+      "slot": "top",
+      "start": "2026-11-19",
+      "end": "2026-11-30"
+    }
+  ]
 }
