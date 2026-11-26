@@ -1,5 +1,5 @@
 {
-  "updated": "25/Nov/2026",
+  "updated": "26/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -78,14 +78,14 @@
     },
     {
       "name": "ATF Castel (Thompsons)",
-      "unleaded": 180.9,
-      "diesel": 196.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "25/Nov",
+      "date": "26/Nov",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -393,14 +393,14 @@
     },
     {
       "name": "ATF Barras",
-      "unleaded": 180.9,
-      "diesel": 196.9,
+      "unleaded": 182.9,
+      "diesel": 198.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "25/Nov",
+      "date": "26/Nov",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -408,16 +408,16 @@
     }
   ],
   "average": {
-    "unleaded": 185.9,
-    "diesel": 201.1
+    "unleaded": 186.1,
+    "diesel": 201.3
   },
   "brent_crude": {
     "high": 130.59,
     "high_date": "Mar '22",
     "low": 55.81,
     "low_date": "Jan '21",
-    "last_week": 91.95,
-    "today": 90.85
+    "last_week": 91.98,
+    "today": 90.61
   },
   "heating_oil": {
     "suppliers": [
