@@ -1,5 +1,5 @@
 {
-  "updated": "26/Nov/2026",
+  "updated": "27/Nov/2026",
   "stations": [
     {
       "name": "Co-Op L'Aumone",
@@ -55,7 +55,7 @@
       "bio_diesel": 239.9,
       "df_diesel": null,
       "notes": "CIFL MANAGED",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": "cifl",
       "lat": 49.4767776,
       "lng": -2.5611685,
@@ -85,7 +85,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": "atf",
       "lat": 49.4582681,
       "lng": -2.5750682,
@@ -93,14 +93,14 @@
     },
     {
       "name": "Landes du Marché",
-      "unleaded": 187.9,
-      "diesel": 201.9,
+      "unleaded": 184.9,
+      "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "Discount card",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": "ldm",
       "lat": 49.4744964,
       "lng": -2.5643528,
@@ -115,7 +115,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "CIFL. Super is 97 RON",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": null,
       "lat": 49.4572646,
       "lng": -2.6242246,
@@ -333,14 +333,14 @@
     },
     {
       "name": "Perelle Garage",
-      "unleaded": 187.9,
-      "diesel": 201.9,
+      "unleaded": 184.9,
+      "diesel": 199.9,
       "super": null,
       "marine": null,
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": "ldm",
       "lat": 49.45871,
       "lng": -2.63552,
@@ -400,7 +400,7 @@
       "bio_diesel": null,
       "df_diesel": null,
       "notes": "ATF Managed. 2ppl off Weds & Sunday.",
-      "date": "26/Nov",
+      "date": "27/Nov",
       "group": "atf",
       "lat": 49.48624,
       "lng": -2.56488,
@@ -408,8 +408,8 @@
     }
   ],
   "average": {
-    "unleaded": 186,
-    "diesel": 201.3
+    "unleaded": 185.8,
+    "diesel": 201.1
   },
   "brent_crude": {
     "high": 130.59,
@@ -417,7 +417,7 @@
     "low": 55.81,
     "low_date": "Jan '21",
     "last_week": 91.98,
-    "today": 91.73
+    "today": 92.22
   },
   "heating_oil": {
     "suppliers": [
